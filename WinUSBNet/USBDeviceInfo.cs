@@ -65,6 +65,16 @@ namespace MadWizard.WinUSBNet
             }
         }
 
+        /// <summary>
+        /// Device pathname
+        /// </summary>
+        public string DevicePath
+        {
+            get
+            {
+                return _details.DevicePath;
+            }
+        }
 
         internal USBDeviceInfo(API.DeviceDetails details)
         {

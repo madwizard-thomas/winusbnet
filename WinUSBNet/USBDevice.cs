@@ -52,9 +52,9 @@ namespace MadWizard.WinUSBNet
         /// <summary>
         /// Constructs a new USB device
         /// </summary>
-        /// <param name="descriptor">USB device descriptor for the device to create</param>
-        public USBDevice(USBDeviceDescriptor descriptor)
-            : this(descriptor.PathName)
+        /// <param name="descriptor">USB device info for the device to create</param>
+        public USBDevice(USBDeviceInfo deviceInfo)
+            : this(deviceInfo.DevicePath)
         {
             // Handled in other constructor
         }
