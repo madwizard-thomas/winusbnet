@@ -1,6 +1,6 @@
-=Documentation=
-
 No documentation has been written yet, here are some quick getting started snippets:
+
+See also: [INFTemplate INF file template]
 
 == Opening devices ==
 
