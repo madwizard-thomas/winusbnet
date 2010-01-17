@@ -137,7 +137,7 @@ namespace MadWizard.WinUSBNet
         private void CheckReadParams(byte[] buffer, int offset, int length)
         {
             if (!IsIn)
-                throw new USBException("Cannot read from a pipe with OUT direction.");
+                throw new NotSupportedException("Cannot read from a pipe with OUT direction.");
 
             int bufferLength = buffer.Length;
             if (offset < 0 || offset >= bufferLength)
@@ -148,7 +148,7 @@ namespace MadWizard.WinUSBNet
         private void CheckWriteParams(byte[] buffer, int offset, int length)
         {
             if (!IsOut)
-                throw new USBException("Cannot write to a pipe with IN direction.");
+                throw new NotSupportedException("Cannot write to a pipe with IN direction.");
 
             int bufferLength = buffer.Length;
             if (offset < 0 || offset >= bufferLength)
@@ -314,7 +314,7 @@ namespace MadWizard.WinUSBNet
         public void Flush()
         {
             if (!IsIn)
-                throw new USBException("Flush is only supported on IN direction pipes");
+                throw new NotSupportedException("Flush is only supported on IN direction pipes");
             try
             {
                 _device.InternalDevice.FlushPipe(Interface.InterfaceIndex, _pipeInfo.PipeId);
