@@ -1,5 +1,6 @@
 No documentation has been written yet, here are some quick getting started snippets:
 
+[http://winusbnet.googlecode.com/svn/trunk/docs/index.html Library reference online]
 See also: [INFTemplate INF file template]
 
 == Opening devices ==
