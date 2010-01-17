@@ -36,7 +36,7 @@ namespace MadWizard.WinUSBNet
         {
             // Some policy types only apply specifically to OUT direction pipes
             if ((_pipeID & 0x80) != 0)
-                throw new USBException("This policy type is only allowed on OUT direction pipes.");
+                throw new NotSupportedException("This policy type is only allowed on OUT direction pipes.");
         }
 
         private void RequireDirectionIn()
@@ -44,7 +44,7 @@ namespace MadWizard.WinUSBNet
             // Some policy types only apply specifically to IN  direction pipes
             // This function checks for this.
             if ((_pipeID & 0x80) == 0)
-                throw new USBException("This policy type is only allowed on IN direction pipes.");
+                throw new NotSupportedException("This policy type is only allowed on IN direction pipes.");
         }
 
         /// <summary>
@@ -134,7 +134,7 @@ namespace MadWizard.WinUSBNet
             set
             {
                 if (value < 0)
-                    throw new ArgumentException("Pipe transfer timeout cannot be negative.");
+                    throw new ArgumentOutOfRangeException("Pipe transfer timeout cannot be negative.");
                 _device.InternalDevice.SetPipePolicy(_interfaceIndex, _pipeID, API.POLICY_TYPE.PIPE_TRANSFER_TIMEOUT, (uint)value);
             }
         }

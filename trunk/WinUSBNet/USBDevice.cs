@@ -159,27 +159,61 @@ namespace MadWizard.WinUSBNet
             Interfaces = new USBInterfaceCollection(interfaces);
         }
 
-        private void CheckControlParams(int value, int index, byte[] data, int length)
+        private void CheckControlParams(int value, int index, byte[] buffer, int length)
         {
             if (value < ushort.MinValue || value > ushort.MaxValue)
-                throw new USBException("Value parameter out of range.");
+                throw new ArgumentOutOfRangeException("Value parameter out of range.");
             if (index < ushort.MinValue || index > ushort.MaxValue)
-                throw new USBException("Index parameter out of range.");
-            if (length > data.Length)
-                throw new USBException("Length parameter is larger than the size of the data buffer.");
+                throw new ArgumentOutOfRangeException("Index parameter out of range.");
+            if (length > buffer.Length)
+                throw new ArgumentOutOfRangeException("Length parameter is larger than the size of the buffer.");
             if (length > ushort.MaxValue)
-                throw new USBException("Length too large");
+                throw new ArgumentOutOfRangeException("Length too large");
         }
 
-        public void ControlTransfer(byte requestType, byte request, int value, int index, byte[] data, int length)
+        /// <summary>
+        /// Specifies the timeout in milliseconds for control pipe operations. If a control transfer does not finish within the specified time it will fail.
+        /// When set to zero, no timeout is used. Default value is 5000 milliseconds.
+        /// </summary>
+        /// <seealso href="http://msdn.microsoft.com/en-us/library/aa476439.aspx">WinUSB_GetPipePolicy for a more detailed description</seealso>
+        public int ControlPipeTimeout
+        {
+            get
+            {
+                return (int)_wuDevice.GetPipePolicyUInt(0, 0x00, API.POLICY_TYPE.PIPE_TRANSFER_TIMEOUT);
+            }
+            set
+            {
+                if (value < 0)
+                    throw new ArgumentOutOfRangeException("Control pipe timeout cannot be negative.");
+                _wuDevice.SetPipePolicy(0, 0x00, API.POLICY_TYPE.PIPE_TRANSFER_TIMEOUT, (uint)value);
+            }
+        }
+
+
+        /// <summary>
+        /// Initiates a control transfer over the default control endpoint. This method allows both IN and OUT direction transfers, depending
+        /// on the highest bit of the <paramref name="requestType"/> parameter. Alternatively, <see cref="ControlIn(byte,byte,int,int,byte[],int)"/> and
+        /// <see cref="ControlOut(byte,byte,int,int,byte[],int)"/> can be used for control transfers in a specific direction, which is the recommended way because
+        /// it prevents using the wrong direction accidentally. Use the ControlTransfer method when the direction is not known at compile time.
+        /// </summary>
+        /// <param name="requestType">The setup packet request type.</param>
+        /// <param name="request">The setup packet device request.</param>
+        /// <param name="value">The value member in the setup packet. Its meaning depends on the request. Value should be between zero and 65535 (0xFFFF).</param>
+        /// <param name="index">The index member in the setup packet. Its meaning depends on the request. Index should be between zero and 65535 (0xFFFF).</param>
+        /// <param name="buffer">The data to transfer in the data stage of the control. When the transfer is in the IN direction the data received will be 
+        /// written to this buffer. For an OUT direction transfer the contents of the buffer are written sent through the pipe.</param>
+        /// <param name="length">Length of the data to transfer. Must be equal to or less than the length of <paramref name="buffer"/>. 
+        /// The setup packet's length member will be set to this length.</param>
+        public void ControlTransfer(byte requestType, byte request, int value, int index, byte[] buffer, int length)
         {
             // Parameters are int and not ushort because ushort is not CLS compliant.
             CheckNotDisposed();
-            CheckControlParams(value, index, data, length);
+            CheckControlParams(value, index, buffer, length);
             
             try
             {
-                _wuDevice.ControlTransfer(requestType, request, (ushort)value, (ushort)index, (ushort)length, data);
+                _wuDevice.ControlTransfer(requestType, request, (ushort)value, (ushort)index, (ushort)length, buffer);
             }
             catch (API.APIException e)
             {
@@ -187,17 +221,17 @@ namespace MadWizard.WinUSBNet
             }
         }
 
-        public IAsyncResult BeginControlTransfer(byte requestType, byte request, int value, int index, byte[] data, int length, AsyncCallback userCallback, object stateObject)
+        public IAsyncResult BeginControlTransfer(byte requestType, byte request, int value, int index, byte[] buffer, int length, AsyncCallback userCallback, object stateObject)
         {
             // Parameters are int and not ushort because ushort is not CLS compliant.
             CheckNotDisposed();
-            CheckControlParams(value, index, data, length);
+            CheckControlParams(value, index, buffer, length);
 
             USBAsyncResult result = new USBAsyncResult(userCallback, stateObject);
             
             try
             {
-                _wuDevice.ControlTransferOverlapped(requestType, request, (ushort)value, (ushort)index, (ushort)length, data, result);
+                _wuDevice.ControlTransferOverlapped(requestType, request, (ushort)value, (ushort)index, (ushort)length, buffer, result);
             }
             catch (API.APIException e)
             {
@@ -241,11 +275,34 @@ namespace MadWizard.WinUSBNet
         }
 
 
-        public void ControlTransfer(byte requestType, byte request, int value, int index, byte[] data)
+        /// <summary>
+        /// Initiates a control transfer over the default control endpoint. This method allows both IN and OUT direction transfers, depending
+        /// on the highest bit of the <paramref name="requestType"/> parameter). Alternatively, <see cref="ControlIn(byte,byte,int,int,byte[])"/> and
+        /// <see cref="ControlOut(byte,byte,int,int,byte[])"/> can be used for control transfers in a specific direction, which is the recommended way because
+        /// it prevents using the wrong direction accidentally. Use the ControlTransfer method when the direction is not known at compile time.
+        /// </summary>
+        /// <param name="requestType">The setup packet request type.</param>
+        /// <param name="request">The setup packet device request.</param>
+        /// <param name="value">The value member in the setup packet. Its meaning depends on the request. Value should be between zero and 65535 (0xFFFF).</param>
+        /// <param name="index">The index member in the setup packet. Its meaning depends on the request. Index should be between zero and 65535 (0xFFFF).</param>
+        /// <param name="buffer">The data to transfer in the data stage of the control. When the transfer is in the IN direction the data received will be 
+        /// written to this buffer. For an OUT direction transfer the contents of the buffer are written sent through the pipe. The length of this
+        /// buffer is used as the number of bytes in the control transfer. The setup packet's length member will be set to this length as well.</param>
+        public void ControlTransfer(byte requestType, byte request, int value, int index, byte[] buffer)
         {
-            ControlTransfer(requestType, request, value, index, data, data.Length);
+            ControlTransfer(requestType, request, value, index, buffer, buffer.Length);
         }
 
+        /// <summary>
+        /// Initiates a control transfer without a data stage over the default control endpoint. This method allows both IN and OUT direction transfers, depending
+        /// on the highest bit of the <paramref name="requestType"/> parameter). Alternatively, <see cref="ControlIn(byte,byte,int,int)"/> and
+        /// <see cref="ControlOut(byte,byte,int,int)"/> can be used for control transfers in a specific direction, which is the recommended way because
+        /// it prevents using the wrong direction accidentally. Use the ControlTransfer method when the direction is not known at compile time.
+        /// </summary>
+        /// <param name="requestType">The setup packet request type.</param>
+        /// <param name="request">The setup packet device request.</param>
+        /// <param name="value">The value member in the setup packet. Its meaning depends on the request. Value should be between zero and 65535 (0xFFFF).</param>
+        /// <param name="index">The index member in the setup packet. Its meaning depends on the request. Index should be between zero and 65535 (0xFFFF).</param>
         public void ControlTransfer(byte requestType, byte request, int value, int index)
         {
             // TODO: null instead of empty buffer. But overlapped code would have to be fixed for this (no buffer to pin)
@@ -255,60 +312,134 @@ namespace MadWizard.WinUSBNet
         private void CheckIn(byte requestType)
         {
             if ((requestType & 0x80) == 0) // Host to device?
-                throw new USBException("Request type is not IN.");
+                throw new ArgumentException("Request type is not IN.");
         }
 
         private void CheckOut(byte requestType)
         {
             if ((requestType & 0x80) == 0x80) // Device to host?
-                throw new USBException("Request type is not OUT.");
+                throw new ArgumentException("Request type is not OUT.");
         }
 
+        /// <summary>
+        /// Initiates a control transfer over the default control endpoint. The request should have an IN direction (specified by the highest bit
+        /// of the <paramref name="requestType"/> parameter). A buffer to receive the data is automatically created by this method.
+        /// </summary>
+        /// <param name="requestType">The setup packet request type. The request type must specify the IN direction (highest bit set).</param>
+        /// <param name="request">The setup packet device request.</param>
+        /// <param name="value">The value member in the setup packet. Its meaning depends on the request. Value should be between zero and 65535 (0xFFFF).</param>
+        /// <param name="index">The index member in the setup packet. Its meaning depends on the request. Index should be between zero and 65535 (0xFFFF).</param>
+        /// <param name="length">Length of the data to transfer. A buffer will be created with this length and the length member of the setup packet 
+        /// will be set to this length.</param>
+        /// <returns>A buffer containing the data transfered.</returns>
         public byte[] ControlIn(byte requestType, byte request, int value, int index, int length)
         {
             CheckIn(requestType);
-            byte[] data = new byte[length];
-            ControlTransfer(requestType, request, value, index, data, data.Length);
-            return data;
+            byte[] buffer = new byte[length];
+            ControlTransfer(requestType, request, value, index, buffer, buffer.Length);
+            return buffer;
         }
 
 
-        public byte[] ControlIn(byte requestType, byte request, int value, int index, byte[] data, int length)
+        /// <summary>
+        /// Initiates a control transfer over the default control endpoint. The request should have an IN direction (specified by the highest bit
+        /// of the <paramref name="requestType"/> parameter).
+        /// </summary>
+        /// <param name="requestType">The setup packet request type. The request type must specify the IN direction (highest bit set).</param>
+        /// <param name="request">The setup packet device request.</param>
+        /// <param name="value">The value member in the setup packet. Its meaning depends on the request. Value should be between zero and 65535 (0xFFFF).</param>
+        /// <param name="index">The index member in the setup packet. Its meaning depends on the request. Index should be between zero and 65535 (0xFFFF).</param>
+        /// <param name="buffer">The buffer that will receive the data transfered.</param>
+        /// <param name="length">Length of the data to transfer. The length member of the setup packet will be set to this length. The buffer specified 
+        /// by the <paramref name="buffer"/> parameter should have at least this length.</param>
+        public void ControlIn(byte requestType, byte request, int value, int index, byte[] buffer, int length)
         {
             CheckIn(requestType);
-            ControlTransfer(requestType, request, value, index, data, length);
-            return data;
+            ControlTransfer(requestType, request, value, index, buffer, length);
         }
 
-        public byte[] ControlIn(byte requestType, byte request, int value, int index, byte[] data)
+        /// <summary>
+        /// Initiates a control transfer over the default control endpoint. The request should have an IN direction (specified by the highest bit
+        /// of the <paramref name="requestType"/> parameter). The length of buffer given by the <paramref name="buffer"/> parameter will dictate
+        /// the number of bytes that are transfered and the value of the setup packet's length member.
+        /// </summary>
+        /// <param name="requestType">The setup packet request type. The request type must specify the IN direction (highest bit set).</param>
+        /// <param name="request">The setup packet device request.</param>
+        /// <param name="value">The value member in the setup packet. Its meaning depends on the request. Value should be between zero and 65535 (0xFFFF).</param>
+        /// <param name="index">The index member in the setup packet. Its meaning depends on the request. Index should be between zero and 65535 (0xFFFF).</param>
+        /// <param name="buffer">The buffer that will receive the data transfered. The length of this buffer will be the number of bytes transfered.</param>
+        public void ControlIn(byte requestType, byte request, int value, int index, byte[] buffer)
         {
             CheckIn(requestType);
-            ControlTransfer(requestType, request, value, index, data);
-            return data;
+            ControlTransfer(requestType, request, value, index, buffer);
         }
 
-        public void ControlOut(byte requestType, byte request, int value, int index, byte[] data)
+        /// <summary>
+        /// Initiates a control transfer without a data stage over the default control endpoint. The request should have an IN direction (specified by the highest bit
+        /// of the <paramref name="requestType"/> parameter). The setup packets' length member will be set to zero.
+        /// </summary>
+        /// <param name="requestType">The setup packet request type. The request type must specify the IN direction (highest bit set).</param>
+        /// <param name="request">The setup packet device request.</param>
+        /// <param name="value">The value member in the setup packet. Its meaning depends on the request. Value should be between zero and 65535 (0xFFFF).</param>
+        /// <param name="index">The index member in the setup packet. Its meaning depends on the request. Index should be between zero and 65535 (0xFFFF).</param>
+        public void ControlIn(byte requestType, byte request, int value, int index)
+        {
+            CheckIn(requestType);
+            // TODO: null instead of empty buffer. But overlapped code would have to be fixed for this (no buffer to pin)
+            ControlTransfer(requestType, request, value, index, new byte[0]);
+        }
+
+        /// <summary>
+        /// Initiates a control transfer over the default control endpoint. The request should have an OUT direction (specified by the highest bit
+        /// of the <paramref name="requestType"/> parameter).
+        /// </summary>
+        /// <param name="requestType">The setup packet request type. The request type must specify the OUT direction (highest bit cleared).</param>
+        /// <param name="request">The setup packet device request.</param>
+        /// <param name="value">The value member in the setup packet. Its meaning depends on the request. Value should be between zero and 65535 (0xFFFF).</param>
+        /// <param name="index">The index member in the setup packet. Its meaning depends on the request. Index should be between zero and 65535 (0xFFFF).</param>
+        /// <param name="buffer">A buffer containing the data to transfer in the data stage.</param>
+        /// <param name="length">Length of the data to transfer. Only the first <paramref name="length"/> bytes of <paramref name="buffer"/> will be transfered.
+        /// The setup packet's length parameter is set to this length.</param>
+        public void ControlOut(byte requestType, byte request, int value, int index, byte[] buffer, int length)
         {
             CheckOut(requestType);
-            ControlTransfer(requestType, request, value, index, data);
+            ControlTransfer(requestType, request, value, index, buffer, length);
         }
 
+        /// <summary>
+        /// Initiates a control transfer over the default control endpoint. The request should have an OUT direction (specified by the highest bit
+        /// of the <paramref name="requestType"/> parameter).
+        /// </summary>
+        /// <param name="requestType">The setup packet request type. The request type must specify the OUT direction (highest bit cleared).</param>
+        /// <param name="request">The setup packet device request.</param>
+        /// <param name="value">The value member in the setup packet. Its meaning depends on the request. Value should be between zero and 65535 (0xFFFF).</param>
+        /// <param name="index">The index member in the setup packet. Its meaning depends on the request. Index should be between zero and 65535 (0xFFFF).</param>
+        /// <param name="buffer">A buffer containing the data to transfer in the data stage. The complete buffer is transfered. The setup packet's length
+        /// parameter is set to the length of this buffer.</param>
+        public void ControlOut(byte requestType, byte request, int value, int index, byte[] buffer)
+        {
+            CheckOut(requestType);
+            ControlTransfer(requestType, request, value, index, buffer);
+        }
+       
+        /// <summary>
+        /// Initiates a control transfer without a data stage over the default control endpoint. The request should have an OUT direction (specified by the highest bit
+        /// of the <paramref name="requestType"/> parameter. The setup packets' length member will be set to zero.
+        /// </summary>
+        /// <param name="requestType">The setup packet request type. The request type must specify the OUT direction (highest bit cleared).</param>
+        /// <param name="request">The setup packet device request.</param>
+        /// <param name="value">The value member in the setup packet. Its meaning depends on the request. Value should be between zero and 65535 (0xFFFF).</param>
+        /// <param name="index">The index member in the setup packet. Its meaning depends on the request. Index should be between zero and 65535 (0xFFFF).</param>
         public void ControlOut(byte requestType, byte request, int value, int index)
         {
             CheckOut(requestType);
             // TODO: null instead of empty buffer. But overlapped code would have to be fixed for this (no buffer to pin)
-            ControlTransfer(requestType, request, value, index, new byte[0]); 
-        }
-        
-        public void ControlOut(byte requestType, byte request, int value, int index, byte[] data, int length)
-        {
-            CheckOut(requestType);
-            ControlTransfer(requestType, request, value, index, data, length);
+            ControlTransfer(requestType, request, value, index, new byte[0]);
         }
 
-        public IAsyncResult BeginControlTransfer(byte requestType, byte request, int value, int index, byte[] data, AsyncCallback userCallback, object stateObject)
+        public IAsyncResult BeginControlTransfer(byte requestType, byte request, int value, int index, byte[] buffer, AsyncCallback userCallback, object stateObject)
         {
-            return BeginControlTransfer(requestType, request, value, index, data, data.Length, userCallback, stateObject);
+            return BeginControlTransfer(requestType, request, value, index, buffer, buffer.Length, userCallback, stateObject);
         }
 
         public IAsyncResult BeginControlTransfer(byte requestType, byte request, int value, int index, AsyncCallback userCallback, object stateObject)
@@ -317,22 +448,29 @@ namespace MadWizard.WinUSBNet
             return BeginControlTransfer(requestType, request, value, index, new byte[0], 0, userCallback, stateObject);
         }
 
-        public IAsyncResult BeginControlIn(byte requestType, byte request, int value, int index, byte[] data, int length, AsyncCallback userCallback, object stateObject)
+        public IAsyncResult BeginControlIn(byte requestType, byte request, int value, int index, byte[] buffer, int length, AsyncCallback userCallback, object stateObject)
         {
             CheckIn(requestType);
-            return BeginControlTransfer(requestType, request, value, index, data, length, userCallback, stateObject);
+            return BeginControlTransfer(requestType, request, value, index, buffer, length, userCallback, stateObject);
         }
 
-        public IAsyncResult BeginControlIn(byte requestType, byte request, int value, int index, byte[] data, AsyncCallback userCallback, object stateObject)
+        public IAsyncResult BeginControlIn(byte requestType, byte request, int value, int index, byte[] buffer, AsyncCallback userCallback, object stateObject)
         {
             CheckIn(requestType);
-            return BeginControlTransfer(requestType, request, value, index, data, userCallback, stateObject);
+            return BeginControlTransfer(requestType, request, value, index, buffer, userCallback, stateObject);
         }
 
-        public IAsyncResult BeginControlOut(byte requestType, byte request, int value, int index, byte[] data, AsyncCallback userCallback, object stateObject)
+        public IAsyncResult BeginControlIn(byte requestType, byte request, int value, int index, AsyncCallback userCallback, object stateObject)
+        {
+            CheckIn(requestType);
+            return BeginControlTransfer(requestType, request, value, index, userCallback, stateObject);
+        }
+
+
+        public IAsyncResult BeginControlOut(byte requestType, byte request, int value, int index, byte[] buffer, AsyncCallback userCallback, object stateObject)
         {
             CheckOut(requestType);
-            return BeginControlTransfer(requestType, request, value, index, data, userCallback, stateObject);
+            return BeginControlTransfer(requestType, request, value, index, buffer, userCallback, stateObject);
         }
 
         public IAsyncResult BeginControlOut(byte requestType, byte request, int value, int index, AsyncCallback userCallback, object stateObject)
@@ -342,10 +480,10 @@ namespace MadWizard.WinUSBNet
             return BeginControlTransfer(requestType, request, value, index, new byte[0], userCallback, stateObject);
         }
 
-        public IAsyncResult BeginControlOut(byte requestType, byte request, int value, int index, byte[] data, int length, AsyncCallback userCallback, object stateObject)
+        public IAsyncResult BeginControlOut(byte requestType, byte request, int value, int index, byte[] buffer, int length, AsyncCallback userCallback, object stateObject)
         {
             CheckOut(requestType);
-            return BeginControlTransfer(requestType, request, value, index, data, length, userCallback, stateObject);
+            return BeginControlTransfer(requestType, request, value, index, buffer, length, userCallback, stateObject);
         } 
         
 
