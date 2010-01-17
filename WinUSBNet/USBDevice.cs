@@ -221,6 +221,29 @@ namespace MadWizard.WinUSBNet
             }
         }
 
+        /// <summary>
+        /// Initiates an asynchronous control transfer over the default control endpoint. This method allows both IN and OUT direction transfers, depending
+        /// on the highest bit of the <paramref name="requestType"/> parameter. Alternatively, <see cref="BeginControlIn(byte,byte,int,int,byte[],int,AsyncCallback,object)"/> and
+        /// <see cref="BeginControlIn(byte,byte,int,int,byte[],int,AsyncCallback,object)"/> can be used for asynchronous control transfers in a specific direction, which is 
+        /// the recommended way because it prevents using the wrong direction accidentally. Use the BeginControlTransfer method when the direction is not 
+        /// known at compile time. </summary>
+        /// <param name="requestType">The setup packet request type.</param>
+        /// <param name="request">The setup packet device request.</param>
+        /// <param name="value">The value member in the setup packet. Its meaning depends on the request. Value should be between zero and 65535 (0xFFFF).</param>
+        /// <param name="index">The index member in the setup packet. Its meaning depends on the request. Index should be between zero and 65535 (0xFFFF).</param>
+        /// <param name="buffer">The data to transfer in the data stage of the control. When the transfer is in the IN direction the data received will be 
+        /// written to this buffer. For an OUT direction transfer the contents of the buffer are written sent through the pipe. Note: This buffer is not allowed
+        /// to change for the duration of the asynchronous operation.</param>
+        /// <param name="length">Length of the data to transfer. Must be equal to or less than the length of <paramref name="buffer"/>. The setup packet's length member will be set to this length.</param>
+        /// <param name="userCallback">An optional asynchronous callback, to be called when the control transfer is complete. Can be null if no callback is required.</param>
+        /// <param name="stateObject">A user-provided object that distinguishes this particular asynchronous operation. Can be null if not required.</param>
+        /// <returns>An <see cref="IAsyncResult"/> object repesenting the asynchronous control transfer, which could still be pending.</returns>
+        /// <remarks>This method always completes immediately even if the operation is still pending. The <see cref="IAsyncResult"/> object returned represents the operation
+        /// and must be passed to <see cref="EndControlTransfer"/> to retrieve the result of the operation. For every call to this method a matching call to
+        /// <see cref="EndControlTransfer"/> must be made. When <paramref name="userCallback"/> specifies a callback function, this function will be called when the operation is completed. The optional
+        /// <paramref name="stateObject"/> parameter can be used to pass user-defined information to this callback or the <see cref="IAsyncResult"/>. The <see cref="IAsyncResult"/> 
+        /// also provides an event handle (<see cref="IAsyncResult.AsyncWaitHandle" />) that will be triggered when the operation is complete as well.
+        /// </remarks>
         public IAsyncResult BeginControlTransfer(byte requestType, byte request, int value, int index, byte[] buffer, int length, AsyncCallback userCallback, object stateObject)
         {
             // Parameters are int and not ushort because ushort is not CLS compliant.
@@ -248,6 +271,45 @@ namespace MadWizard.WinUSBNet
             return result;
         }
 
+        /// <summary>
+        /// Initiates an asynchronous control transfer over the default control endpoint. This method allows both IN and OUT direction transfers, depending
+        /// on the highest bit of the <paramref name="requestType"/> parameter. Alternatively, <see cref="BeginControlIn(byte,byte,int,int,byte[],int,AsyncCallback,object)"/> and
+        /// <see cref="BeginControlIn(byte,byte,int,int,byte[],int,AsyncCallback,object)"/> can be used for asynchronous control transfers in a specific direction, which is 
+        /// the recommended way because it prevents using the wrong direction accidentally. Use the BeginControlTransfer method when the direction is not 
+        /// known at compile time. </summary>
+        /// <param name="requestType">The setup packet request type.</param>
+        /// <param name="request">The setup packet device request.</param>
+        /// <param name="value">The value member in the setup packet. Its meaning depends on the request. Value should be between zero and 65535 (0xFFFF).</param>
+        /// <param name="index">The index member in the setup packet. Its meaning depends on the request. Index should be between zero and 65535 (0xFFFF).</param>
+        /// <param name="buffer">The data to transfer in the data stage of the control. When the transfer is in the IN direction the data received will be 
+        /// written to this buffer. For an OUT direction transfer the contents of the buffer are written sent through the pipe. The setup packet's length member will 
+        /// be set to the length of this buffer. Note: This buffer is not allowed to change for the duration of the asynchronous operation. </param>
+        /// <param name="userCallback">An optional asynchronous callback, to be called when the control transfer is complete. Can be null if no callback is required.</param>
+        /// <param name="stateObject">A user-provided object that distinguishes this particular asynchronous operation. Can be null if not required.</param>
+        /// <returns>An <see cref="IAsyncResult"/> object repesenting the asynchronous control transfer, which could still be pending.</returns>
+        /// <remarks>This method always completes immediately even if the operation is still pending. The <see cref="IAsyncResult"/> object returned represents the operation
+        /// and must be passed to <see cref="EndControlTransfer"/> to retrieve the result of the operation. For every call to this method a matching call to
+        /// <see cref="EndControlTransfer"/> must be made. When <paramref name="userCallback"/> specifies a callback function, this function will be called when the operation is completed. The optional
+        /// <paramref name="stateObject"/> parameter can be used to pass user-defined information to this callback or the <see cref="IAsyncResult"/>. The <see cref="IAsyncResult"/> 
+        /// also provides an event handle (<see cref="IAsyncResult.AsyncWaitHandle" />) that will be triggered when the operation is complete as well.
+        /// </remarks>
+        public IAsyncResult BeginControlTransfer(byte requestType, byte request, int value, int index, byte[] buffer, AsyncCallback userCallback, object stateObject)
+        {
+            return BeginControlTransfer(requestType, request, value, index, buffer, buffer.Length, userCallback, stateObject);
+        }
+
+
+        /// <summary>
+        /// Waits for a pending asynchronous control transfer to complete.
+        /// </summary>
+        /// <param name="asyncResult">The <see cref="IAsyncResult"/> object representing the asynchonous operation,
+        /// as returned by one of the ControlIn, ControlOut or ControlTransfer methods.</param>
+        /// <returns>The number of bytes transfered during the operation.</returns>
+        /// <remarks>Every asynchronous control transfer must have a matching call to <see cref="EndControlTransfer"/> to dispose
+        /// of any resources used and to retrieve the result of the operation. When the operation was successful the method returns the number 
+        /// of bytes that were transfered. If an error occurred during the operation this method will throw the exceptions that would 
+        /// otherwise have ocurred during the operation. If the operation is not yet finished EndControlTransfer will wait for the 
+        /// operation to finish before returning.</remarks>
         public int EndControlTransfer(IAsyncResult asyncResult)
         {
             if (asyncResult == null)
@@ -437,42 +499,169 @@ namespace MadWizard.WinUSBNet
             ControlTransfer(requestType, request, value, index, new byte[0]);
         }
 
-        public IAsyncResult BeginControlTransfer(byte requestType, byte request, int value, int index, byte[] buffer, AsyncCallback userCallback, object stateObject)
-        {
-            return BeginControlTransfer(requestType, request, value, index, buffer, buffer.Length, userCallback, stateObject);
-        }
+ 
 
+        /// <summary>
+        /// Initiates an asynchronous control transfer without a data stage over the default control endpoint. This method allows both IN and OUT direction transfers, depending
+        /// on the highest bit of the <paramref name="requestType"/> parameter. Alternatively, <see cref="BeginControlIn(byte,byte,int,int,byte[],int,AsyncCallback,object)"/> and
+        /// <see cref="BeginControlIn(byte,byte,int,int,byte[],int,AsyncCallback,object)"/> can be used for asynchronous control transfers in a specific direction, which is 
+        /// the recommended way because it prevents using the wrong direction accidentally. Use the BeginControlTransfer method when the direction is not 
+        /// known at compile time. </summary>
+        /// <param name="requestType">The setup packet request type.</param>
+        /// <param name="request">The setup packet device request.</param>
+        /// <param name="value">The value member in the setup packet. Its meaning depends on the request. Value should be between zero and 65535 (0xFFFF).</param>
+        /// <param name="index">The index member in the setup packet. Its meaning depends on the request. Index should be between zero and 65535 (0xFFFF).</param>
+        /// <param name="userCallback">An optional asynchronous callback, to be called when the control transfer is complete. Can be null if no callback is required.</param>
+        /// <param name="stateObject">A user-provided object that distinguishes this particular asynchronous operation. Can be null if not required.</param>
+        /// <returns>An <see cref="IAsyncResult"/> object repesenting the asynchronous control transfer, which could still be pending.</returns>
+        /// <remarks>This method always completes immediately even if the operation is still pending. The <see cref="IAsyncResult"/> object returned represents the operation
+        /// and must be passed to <see cref="EndControlTransfer"/> to retrieve the result of the operation. For every call to this method a matching call to
+        /// <see cref="EndControlTransfer"/> must be made. When <paramref name="userCallback"/> specifies a callback function, this function will be called when the operation is completed. The optional
+        /// <paramref name="stateObject"/> parameter can be used to pass user-defined information to this callback or the <see cref="IAsyncResult"/>. The <see cref="IAsyncResult"/> 
+        /// also provides an event handle (<see cref="IAsyncResult.AsyncWaitHandle" />) that will be triggered when the operation is complete as well.
+        /// </remarks>
         public IAsyncResult BeginControlTransfer(byte requestType, byte request, int value, int index, AsyncCallback userCallback, object stateObject)
         {
             // TODO: null instead of empty buffer. But overlapped code would have to be fixed for this (no buffer to pin)
             return BeginControlTransfer(requestType, request, value, index, new byte[0], 0, userCallback, stateObject);
         }
 
+
+
+        /// <summary>
+        /// Initiates an asynchronous control transfer over the default control endpoint.  The request should have an IN direction (specified by the highest bit
+        /// of the <paramref name="requestType"/> parameter).</summary>
+        /// <param name="requestType">The setup packet request type. The request type must specify the IN direction (highest bit set).</param>
+        /// <param name="request">The setup packet device request.</param>
+        /// <param name="value">The value member in the setup packet. Its meaning depends on the request. Value should be between zero and 65535 (0xFFFF).</param>
+        /// <param name="index">The index member in the setup packet. Its meaning depends on the request. Index should be between zero and 65535 (0xFFFF).</param>
+        /// <param name="buffer">The buffer that will receive the data transfered.</param>
+        /// <param name="length">Length of the data to transfer. Must be equal to or less than the length of <paramref name="buffer"/>. The setup packet's length member will be set to this length.</param>
+        /// <param name="userCallback">An optional asynchronous callback, to be called when the control transfer is complete. Can be null if no callback is required.</param>
+        /// <param name="stateObject">A user-provided object that distinguishes this particular asynchronous operation. Can be null if not required.</param>
+        /// <returns>An <see cref="IAsyncResult"/> object repesenting the asynchronous control transfer, which could still be pending.</returns>
+        /// <remarks>This method always completes immediately even if the operation is still pending. The <see cref="IAsyncResult"/> object returned represents the operation
+        /// and must be passed to <see cref="EndControlTransfer"/> to retrieve the result of the operation. For every call to this method a matching call to
+        /// <see cref="EndControlTransfer"/> must be made. When <paramref name="userCallback"/> specifies a callback function, this function will be called when the operation is completed. The optional
+        /// <paramref name="stateObject"/> parameter can be used to pass user-defined information to this callback or the <see cref="IAsyncResult"/>. The <see cref="IAsyncResult"/> 
+        /// also provides an event handle (<see cref="IAsyncResult.AsyncWaitHandle" />) that will be triggered when the operation is complete as well.
+        /// </remarks>
         public IAsyncResult BeginControlIn(byte requestType, byte request, int value, int index, byte[] buffer, int length, AsyncCallback userCallback, object stateObject)
         {
             CheckIn(requestType);
             return BeginControlTransfer(requestType, request, value, index, buffer, length, userCallback, stateObject);
         }
 
+        /// <summary>
+        /// Initiates an asynchronous control transfer over the default control endpoint. The request should have an IN direction (specified by the highest bit
+        /// of the <paramref name="requestType"/> parameter).</summary>
+        /// <param name="requestType">The setup packet request type. The request type must specify the IN direction (highest bit set).</param>
+        /// <param name="request">The setup packet device request.</param>
+        /// <param name="value">The value member in the setup packet. Its meaning depends on the request. Value should be between zero and 65535 (0xFFFF).</param>
+        /// <param name="index">The index member in the setup packet. Its meaning depends on the request. Index should be between zero and 65535 (0xFFFF).</param>
+        /// <param name="buffer">The buffer that will receive the data transfered. The setup packet's length member will be set to the length of this buffer.</param>
+        /// <param name="userCallback">An optional asynchronous callback, to be called when the control transfer is complete. Can be null if no callback is required.</param>
+        /// <param name="stateObject">A user-provided object that distinguishes this particular asynchronous operation. Can be null if not required.</param>
+        /// <returns>An <see cref="IAsyncResult"/> object repesenting the asynchronous control transfer, which could still be pending.</returns>
+        /// <remarks>This method always completes immediately even if the operation is still pending. The <see cref="IAsyncResult"/> object returned represents the operation
+        /// and must be passed to <see cref="EndControlTransfer"/> to retrieve the result of the operation. For every call to this method a matching call to
+        /// <see cref="EndControlTransfer"/> must be made. When <paramref name="userCallback"/> specifies a callback function, this function will be called when the operation is completed. The optional
+        /// <paramref name="stateObject"/> parameter can be used to pass user-defined information to this callback or the <see cref="IAsyncResult"/>. The <see cref="IAsyncResult"/> 
+        /// also provides an event handle (<see cref="IAsyncResult.AsyncWaitHandle" />) that will be triggered when the operation is complete as well.
+        /// </remarks>
         public IAsyncResult BeginControlIn(byte requestType, byte request, int value, int index, byte[] buffer, AsyncCallback userCallback, object stateObject)
         {
             CheckIn(requestType);
             return BeginControlTransfer(requestType, request, value, index, buffer, userCallback, stateObject);
         }
 
+        /// <summary>
+        /// Initiates an asynchronous control transfer without a data stage over the default control endpoint. 
+        /// The request should have an IN direction (specified by the highest bit of the <paramref name="requestType"/> parameter).
+        /// The setup packets' length member will be set to zero.</summary>
+        /// <param name="requestType">The setup packet request type. The request type must specify the IN direction (highest bit set).</param>
+        /// <param name="request">The setup packet device request.</param>
+        /// <param name="value">The value member in the setup packet. Its meaning depends on the request. Value should be between zero and 65535 (0xFFFF).</param>
+        /// <param name="index">The index member in the setup packet. Its meaning depends on the request. Index should be between zero and 65535 (0xFFFF).</param>
+        /// <param name="userCallback">An optional asynchronous callback, to be called when the control transfer is complete. Can be null if no callback is required.</param>
+        /// <param name="stateObject">A user-provided object that distinguishes this particular asynchronous operation. Can be null if not required.</param>
+        /// <returns>An <see cref="IAsyncResult"/> object repesenting the asynchronous control transfer, which could still be pending.</returns>
+        /// <remarks>This method always completes immediately even if the operation is still pending. The <see cref="IAsyncResult"/> object returned represents the operation
+        /// and must be passed to <see cref="EndControlTransfer"/> to retrieve the result of the operation. For every call to this method a matching call to
+        /// <see cref="EndControlTransfer"/> must be made. When <paramref name="userCallback"/> specifies a callback function, this function will be called when the operation is completed. The optional
+        /// <paramref name="stateObject"/> parameter can be used to pass user-defined information to this callback or the <see cref="IAsyncResult"/>. The <see cref="IAsyncResult"/> 
+        /// also provides an event handle (<see cref="IAsyncResult.AsyncWaitHandle" />) that will be triggered when the operation is complete as well.
+        /// </remarks>
         public IAsyncResult BeginControlIn(byte requestType, byte request, int value, int index, AsyncCallback userCallback, object stateObject)
         {
             CheckIn(requestType);
             return BeginControlTransfer(requestType, request, value, index, userCallback, stateObject);
         }
 
+        /// <summary>
+        /// Initiates an asynchronous control transfer over the default control endpoint.  The request should have an OUT direction (specified by the highest bit
+        /// of the <paramref name="requestType"/> parameter).</summary>
+        /// <param name="requestType">The setup packet request type. The request type must specify the OUT direction (highest bit cleared).</param>
+        /// <param name="request">The setup packet device request.</param>
+        /// <param name="value">The value member in the setup packet. Its meaning depends on the request. Value should be between zero and 65535 (0xFFFF).</param>
+        /// <param name="index">The index member in the setup packet. Its meaning depends on the request. Index should be between zero and 65535 (0xFFFF).</param>
+        /// <param name="buffer">The buffer that contains the data to be transfered.</param>
+        /// <param name="length">Length of the data to transfer. Must be equal to or less than the length of <paramref name="buffer"/>. The setup packet's length member will be set to this length.</param>
+        /// <param name="userCallback">An optional asynchronous callback, to be called when the control transfer is complete. Can be null if no callback is required.</param>
+        /// <param name="stateObject">A user-provided object that distinguishes this particular asynchronous operation. Can be null if not required.</param>
+        /// <returns>An <see cref="IAsyncResult"/> object repesenting the asynchronous control transfer, which could still be pending.</returns>
+        /// <remarks>This method always completes immediately even if the operation is still pending. The <see cref="IAsyncResult"/> object returned represents the operation
+        /// and must be passed to <see cref="EndControlTransfer"/> to retrieve the result of the operation. For every call to this method a matching call to
+        /// <see cref="EndControlTransfer"/> must be made. When <paramref name="userCallback"/> specifies a callback function, this function will be called when the operation is completed. The optional
+        /// <paramref name="stateObject"/> parameter can be used to pass user-defined information to this callback or the <see cref="IAsyncResult"/>. The <see cref="IAsyncResult"/> 
+        /// also provides an event handle (<see cref="IAsyncResult.AsyncWaitHandle" />) that will be triggered when the operation is complete as well.
+        /// </remarks>
+        public IAsyncResult BeginControlOut(byte requestType, byte request, int value, int index, byte[] buffer, int length, AsyncCallback userCallback, object stateObject)
+        {
+            CheckOut(requestType);
+            return BeginControlTransfer(requestType, request, value, index, buffer, length, userCallback, stateObject);
+        }
 
+        /// <summary>
+        /// Initiates an asynchronous control transfer over the default control endpoint. The request should have an OUT direction (specified by the highest bit
+        /// of the <paramref name="requestType"/> parameter).</summary>
+        /// <param name="requestType">The setup packet request type. The request type must specify the OUT direction (highest bit cleared).</param>
+        /// <param name="request">The setup packet device request.</param>
+        /// <param name="value">The value member in the setup packet. Its meaning depends on the request. Value should be between zero and 65535 (0xFFFF).</param>
+        /// <param name="index">The index member in the setup packet. Its meaning depends on the request. Index should be between zero and 65535 (0xFFFF).</param>
+        /// <param name="buffer">The buffer that contains the data to be transfered. The setup packet's length member will be set to the length of this buffer.</param>
+        /// <param name="userCallback">An optional asynchronous callback, to be called when the control transfer is complete. Can be null if no callback is required.</param>
+        /// <param name="stateObject">A user-provided object that distinguishes this particular asynchronous operation. Can be null if not required.</param>
+        /// <returns>An <see cref="IAsyncResult"/> object repesenting the asynchronous control transfer, which could still be pending.</returns>
+        /// <remarks>This method always completes immediately even if the operation is still pending. The <see cref="IAsyncResult"/> object returned represents the operation
+        /// and must be passed to <see cref="EndControlTransfer"/> to retrieve the result of the operation. For every call to this method a matching call to
+        /// <see cref="EndControlTransfer"/> must be made. When <paramref name="userCallback"/> specifies a callback function, this function will be called when the operation is completed. The optional
+        /// <paramref name="stateObject"/> parameter can be used to pass user-defined information to this callback or the <see cref="IAsyncResult"/>. The <see cref="IAsyncResult"/> 
+        /// also provides an event handle (<see cref="IAsyncResult.AsyncWaitHandle" />) that will be triggered when the operation is complete as well.
+        /// </remarks>
         public IAsyncResult BeginControlOut(byte requestType, byte request, int value, int index, byte[] buffer, AsyncCallback userCallback, object stateObject)
         {
             CheckOut(requestType);
             return BeginControlTransfer(requestType, request, value, index, buffer, userCallback, stateObject);
         }
 
+        /// <summary>
+        /// Initiates an asynchronous control transfer without a data stage over the default control endpoint. 
+        /// The request should have an OUT direction (specified by the highest bit of the <paramref name="requestType"/> parameter).
+        /// The setup packets' length member will be set to zero.</summary>
+        /// <param name="requestType">The setup packet request type. The request type must specify the OUT direction (highest bit cleared).</param>
+        /// <param name="request">The setup packet device request.</param>
+        /// <param name="value">The value member in the setup packet. Its meaning depends on the request. Value should be between zero and 65535 (0xFFFF).</param>
+        /// <param name="index">The index member in the setup packet. Its meaning depends on the request. Index should be between zero and 65535 (0xFFFF).</param>
+        /// <param name="userCallback">An optional asynchronous callback, to be called when the control transfer is complete. Can be null if no callback is required.</param>
+        /// <param name="stateObject">A user-provided object that distinguishes this particular asynchronous operation. Can be null if not required.</param>
+        /// <returns>An <see cref="IAsyncResult"/> object repesenting the asynchronous control transfer, which could still be pending.</returns>
+        /// <remarks>This method always completes immediately even if the operation is still pending. The <see cref="IAsyncResult"/> object returned represents the operation
+        /// and must be passed to <see cref="EndControlTransfer"/> to retrieve the result of the operation. For every call to this method a matching call to
+        /// <see cref="EndControlTransfer"/> must be made. When <paramref name="userCallback"/> specifies a callback function, this function will be called when the operation is completed. The optional
+        /// <paramref name="stateObject"/> parameter can be used to pass user-defined information to this callback or the <see cref="IAsyncResult"/>. The <see cref="IAsyncResult"/> 
+        /// also provides an event handle (<see cref="IAsyncResult.AsyncWaitHandle" />) that will be triggered when the operation is complete as well.
+        /// </remarks>
         public IAsyncResult BeginControlOut(byte requestType, byte request, int value, int index, AsyncCallback userCallback, object stateObject)
         {
             CheckOut(requestType);
@@ -480,14 +669,7 @@ namespace MadWizard.WinUSBNet
             return BeginControlTransfer(requestType, request, value, index, new byte[0], userCallback, stateObject);
         }
 
-        public IAsyncResult BeginControlOut(byte requestType, byte request, int value, int index, byte[] buffer, int length, AsyncCallback userCallback, object stateObject)
-        {
-            CheckOut(requestType);
-            return BeginControlTransfer(requestType, request, value, index, buffer, length, userCallback, stateObject);
-        } 
-        
-
-
+ 
         private void CheckNotDisposed()
         {
             if (_disposed)
