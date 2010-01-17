@@ -164,12 +164,20 @@ namespace MadWizard.WinUSBNet
 
         }
 
+        /// <summary>
+        /// Disposes the USBNotifier object and frees all resources. 
+        /// Call this method when the object is no longer needed.
+        /// </summary>
         public void Dispose()
         {
             Dispose(true);
             GC.SuppressFinalize(this); 
         }
 
+        /// <summary>
+        /// Disposes the object's resources.
+        /// </summary>
+        /// <param name="disposing">True when dispose is called manually, false when called by the finalizer.</param>
         protected virtual void Dispose(bool disposing)
         {
             if (disposing)

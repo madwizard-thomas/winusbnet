@@ -52,7 +52,7 @@ namespace MadWizard.WinUSBNet
         /// <summary>
         /// Constructs a new USB device
         /// </summary>
-        /// <param name="descriptor">USB device info for the device to create</param>
+        /// <param name="deviceInfo">USB device info of the device to create</param>
         public USBDevice(USBDeviceInfo deviceInfo)
             : this(deviceInfo.DevicePath)
         {
@@ -104,7 +104,7 @@ namespace MadWizard.WinUSBNet
         /// <summary>
         /// Constructs a new USB device
         /// </summary>
-        /// <param name="devicePathName">Windows path name for the USB device to create</param>
+        /// <param name="devicePathName">Device path name of the USB device to create</param>
         public USBDevice(string devicePathName)
         {
             Descriptor = GetDeviceDescriptor(devicePathName);
@@ -299,7 +299,7 @@ namespace MadWizard.WinUSBNet
             // TODO: null instead of empty buffer. But overlapped code would have to be fixed for this (no buffer to pin)
             ControlTransfer(requestType, request, value, index, new byte[0]); 
         }
-
+        
         public void ControlOut(byte requestType, byte request, int value, int index, byte[] data, int length)
         {
             CheckOut(requestType);
