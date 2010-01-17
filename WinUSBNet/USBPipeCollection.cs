@@ -114,11 +114,19 @@ namespace MadWizard.WinUSBNet
             return pipeList;
         }
 
+        /// <summary>
+        /// Returns a typed enumerator that iterates through a collection.
+        /// </summary>
+        /// <returns>The enumerator object that can be used to iterate through the collection.</returns>
         public IEnumerator<USBPipe> GetEnumerator()
         {
             return new UsbPipeEnumerator(GetPipeList());
         }
-
+       
+        /// <summary>
+        /// Returns an enumerator that iterates through a collection.
+        /// </summary>
+        /// <returns>An IEnumerator object that can be used to iterate through the collection.</returns>
         IEnumerator IEnumerable.GetEnumerator()
         {
             return new UsbPipeEnumerator(GetPipeList());

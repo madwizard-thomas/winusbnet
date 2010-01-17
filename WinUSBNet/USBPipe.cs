@@ -66,6 +66,9 @@ namespace MadWizard.WinUSBNet
             }
         }
 
+        /// <summary>
+        /// The pipe policy settings for this pipe
+        /// </summary>
         public USBPipePolicy Policy
         {
             get
@@ -95,10 +98,24 @@ namespace MadWizard.WinUSBNet
                 return (_pipeInfo.PipeId & 0x80) != 0;
             }
         }
+
+        /// <summary>
+        /// Reads data from the pipe into a buffer.
+        /// </summary>
+        /// <param name="buffer">The buffer to read data into. The maximum number of bytes that will be read is specified by the length of the buffer.</param>
+        /// <returns>The number of bytes read from the pipe.</returns>
         public int Read(byte[] buffer)
         {
             return Read(buffer, 0, buffer.Length);
         }
+
+        /// <summary>
+        /// Reads data from the pipe into a buffer.
+        /// </summary>
+        /// <param name="buffer">The buffer to read data into.</param>
+        /// <param name="offset">The byte offset in <paramref name="buffer"/> from which to begin writing data read from the pipe.</param>
+        /// <param name="length">The maximum number of bytes to read, starting at offset</param>
+        /// <returns>The number of bytes read from the pipe.</returns>
         public int Read(byte[] buffer, int offset, int length)
         {
             CheckReadParams(buffer, offset, length);
@@ -191,11 +208,21 @@ namespace MadWizard.WinUSBNet
 
         }
 
+        /// <summary>
+        /// Writes data from a buffer to the pipe.
+        /// </summary>
+        /// <param name="buffer">The buffer to write data from. The complete buffer will be written to the device.</param>
         public void Write(byte[] buffer)
         {
             Write(buffer, 0, buffer.Length);
         }
         
+        /// <summary>
+        /// Writes data from a buffer to the pipe.
+        /// </summary>
+        /// <param name="buffer">The buffer to write data from.</param>
+        /// <param name="offset">The byte offset in <paramref name="buffer"/> from which to begin writing.</param>
+        /// <param name="length">The number of bytes to write, starting at offset</param>
         public void Write(byte[] buffer, int offset, int length)
         {
             CheckWriteParams(buffer, offset, length);
@@ -266,6 +293,9 @@ namespace MadWizard.WinUSBNet
             }
         }
 
+        /// <summary>
+        /// Aborts all pending transfers for this pipe.
+        /// </summary>
         public void Abort()
         {
             try
@@ -279,7 +309,7 @@ namespace MadWizard.WinUSBNet
         }
         
         /// <summary>
-        /// Flushes the pipe, discarding any data that is cached.
+        /// Flushes the pipe, discarding any data that is cached. Only available on IN direction pipes.
         /// </summary>
         public void Flush()
         {

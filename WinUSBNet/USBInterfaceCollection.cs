@@ -83,7 +83,7 @@ namespace MadWizard.WinUSBNet
 
         /// <summary>
         /// Finds the first interface with that matches the device class 
-        /// given by the interfaceClass parameter.
+        /// given by the <paramref name="interfaceClass"/> parameter.
         /// </summary>
         /// <param name="interfaceClass">The device class the interface should match</param>
         /// <returns>The first interface with the given interface class, or null
@@ -99,6 +99,13 @@ namespace MadWizard.WinUSBNet
             return null;
         }
 
+        /// <summary>
+        /// Finds all interfaces matching the device class given by the 
+        /// <paramref name="interfaceClass"/> parameter.
+        /// </summary>
+        /// <param name="interfaceClass">The device class the interface should match</param>
+        /// <returns>An array of USBInterface objects matching the device class, or an empty 
+        /// array if no interface matches.</returns>
         public USBInterface[] FindAll(USBBaseClass interfaceClass)
         {
             List<USBInterface> matchingInterfaces = new List<USBInterface>();
@@ -111,6 +118,10 @@ namespace MadWizard.WinUSBNet
             return matchingInterfaces.ToArray();
         }
 
+        /// <summary>
+        /// Returns a typed enumerator that iterates through a collection.
+        /// </summary>
+        /// <returns>The enumerator object that can be used to iterate through the collection.</returns>
         public IEnumerator<USBInterface> GetEnumerator()
         {
             return new USBInterfaceEnumerator(_interfaces);
@@ -137,6 +148,10 @@ namespace MadWizard.WinUSBNet
             }
         }
 
+        /// <summary>
+        /// Returns an enumerator that iterates through a collection.
+        /// </summary>
+        /// <returns>An IEnumerator object that can be used to iterate through the collection.</returns>
         IEnumerator IEnumerable.GetEnumerator()
         {
             return new USBInterfaceEnumerator(_interfaces);
