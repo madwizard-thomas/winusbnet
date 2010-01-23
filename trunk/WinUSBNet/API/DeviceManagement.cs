@@ -155,7 +155,8 @@ namespace MadWizard.WinUSBNet.API
 			{
                 deviceInfoSet = SetupDiGetClassDevs(ref guid, IntPtr.Zero, IntPtr.Zero, 
                     DIGCF_PRESENT | DIGCF_DEVICEINTERFACE);
-
+                if (deviceInfoSet == FileIO.INVALID_HANDLE_VALUE)
+                    throw APIException.Win32("Failed to enumerate devices.");
                 int memberIndex = 0;
 				while(true)
 				{
@@ -256,7 +257,7 @@ namespace MadWizard.WinUSBNet.API
 			}
 			finally
 			{
-				if (deviceInfoSet != IntPtr.Zero)
+                if (deviceInfoSet != IntPtr.Zero && deviceInfoSet != FileIO.INVALID_HANDLE_VALUE)
 				{
 					SetupDiDestroyDeviceInfoList(deviceInfoSet);
 				}

@@ -27,7 +27,7 @@ namespace MadWizard.WinUSBNet.API
         public const Int32 FILE_SHARE_WRITE = 2;
         public const UInt32 GENERIC_READ = 0X80000000;
         public const UInt32 GENERIC_WRITE = 0X40000000;
-        public const Int32 INVALID_HANDLE_VALUE = -1;
+        public static readonly IntPtr INVALID_HANDLE_VALUE = new IntPtr(-1);
         public const Int32 OPEN_EXISTING = 3;
 
         public const Int32 ERROR_IO_PENDING = 997;
