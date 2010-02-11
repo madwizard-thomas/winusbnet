@@ -98,22 +98,6 @@ namespace MadWizard.WinUSBNet.API
             return deviceDesc;
         }
 
-        // NOTE: only reads up to 256 bytes!!!!!!!!! todo: may need fix
-        private byte[] GetDescriptor(byte type)
-        {
-            byte[] buffer = new byte[256];
-            uint transfered;
-            bool success = WinUsb_GetDescriptor(_winUsbHandle, type,
-                        0, 0, buffer, (uint)buffer.Length, out transfered);
-            if (!success)
-                throw APIException.Win32("Failed to get USB device descriptor.");
-
-            byte[] descBuffer = new byte[transfered];
-            Array.Copy(buffer, descBuffer, transfered);
-            return descBuffer;
-               
-        }
-
         public string GetStringDescriptor(byte index)
         {
             byte[] buffer = new byte[256];

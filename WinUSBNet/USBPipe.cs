@@ -333,7 +333,7 @@ namespace MadWizard.WinUSBNet
                     result.AsyncWaitHandle.WaitOne();
 
                 if (result.Error != null)
-                    throw new USBException("Asynchronous write from pipe has failed.", result.Error);
+                    throw new USBException("Asynchronous write to pipe has failed.", result.Error);
             }
             finally
             {
