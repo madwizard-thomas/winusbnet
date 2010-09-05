@@ -26,13 +26,13 @@
     <HelpTitle>WinUSBNet Reference</HelpTitle>
     <CopyrightText>%28C%29 2010 Thomas Bleeker</CopyrightText>
     <CopyrightHref>http://www.madwizard.org/</CopyrightHref>
-    <HelpFileVersion>0.9.1.0</HelpFileVersion>
+    <HelpFileVersion>1.0.0.0</HelpFileVersion>
     <VisibleItems>InheritedMembers, Protected</VisibleItems>
     <MissingTags>Summary, Parameter, Returns, AutoDocumentCtors, TypeParameter, AutoDocumentDispose</MissingTags>
     <ApiFilter>
     </ApiFilter>
     <NamingMethod>HashedMemberName</NamingMethod>
-    <Preliminary>True</Preliminary>
+    <Preliminary>False</Preliminary>
   </PropertyGroup>
   <!-- There are no properties for these groups.  AnyCPU needs to appear in
        order for Visual Studio to perform the build.  The others are optional
