@@ -251,14 +251,6 @@ namespace MadWizard.WinUSBNet
         {
             CheckWriteParams(buffer, offset, length);
 
-            if (offset != 0)
-            {
-                // Not the complete buffer, slice buffer
-                byte[] newBuffer = new byte[length];
-                Array.Copy(buffer, offset, newBuffer, 0, length);
-                buffer = newBuffer;
-            }
-
             try
             {
                 _device.InternalDevice.WritePipe(Interface.InterfaceIndex, _pipeInfo.PipeId, buffer, offset, length);

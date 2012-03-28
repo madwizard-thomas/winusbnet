@@ -1,6 +1,6 @@
 ﻿
-Microsoft Visual Studio Solution File, Format Version 10.00
-# Visual C# Express 2008
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual C# Express 2010
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WinUSBNet", "WinUSBNet\WinUSBNet.csproj", "{CE06C329-287D-4F1E-B62D-B8353F2BAA4A}"
 EndProject
 Global
