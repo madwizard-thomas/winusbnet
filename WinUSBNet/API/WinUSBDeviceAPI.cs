@@ -178,15 +178,15 @@ namespace MadWizard.WinUSBNet.API
         
         [DllImport("winusb.dll", SetLastError = true)]
         private static extern bool WinUsb_GetDescriptor(IntPtr InterfaceHandle, byte DescriptorType,
-                        byte Index, byte LanguageID, byte[] Buffer, UInt32 BufferLength, out UInt32 LengthTransfered);
+                        byte Index, UInt16 LanguageID, byte[] Buffer, UInt32 BufferLength, out UInt32 LengthTransfered);
 
         [DllImport("winusb.dll", SetLastError = true)]
         private static extern bool WinUsb_GetDescriptor(IntPtr InterfaceHandle, byte DescriptorType,
-                        byte Index, byte LanguageID, out USB_DEVICE_DESCRIPTOR deviceDesc, UInt32 BufferLength, out UInt32 LengthTransfered);
+                        byte Index, UInt16 LanguageID, out USB_DEVICE_DESCRIPTOR deviceDesc, UInt32 BufferLength, out UInt32 LengthTransfered);
 
         [DllImport("winusb.dll", SetLastError = true)]
         private static extern bool WinUsb_GetDescriptor(IntPtr InterfaceHandle, byte DescriptorType,
-                        byte Index, byte LanguageID, out USB_CONFIGURATION_DESCRIPTOR deviceDesc, UInt32 BufferLength, out UInt32 LengthTransfered);
+                        byte Index, UInt16 LanguageID, out USB_CONFIGURATION_DESCRIPTOR deviceDesc, UInt32 BufferLength, out UInt32 LengthTransfered);
 
         [DllImport("winusb.dll", SetLastError = true)]
         private static extern bool WinUsb_GetAssociatedInterface(IntPtr InterfaceHandle, byte AssociatedInterfaceIndex,
