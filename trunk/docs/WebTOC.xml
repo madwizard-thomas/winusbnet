@@ -1,0 +1,163 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<HelpTOC>
+
+  <HelpTOCNode Id="7bb8b4d3-542a-42c8-ab2c-50f54db2121f" Title="MadWizard.WinUSBNet Namespace" Url="html/20A1FC82.htm">
+    <HelpTOCNode Title="USBBaseClass Enumeration" Url="html/9A60CB5.htm" />
+    <HelpTOCNode Id="badf9f03-3a9d-41e6-b48b-eb8939488235" Title="USBDevice Class" Url="html/C0DF0592.htm">
+      <HelpTOCNode Id="d5314081-c516-4547-abe4-57823ff1293e" Title="USBDevice Constructor " Url="html/FA89418A.htm">
+        <HelpTOCNode Title="USBDevice Constructor (deviceInfo)" Url="html/284B3468.htm" />
+        <HelpTOCNode Title="USBDevice Constructor (devicePathName)" Url="html/DF912B90.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Id="e703d55f-6d54-4146-ab10-1cd7e0bc454f" Title="BeginControlIn Method " Url="html/70E5C5B3.htm">
+        <HelpTOCNode Title="BeginControlIn Method (requestType, request, value, index, userCallback, stateObject)" Url="html/2F5984D8.htm" />
+        <HelpTOCNode Title="BeginControlIn Method (requestType, request, value, index, buffer, userCallback, stateObject)" Url="html/3DCBB718.htm" />
+        <HelpTOCNode Title="BeginControlIn Method (requestType, request, value, index, buffer, length, userCallback, stateObject)" Url="html/E0732BB3.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Id="0141201f-c5bd-44be-bc60-0df3bea9b361" Title="BeginControlOut Method " Url="html/BEB7134.htm">
+        <HelpTOCNode Title="BeginControlOut Method (requestType, request, value, index, userCallback, stateObject)" Url="html/3D565AD3.htm" />
+        <HelpTOCNode Title="BeginControlOut Method (requestType, request, value, index, buffer, userCallback, stateObject)" Url="html/74593F45.htm" />
+        <HelpTOCNode Title="BeginControlOut Method (requestType, request, value, index, buffer, length, userCallback, stateObject)" Url="html/74593F44.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Id="187c4954-b597-4aef-bf64-0f8b8cbd784b" Title="BeginControlTransfer Method " Url="html/9025AEF7.htm">
+        <HelpTOCNode Title="BeginControlTransfer Method (requestType, request, value, index, userCallback, stateObject)" Url="html/D8FE8004.htm" />
+        <HelpTOCNode Title="BeginControlTransfer Method (requestType, request, value, index, buffer, userCallback, stateObject)" Url="html/1C101830.htm" />
+        <HelpTOCNode Title="BeginControlTransfer Method (requestType, request, value, index, buffer, length, userCallback, stateObject)" Url="html/3419BA5F.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Id="1b5f8400-3f18-4a0f-9afb-fe2b0d28bcf2" Title="ControlIn Method " Url="html/E72E4D8.htm">
+        <HelpTOCNode Title="ControlIn Method (requestType, request, value, index)" Url="html/8A1EF1B5.htm" />
+        <HelpTOCNode Title="ControlIn Method (requestType, request, value, index, buffer)" Url="html/BFF73573.htm" />
+        <HelpTOCNode Title="ControlIn Method (requestType, request, value, index, buffer, length)" Url="html/BFF73570.htm" />
+        <HelpTOCNode Title="ControlIn Method (requestType, request, value, index, length)" Url="html/BFF73571.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Id="81d5a9e3-3d98-49b1-b29d-d7228b78dc18" Title="ControlOut Method " Url="html/B406A81.htm">
+        <HelpTOCNode Title="ControlOut Method (requestType, request, value, index)" Url="html/27101722.htm" />
+        <HelpTOCNode Title="ControlOut Method (requestType, request, value, index, buffer)" Url="html/814326A2.htm" />
+        <HelpTOCNode Title="ControlOut Method (requestType, request, value, index, buffer, length)" Url="html/994CC8D1.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Title="ControlPipeTimeout Property " Url="html/F3B0EF8.htm" />
+      <HelpTOCNode Id="290fc67b-5eb4-4f50-82d3-c9bad31c068b" Title="ControlTransfer Method " Url="html/8972FD08.htm">
+        <HelpTOCNode Title="ControlTransfer Method (requestType, request, value, index)" Url="html/6D810D9D.htm" />
+        <HelpTOCNode Title="ControlTransfer Method (requestType, request, value, index, buffer)" Url="html/5A87B27F.htm" />
+        <HelpTOCNode Title="ControlTransfer Method (requestType, request, value, index, buffer, length)" Url="html/5A87B280.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Title="Descriptor Property " Url="html/6363F4BF.htm" />
+      <HelpTOCNode Id="0f7cb2ed-9e98-4e93-84c1-68b8ddc3d203" Title="Dispose Method " Url="html/126FFBE7.htm">
+        <HelpTOCNode Title="Dispose Method " Url="html/E345B60A.htm" />
+        <HelpTOCNode Title="Dispose Method (disposing)" Url="html/D834013E.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Title="EndControlTransfer Method (asyncResult)" Url="html/BC5F97C4.htm" />
+      <HelpTOCNode Title="Finalize Method " Url="html/20EAC2D7.htm" />
+      <HelpTOCNode Id="32a3a0ca-3d04-454b-a89d-2621034e7f89" Title="GetDevices Method " Url="html/38D9153D.htm">
+        <HelpTOCNode Title="GetDevices Method (guid)" Url="html/C9BD306E.htm" />
+        <HelpTOCNode Title="GetDevices Method (guidString)" Url="html/799368C6.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Id="6b2f0299-adbb-4a79-9163-a26fd38bbf9d" Title="GetSingleDevice Method " Url="html/370741A4.htm">
+        <HelpTOCNode Title="GetSingleDevice Method (guid)" Url="html/253FBBF1.htm" />
+        <HelpTOCNode Title="GetSingleDevice Method (guidString)" Url="html/E9A890DF.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Title="Interfaces Property " Url="html/A9591ECC.htm" />
+      <HelpTOCNode Title="Pipes Property " Url="html/EF83160F.htm" />
+    </HelpTOCNode>
+    <HelpTOCNode Id="c67c919d-97eb-47fc-bda1-b5ce4e7b0099" Title="USBDeviceDescriptor Class" Url="html/A3CDCB7D.htm">
+      <HelpTOCNode Title="BaseClass Property " Url="html/87A28E0A.htm" />
+      <HelpTOCNode Title="ClassValue Property " Url="html/6E3991CE.htm" />
+      <HelpTOCNode Title="FullName Property " Url="html/9F234AD3.htm" />
+      <HelpTOCNode Title="Manufacturer Property " Url="html/9E5D41C2.htm" />
+      <HelpTOCNode Title="PathName Property " Url="html/C7172EB5.htm" />
+      <HelpTOCNode Title="PID Property " Url="html/916A1F7C.htm" />
+      <HelpTOCNode Title="Product Property " Url="html/509EC186.htm" />
+      <HelpTOCNode Title="Protocol Property " Url="html/C5B36421.htm" />
+      <HelpTOCNode Title="SerialNumber Property " Url="html/806B315E.htm" />
+      <HelpTOCNode Title="SubClass Property " Url="html/70B56BA1.htm" />
+      <HelpTOCNode Title="VID Property " Url="html/916A1F3E.htm" />
+    </HelpTOCNode>
+    <HelpTOCNode Id="68470469-0689-4ccd-861e-0a36fabc30d6" Title="USBDeviceInfo Class" Url="html/A454B3AE.htm">
+      <HelpTOCNode Title="DeviceDescription Property " Url="html/3B920EB0.htm" />
+      <HelpTOCNode Title="DevicePath Property " Url="html/CB230127.htm" />
+      <HelpTOCNode Title="Manufacturer Property " Url="html/9E26E121.htm" />
+      <HelpTOCNode Title="PID Property " Url="html/329B6EFB.htm" />
+      <HelpTOCNode Title="VID Property " Url="html/329B6EBD.htm" />
+    </HelpTOCNode>
+    <HelpTOCNode Id="25c6ef02-c862-47f7-891e-c3e6d3fcd8e6" Title="USBEvent Class" Url="html/ECF23D7C.htm">
+      <HelpTOCNode Title="DevicePath Field" Url="html/3B50A1FF.htm" />
+      <HelpTOCNode Title="Guid Field" Url="html/B6F033E5.htm" />
+      <HelpTOCNode Title="Type Field" Url="html/E0FE1C68.htm" />
+    </HelpTOCNode>
+    <HelpTOCNode Title="USBEventHandler Delegate" Url="html/DB5DC524.htm" />
+    <HelpTOCNode Title="USBEventType Enumeration" Url="html/6A424074.htm" />
+    <HelpTOCNode Id="cbb842f7-6213-47c6-9b07-3a6e1663084f" Title="USBException Class" Url="html/AE705D2D.htm">
+      <HelpTOCNode Id="16997a34-378c-4b93-adca-95de0103cbfc" Title="USBException Constructor " Url="html/D879AED3.htm">
+        <HelpTOCNode Title="USBException Constructor (message)" Url="html/59C811BF.htm" />
+        <HelpTOCNode Title="USBException Constructor (message, innerException)" Url="html/B4D79B0D.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="a59161f8-6336-4f1d-b9d8-81efeaddc606" Title="USBInterface Class" Url="html/13945927.htm">
+      <HelpTOCNode Title="BaseClass Property " Url="html/18654296.htm" />
+      <HelpTOCNode Title="ClassValue Property " Url="html/EE36711A.htm" />
+      <HelpTOCNode Title="Device Property " Url="html/7494E57D.htm" />
+      <HelpTOCNode Title="InPipe Property " Url="html/6EAF142C.htm" />
+      <HelpTOCNode Title="Number Property " Url="html/D0F7F706.htm" />
+      <HelpTOCNode Title="OutPipe Property " Url="html/E1624A0B.htm" />
+      <HelpTOCNode Title="Pipes Property " Url="html/17694530.htm" />
+      <HelpTOCNode Title="Protocol Property " Url="html/F81166F.htm" />
+      <HelpTOCNode Title="SubClass Property " Url="html/83EFD66F.htm" />
+    </HelpTOCNode>
+    <HelpTOCNode Id="c9caca0a-5eab-4cec-aa65-34d6260f2205" Title="USBInterfaceCollection Class" Url="html/EACE5C25.htm">
+      <HelpTOCNode Title="Find Method (interfaceClass)" Url="html/60E22277.htm" />
+      <HelpTOCNode Title="FindAll Method (interfaceClass)" Url="html/AECA10FA.htm" />
+      <HelpTOCNode Title="GetEnumerator Method " Url="html/E17ADF6A.htm" />
+      <HelpTOCNode Title="Item Property (interfaceNumber)" Url="html/EB206BAC.htm" />
+    </HelpTOCNode>
+    <HelpTOCNode Id="0ed0c915-0a60-4629-8baf-24f265e28d12" Title="USBNotifier Class" Url="html/3C8460BE.htm">
+      <HelpTOCNode Id="d2dddd12-60ba-42db-84d6-1b12e4d50dd6" Title="USBNotifier Constructor " Url="html/44800086.htm">
+        <HelpTOCNode Title="USBNotifier Constructor (control, guid)" Url="html/20685C4C.htm" />
+        <HelpTOCNode Title="USBNotifier Constructor (control, guidString)" Url="html/49653A4.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Title="Arrival Event" Url="html/B24BEFAA.htm" />
+      <HelpTOCNode Id="5f9d1a8e-ccf1-46db-ae3c-f1a22ce31916" Title="Dispose Method " Url="html/3943185B.htm">
+        <HelpTOCNode Title="Dispose Method " Url="html/C907EFCE.htm" />
+        <HelpTOCNode Title="Dispose Method (disposing)" Url="html/F80BDC72.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Title="Guid Property " Url="html/1B412C4F.htm" />
+      <HelpTOCNode Title="OnArrival Method (devicePath)" Url="html/2ADDE503.htm" />
+      <HelpTOCNode Title="OnRemoval Method (devicePath)" Url="html/FEE5724.htm" />
+      <HelpTOCNode Title="Removal Event" Url="html/CC596583.htm" />
+    </HelpTOCNode>
+    <HelpTOCNode Id="16f779dd-25bd-450c-a381-2575f81129d0" Title="USBPipe Class" Url="html/8AA4842C.htm">
+      <HelpTOCNode Title="Abort Method " Url="html/92A5804F.htm" />
+      <HelpTOCNode Title="Address Property " Url="html/534BE532.htm" />
+      <HelpTOCNode Title="BeginRead Method (buffer, offset, length, userCallback, stateObject)" Url="html/970AC704.htm" />
+      <HelpTOCNode Title="BeginWrite Method (buffer, offset, length, userCallback, stateObject)" Url="html/D00D285B.htm" />
+      <HelpTOCNode Title="Device Property " Url="html/97748950.htm" />
+      <HelpTOCNode Title="EndRead Method (asyncResult)" Url="html/D22B7AC8.htm" />
+      <HelpTOCNode Title="EndWrite Method (asyncResult)" Url="html/C4692D9B.htm" />
+      <HelpTOCNode Title="Flush Method " Url="html/9EAC2675.htm" />
+      <HelpTOCNode Title="Interface Property " Url="html/B0E004DD.htm" />
+      <HelpTOCNode Title="IsIn Property " Url="html/8CAC901D.htm" />
+      <HelpTOCNode Title="IsOut Property " Url="html/369DB6EE.htm" />
+      <HelpTOCNode Title="MaximumPacketSize Property " Url="html/52A68615.htm" />
+      <HelpTOCNode Title="Policy Property " Url="html/12B16FFC.htm" />
+      <HelpTOCNode Id="6830775d-14df-44d3-ab7a-fafe71369f49" Title="Read Method " Url="html/177FF7B4.htm">
+        <HelpTOCNode Title="Read Method (buffer)" Url="html/46D433.htm" />
+        <HelpTOCNode Title="Read Method (buffer, offset, length)" Url="html/E714089D.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Id="abd20ebc-b51b-462f-ae9d-db2cd72f5410" Title="Write Method " Url="html/B9136B01.htm">
+        <HelpTOCNode Title="Write Method (buffer)" Url="html/3E206AE2.htm" />
+        <HelpTOCNode Title="Write Method (buffer, offset, length)" Url="html/3F12B822.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="27a7221f-010f-4e98-8866-bab27dc0f576" Title="USBPipeCollection Class" Url="html/47100BD0.htm">
+      <HelpTOCNode Title="GetEnumerator Method " Url="html/D79C7BAD.htm" />
+      <HelpTOCNode Title="Item Property (pipeAddress)" Url="html/6D370FDB.htm" />
+    </HelpTOCNode>
+    <HelpTOCNode Id="08a56a47-8aab-4bdc-9fe2-faea40916dd9" Title="USBPipePolicy Class" Url="html/B8AA28AE.htm">
+      <HelpTOCNode Title="AllowPartialReads Property " Url="html/DFD28A3B.htm" />
+      <HelpTOCNode Title="AutoClearStall Property " Url="html/12F32B52.htm" />
+      <HelpTOCNode Title="AutoFlush Property " Url="html/8EAFA1BB.htm" />
+      <HelpTOCNode Title="IgnoreShortPackets Property " Url="html/7584E3B9.htm" />
+      <HelpTOCNode Title="PipeTransferTimeout Property " Url="html/9B9982DE.htm" />
+      <HelpTOCNode Title="RawIO Property " Url="html/461D2B7E.htm" />
+      <HelpTOCNode Title="ShortPacketTerminate Property " Url="html/33BCA19B.htm" />
+    </HelpTOCNode>
+  </HelpTOCNode>
+</HelpTOC>
