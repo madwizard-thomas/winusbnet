@@ -66,7 +66,7 @@ namespace MadWizard.WinUSBNet
             {
                 // Window was destroyed, release hook.
                 ReleaseHandle();
-                if (_notifyHandle != null)
+                if (_notifyHandle != IntPtr.Zero)
                 {
                     API.DeviceManagement.StopDeviceDeviceNotifications(_notifyHandle);
                     _notifyHandle = IntPtr.Zero;
@@ -109,6 +109,7 @@ namespace MadWizard.WinUSBNet
             if (_notifyHandle != IntPtr.Zero)
             {
                 API.DeviceManagement.StopDeviceDeviceNotifications(_notifyHandle);
+				_notifyHandle = IntPtr.Zero;
             }
         }
 
