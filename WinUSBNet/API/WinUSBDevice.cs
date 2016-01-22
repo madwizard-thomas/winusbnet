@@ -98,12 +98,12 @@ namespace MadWizard.WinUSBNet.API
             return deviceDesc;
         }
 
-        public string GetStringDescriptor(byte index)
+        public string GetStringDescriptor(byte index, ushort languageID)
         {
             byte[] buffer = new byte[256];
             uint transfered;
             bool success = WinUsb_GetDescriptor(_winUsbHandle, USB_STRING_DESCRIPTOR_TYPE,
-                        index, 0, buffer, (uint)buffer.Length, out transfered);
+                        index, languageID, buffer, (uint)buffer.Length, out transfered);
             if (!success)
                 throw APIException.Win32("Failed to get USB string descriptor ("  + index + ").");
            
