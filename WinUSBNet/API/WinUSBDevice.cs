@@ -98,17 +98,42 @@ namespace MadWizard.WinUSBNet.API
             return deviceDesc;
         }
 
-        public string GetStringDescriptor(byte index, ushort languageID)
+        private int ReadStringDescriptor(byte index, ushort languageID, byte[] buffer)
         {
-            byte[] buffer = new byte[256];
             uint transfered;
             bool success = WinUsb_GetDescriptor(_winUsbHandle, USB_STRING_DESCRIPTOR_TYPE,
                         index, languageID, buffer, (uint)buffer.Length, out transfered);
             if (!success)
-                throw APIException.Win32("Failed to get USB string descriptor ("  + index + ").");
-           
-            int length = buffer[0] - 2;
-            if (length <= 0)
+                throw APIException.Win32("Failed to get USB string descriptor (" + index + ").");
+            
+            if (transfered == 0)
+                throw new APIException("No data returned when reading USB descriptor.");
+            
+            int length = buffer[0];
+            if (length != transfered)
+                throw new APIException("Unexpected length when reading USB descriptor.");
+            return length;
+        }
+
+        public ushort[] GetSupportedLanguageIDs()
+        {
+            byte[] buffer = new byte[256];
+            int length = ReadStringDescriptor(0, 0, buffer);
+            length -= 2; // Skip length byte and descriptor type
+            if (length < 0 || (length % 2) != 0)
+                throw new APIException("Unexpected length when reading supported languages.");
+            
+            ushort[] langIDs = new ushort[length / 2];
+            Buffer.BlockCopy(buffer, 2, langIDs, 0, length);
+            return langIDs;
+        }
+
+        public string GetStringDescriptor(byte index, ushort languageID)
+        {
+            byte[] buffer = new byte[256];
+            int length = ReadStringDescriptor(index, languageID, buffer);
+            length -= 2; // Skip length byte and descriptor type
+            if (length < 0)
                 return null;
             char[] chars = System.Text.Encoding.Unicode.GetChars(buffer, 2, length);
             return new string(chars);

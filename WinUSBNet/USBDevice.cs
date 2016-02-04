@@ -749,11 +749,13 @@ namespace MadWizard.WinUSBNet
                 {
                     wuDevice.OpenDevice(devicePath);
                     API.USB_DEVICE_DESCRIPTOR deviceDesc = wuDevice.GetDeviceDescriptor();
-                    string q = wuDevice.GetStringDescriptor(0, 0);
-                    if (q.Length == 0)
-                        throw new USBException("Failed to get USB string descriptor (0).");
-                    // Use the first language id
-                    ushort langID = q[0];
+
+                    // Get first supported language ID
+                    ushort[] langIDs = wuDevice.GetSupportedLanguageIDs();
+                    ushort langID = 0;
+                    if (langIDs.Length > 0)
+                        langID = langIDs[0];
+            
                     string manufacturer = null, product = null, serialNumber = null;
                     byte idx = 0;
                     idx = deviceDesc.iManufacturer;
