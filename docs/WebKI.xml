@@ -1,0 +1,294 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<HelpKI>
+  <HelpKINode Title="Abort method" Url="html/807636f7-a107-b613-d168-86ae67a5e74f.htm" />
+  <HelpKINode Title="Address property" Url="html/6ba9c716-820b-ef3f-499e-74c193187506.htm" />
+  <HelpKINode Title="AllowPartialReads property" Url="html/72d6d059-254d-b77c-bdc3-6505ce2113a2.htm" />
+  <HelpKINode Title="ApplicationSpecific enumeration member" Url="html/b0387ab6-5bed-abb2-9284-f09a9fe71283.htm" />
+  <HelpKINode Title="Arrival event" Url="html/1d91092f-b6e1-ff71-3dd9-b38096a1131a.htm" />
+  <HelpKINode Title="Audio enumeration member" Url="html/b0387ab6-5bed-abb2-9284-f09a9fe71283.htm" />
+  <HelpKINode Title="AutoClearStall property" Url="html/9910f22b-ab8a-8f9e-e8b2-aa14a3f5f466.htm" />
+  <HelpKINode Title="AutoFlush property" Url="html/b000e0fd-bd3e-0245-c58c-99518ee80a11.htm" />
+  <HelpKINode Title="BaseClass property">
+    <HelpKINode Title="USBDeviceDescriptor.BaseClass Property " Url="html/d42b9b27-2263-e482-6abb-ce5045d69bad.htm" />
+    <HelpKINode Title="USBInterface.BaseClass Property " Url="html/b5c16b38-7b1e-8b57-7c04-ddb89f7708d9.htm" />
+  </HelpKINode>
+  <HelpKINode Title="BeginControlIn method" Url="html/1b65d974-bafb-6df1-a4a0-c9b02eb1c76b.htm" />
+  <HelpKINode Title="BeginControlOut method" Url="html/2cc28c41-519b-04c7-ede4-c1aa0fde03ba.htm" />
+  <HelpKINode Title="BeginControlTransfer method" Url="html/0b0d3bed-9bb4-1518-b774-04577e847b52.htm" />
+  <HelpKINode Title="BeginRead method" Url="html/1657c5f2-496b-9be4-6668-8560d3d8c4aa.htm" />
+  <HelpKINode Title="BeginWrite method" Url="html/906a073d-7123-9301-7a1f-77f98eadc038.htm" />
+  <HelpKINode Title="CDCData enumeration member" Url="html/b0387ab6-5bed-abb2-9284-f09a9fe71283.htm" />
+  <HelpKINode Title="ClassValue property">
+    <HelpKINode Title="USBDeviceDescriptor.ClassValue Property " Url="html/7616f3cd-fba1-607d-a0de-7caa07ba899c.htm" />
+    <HelpKINode Title="USBInterface.ClassValue Property " Url="html/27dce75c-5b58-7ce4-2750-818083f704a0.htm" />
+  </HelpKINode>
+  <HelpKINode Title="CommCDC enumeration member" Url="html/b0387ab6-5bed-abb2-9284-f09a9fe71283.htm" />
+  <HelpKINode Title="ContentSecurity enumeration member" Url="html/b0387ab6-5bed-abb2-9284-f09a9fe71283.htm" />
+  <HelpKINode Title="ControlIn method" Url="html/94d61afa-1d41-dd1e-29ff-fd3d8844e1a0.htm" />
+  <HelpKINode Title="ControlOut method" Url="html/222d6b7a-31dd-5616-f5f2-3559c5968c73.htm" />
+  <HelpKINode Title="ControlPipeTimeout property" Url="html/d7784fe9-2cd3-032b-c56e-b0a906a3c477.htm" />
+  <HelpKINode Title="ControlTransfer method" Url="html/2da4db22-a48c-3ce2-de27-140cda075643.htm" />
+  <HelpKINode Title="Descriptor property" Url="html/3b901736-ae7e-a9d3-b462-30fab1a99975.htm" />
+  <HelpKINode Title="Device property">
+    <HelpKINode Title="USBInterface.Device Property " Url="html/26c4d8d6-6023-f5f5-b840-888ad721794c.htm" />
+    <HelpKINode Title="USBPipe.Device Property " Url="html/01bb4d89-1b24-7da2-e695-e0f56d6aa822.htm" />
+  </HelpKINode>
+  <HelpKINode Title="DeviceArrival enumeration member" Url="html/a9db1df8-d459-7059-6042-428644957d8e.htm" />
+  <HelpKINode Title="DeviceDescription property" Url="html/cc234790-fa71-bfee-4838-8686c8147438.htm" />
+  <HelpKINode Title="DevicePath field" Url="html/571c0825-03c2-c974-a6d1-413b0a457d61.htm" />
+  <HelpKINode Title="DevicePath property" Url="html/d41c61ee-0ee4-b5aa-6b63-81d197fa6a3e.htm" />
+  <HelpKINode Title="DeviceRemoval enumeration member" Url="html/a9db1df8-d459-7059-6042-428644957d8e.htm" />
+  <HelpKINode Title="DiagnosticDevice enumeration member" Url="html/b0387ab6-5bed-abb2-9284-f09a9fe71283.htm" />
+  <HelpKINode Title="Dispose method">
+    <HelpKINode Title="USBDevice.Dispose Method " Url="html/3e9cbd97-86cd-2005-9946-32dee3e4c5ca.htm" />
+    <HelpKINode Title="USBNotifier.Dispose Method " Url="html/0e7f4d6b-f6ba-98d4-a66c-0e360f164440.htm" />
+  </HelpKINode>
+  <HelpKINode Title="EndControlTransfer method" Url="html/178e53b3-6ada-daca-7d0b-1b8d40fe2140.htm" />
+  <HelpKINode Title="EndRead method" Url="html/9d38b00a-d35d-12f0-63d6-7b76cc97eac5.htm" />
+  <HelpKINode Title="EndWrite method" Url="html/7a7585a0-ab09-2348-2a57-a8c9acfabc74.htm" />
+  <HelpKINode Title="Finalize method" Url="html/d7b482fa-6d9a-1d2a-1ced-c0a9e7beb13a.htm" />
+  <HelpKINode Title="Find method" Url="html/9224d257-84f0-6c42-a7c5-821401c34baa.htm" />
+  <HelpKINode Title="FindAll method" Url="html/ad7a4dee-8e36-f1ba-ee50-777a153f4d57.htm" />
+  <HelpKINode Title="Flush method" Url="html/b82613eb-5e84-197c-15eb-29aa348cad0f.htm" />
+  <HelpKINode Title="FullName property" Url="html/d9fc3f3b-f4c3-5d9a-0ced-a515de13f99d.htm" />
+  <HelpKINode Title="GetDevices method" Url="html/134d763a-1e78-da45-6043-091ae68cf232.htm" />
+  <HelpKINode Title="GetEnumerator method">
+    <HelpKINode Title="USBInterfaceCollection.GetEnumerator Method " Url="html/1be3afc8-2165-075c-c2f1-d7c747d6ea87.htm" />
+    <HelpKINode Title="USBPipeCollection.GetEnumerator Method " Url="html/1d5ba5c3-ea5b-c566-3674-9a3c648b5b3e.htm" />
+  </HelpKINode>
+  <HelpKINode Title="GetSingleDevice method" Url="html/82273b6f-6630-428a-fe87-40e4cb64ca32.htm" />
+  <HelpKINode Title="Guid field" Url="html/70699b72-1d27-dd2d-e4e8-1836ddd2c185.htm" />
+  <HelpKINode Title="Guid property" Url="html/6a1704a1-0ffc-546c-c116-acfab692075b.htm" />
+  <HelpKINode Title="HID enumeration member" Url="html/b0387ab6-5bed-abb2-9284-f09a9fe71283.htm" />
+  <HelpKINode Title="Hub enumeration member" Url="html/b0387ab6-5bed-abb2-9284-f09a9fe71283.htm" />
+  <HelpKINode Title="IgnoreShortPackets property" Url="html/98ab3d6e-58de-aa66-af4d-7503766c5471.htm" />
+  <HelpKINode Title="Image enumeration member" Url="html/b0387ab6-5bed-abb2-9284-f09a9fe71283.htm" />
+  <HelpKINode Title="InPipe property" Url="html/6b5659f0-6589-6090-60f0-d37ecc5a3adb.htm" />
+  <HelpKINode Title="Interface property" Url="html/23d92fbc-3ec6-ea8f-bb34-ddb0da68611c.htm" />
+  <HelpKINode Title="Interfaces property" Url="html/13bd445b-8e79-39cf-5463-835042129d66.htm" />
+  <HelpKINode Title="IsIn property" Url="html/a7c41154-04a2-3a74-7ee4-772d8f650b94.htm" />
+  <HelpKINode Title="IsOut property" Url="html/91575489-88c4-f26a-6945-df35dd8d62b7.htm" />
+  <HelpKINode Title="Item property">
+    <HelpKINode Title="USBInterfaceCollection.Item Property " Url="html/f70ca71b-dd3c-5d0b-9675-defa3e63ecf9.htm" />
+    <HelpKINode Title="USBPipeCollection.Item Property " Url="html/1687875c-f73a-80a8-da71-fe818bb4cae3.htm" />
+  </HelpKINode>
+  <HelpKINode Title="MadWizard.WinUSBNet namespace" Url="html/9a5a817b-556c-88ca-5e4f-5d076246fda0.htm" />
+  <HelpKINode Title="MadWizard.WinUSBNet.USBBaseClass enumeration" Url="html/b0387ab6-5bed-abb2-9284-f09a9fe71283.htm" />
+  <HelpKINode Title="MadWizard.WinUSBNet.USBDevice class" Url="html/fd43734c-38e1-81a4-d77c-957819af0a08.htm" />
+  <HelpKINode Title="MadWizard.WinUSBNet.USBDeviceDescriptor class" Url="html/3ff83bb1-a519-1784-95e5-c320bbce7468.htm" />
+  <HelpKINode Title="MadWizard.WinUSBNet.USBDeviceInfo class" Url="html/c61ff858-a9bf-7a45-bf1d-cd4ddbbaca1d.htm" />
+  <HelpKINode Title="MadWizard.WinUSBNet.USBEvent class" Url="html/ff46d303-4be6-2dbe-cef0-54b438187ee2.htm" />
+  <HelpKINode Title="MadWizard.WinUSBNet.USBEventHandler delegate" Url="html/124bd9e2-dbd0-427f-2b96-cb26c2b937d2.htm" />
+  <HelpKINode Title="MadWizard.WinUSBNet.USBEventType enumeration" Url="html/a9db1df8-d459-7059-6042-428644957d8e.htm" />
+  <HelpKINode Title="MadWizard.WinUSBNet.USBException class" Url="html/cc7fd4df-ca2a-eb22-cd5b-1ba956faf79a.htm" />
+  <HelpKINode Title="MadWizard.WinUSBNet.USBInterface class" Url="html/1d516022-b0f0-fdcd-726d-e0da1e4fc78f.htm" />
+  <HelpKINode Title="MadWizard.WinUSBNet.USBInterfaceCollection class" Url="html/7d93ee88-0e99-710a-e3b0-71395cbc4287.htm" />
+  <HelpKINode Title="MadWizard.WinUSBNet.USBNotifier class" Url="html/5b769d73-5d4b-96d5-7c58-ade7bb843e0b.htm" />
+  <HelpKINode Title="MadWizard.WinUSBNet.USBPipe class" Url="html/4535bf73-54d1-127d-c21d-8403b5419220.htm" />
+  <HelpKINode Title="MadWizard.WinUSBNet.USBPipeCollection class" Url="html/a966f02e-801c-39cd-4324-d4c85ec8b6bb.htm" />
+  <HelpKINode Title="MadWizard.WinUSBNet.USBPipePolicy class" Url="html/178c6ec1-e40c-dd08-8ed3-e83383a98498.htm" />
+  <HelpKINode Title="Manufacturer property">
+    <HelpKINode Title="USBDeviceDescriptor.Manufacturer Property " Url="html/172aaff1-0c5e-1ee7-adaa-160de4c462c7.htm" />
+    <HelpKINode Title="USBDeviceInfo.Manufacturer Property " Url="html/9d290571-1f0c-4c76-9fea-db047331b9ac.htm" />
+  </HelpKINode>
+  <HelpKINode Title="MassStorage enumeration member" Url="html/b0387ab6-5bed-abb2-9284-f09a9fe71283.htm" />
+  <HelpKINode Title="MaximumPacketSize property" Url="html/cbdc7869-74bc-4f97-46f5-88974e3fcf42.htm" />
+  <HelpKINode Title="Miscellaneous enumeration member" Url="html/b0387ab6-5bed-abb2-9284-f09a9fe71283.htm" />
+  <HelpKINode Title="None enumeration member" Url="html/b0387ab6-5bed-abb2-9284-f09a9fe71283.htm" />
+  <HelpKINode Title="Number property" Url="html/c768f823-6462-834d-dd52-233dd43633f8.htm" />
+  <HelpKINode Title="OnArrival method" Url="html/a28e7d2f-fe81-c62f-a1e6-f3a30846a87f.htm" />
+  <HelpKINode Title="OnRemoval method" Url="html/c6f1a3ac-cd45-865c-faa6-fdb4090a001e.htm" />
+  <HelpKINode Title="OutPipe property" Url="html/839bde7a-19a9-9298-4fee-46a330980977.htm" />
+  <HelpKINode Title="PathName property" Url="html/804cc7d1-2b71-3cae-6984-e359c69f633b.htm" />
+  <HelpKINode Title="PersonalHealthcare enumeration member" Url="html/b0387ab6-5bed-abb2-9284-f09a9fe71283.htm" />
+  <HelpKINode Title="Physical enumeration member" Url="html/b0387ab6-5bed-abb2-9284-f09a9fe71283.htm" />
+  <HelpKINode Title="PID property">
+    <HelpKINode Title="USBDeviceDescriptor.PID Property " Url="html/87d20662-66cb-236b-8a24-5594915d0b84.htm" />
+    <HelpKINode Title="USBDeviceInfo.PID Property " Url="html/7db4f4f6-c082-41e7-3ced-470e00472292.htm" />
+  </HelpKINode>
+  <HelpKINode Title="Pipes property">
+    <HelpKINode Title="USBDevice.Pipes Property " Url="html/65d0e84f-4285-6878-9530-b6e20b3f6195.htm" />
+    <HelpKINode Title="USBInterface.Pipes Property " Url="html/672b2022-58da-50a6-0234-9d4c86a961b3.htm" />
+  </HelpKINode>
+  <HelpKINode Title="PipeTransferTimeout property" Url="html/d850a48f-1fb3-9fe1-b97d-b2fc31d748d5.htm" />
+  <HelpKINode Title="Policy property" Url="html/78fb29f6-3324-fbe5-0f4e-98101fa0bd3c.htm" />
+  <HelpKINode Title="Printer enumeration member" Url="html/b0387ab6-5bed-abb2-9284-f09a9fe71283.htm" />
+  <HelpKINode Title="Product property" Url="html/a3c0705d-1e8d-10bb-aa25-6ce6d9872ee6.htm" />
+  <HelpKINode Title="Protocol property">
+    <HelpKINode Title="USBDeviceDescriptor.Protocol Property " Url="html/e378dee3-1940-31c6-26ca-297a0cdfd4e9.htm" />
+    <HelpKINode Title="USBInterface.Protocol Property " Url="html/68a475a2-c3e3-ed4c-b509-42952c04a210.htm" />
+  </HelpKINode>
+  <HelpKINode Title="RawIO property" Url="html/a9feb5cc-306d-934d-a5ff-f3afc9960c03.htm" />
+  <HelpKINode Title="Read method" Url="html/28202dd8-9e59-5f23-6775-dd00132cba9c.htm" />
+  <HelpKINode Title="Removal event" Url="html/58fac66f-782c-a3ee-dd88-6017369d6b3d.htm" />
+  <HelpKINode Title="SerialNumber property" Url="html/9ef74267-d079-62f1-8984-4316b279c80e.htm" />
+  <HelpKINode Title="ShortPacketTerminate property" Url="html/672a2c5d-4d54-730f-6e77-63421d89cd46.htm" />
+  <HelpKINode Title="SmartCard enumeration member" Url="html/b0387ab6-5bed-abb2-9284-f09a9fe71283.htm" />
+  <HelpKINode Title="SubClass property">
+    <HelpKINode Title="USBDeviceDescriptor.SubClass Property " Url="html/3a1a9b62-2e0f-2d4b-92e8-5c4e7a9199f7.htm" />
+    <HelpKINode Title="USBInterface.SubClass Property " Url="html/f538dd2f-afff-5ace-9a86-e13a4c59868c.htm" />
+  </HelpKINode>
+  <HelpKINode Title="Type field" Url="html/d3a40b8b-6f5b-c510-63d4-9289895c195c.htm" />
+  <HelpKINode Title="Unknown enumeration member" Url="html/b0387ab6-5bed-abb2-9284-f09a9fe71283.htm" />
+  <HelpKINode Title="USBBaseClass enumeration" Url="html/b0387ab6-5bed-abb2-9284-f09a9fe71283.htm" />
+  <HelpKINode Title="USBDevice class">
+    <HelpKINode Title="USBDevice Class" Url="html/fd43734c-38e1-81a4-d77c-957819af0a08.htm" />
+    <HelpKINode Title="about USBDevice class" Url="html/fd43734c-38e1-81a4-d77c-957819af0a08.htm" />
+    <HelpKINode Title="constructor" Url="html/7720979d-410c-13a0-a385-9ea859a8c8ca.htm" />
+    <HelpKINode Title="methods" Url="html/d1c27647-5989-955f-5d4f-a244f109ebdc.htm" />
+    <HelpKINode Title="properties" Url="html/106fb3b0-8ade-014f-a279-246db2b66bdc.htm" />
+  </HelpKINode>
+  <HelpKINode Title="USBDevice.BeginControlIn method" Url="html/1b65d974-bafb-6df1-a4a0-c9b02eb1c76b.htm" />
+  <HelpKINode Title="USBDevice.BeginControlOut method" Url="html/2cc28c41-519b-04c7-ede4-c1aa0fde03ba.htm" />
+  <HelpKINode Title="USBDevice.BeginControlTransfer method" Url="html/0b0d3bed-9bb4-1518-b774-04577e847b52.htm" />
+  <HelpKINode Title="USBDevice.ControlIn method" Url="html/94d61afa-1d41-dd1e-29ff-fd3d8844e1a0.htm" />
+  <HelpKINode Title="USBDevice.ControlOut method" Url="html/222d6b7a-31dd-5616-f5f2-3559c5968c73.htm" />
+  <HelpKINode Title="USBDevice.ControlPipeTimeout property" Url="html/d7784fe9-2cd3-032b-c56e-b0a906a3c477.htm" />
+  <HelpKINode Title="USBDevice.ControlTransfer method" Url="html/2da4db22-a48c-3ce2-de27-140cda075643.htm" />
+  <HelpKINode Title="USBDevice.Descriptor property" Url="html/3b901736-ae7e-a9d3-b462-30fab1a99975.htm" />
+  <HelpKINode Title="USBDevice.Dispose method" Url="html/3e9cbd97-86cd-2005-9946-32dee3e4c5ca.htm" />
+  <HelpKINode Title="USBDevice.EndControlTransfer method" Url="html/178e53b3-6ada-daca-7d0b-1b8d40fe2140.htm" />
+  <HelpKINode Title="USBDevice.Finalize method" Url="html/d7b482fa-6d9a-1d2a-1ced-c0a9e7beb13a.htm" />
+  <HelpKINode Title="USBDevice.GetDevices method" Url="html/134d763a-1e78-da45-6043-091ae68cf232.htm" />
+  <HelpKINode Title="USBDevice.GetSingleDevice method" Url="html/82273b6f-6630-428a-fe87-40e4cb64ca32.htm" />
+  <HelpKINode Title="USBDevice.Interfaces property" Url="html/13bd445b-8e79-39cf-5463-835042129d66.htm" />
+  <HelpKINode Title="USBDevice.Pipes property" Url="html/65d0e84f-4285-6878-9530-b6e20b3f6195.htm" />
+  <HelpKINode Title="USBDevice.USBDevice constructor" Url="html/7720979d-410c-13a0-a385-9ea859a8c8ca.htm" />
+  <HelpKINode Title="USBDeviceDescriptor class">
+    <HelpKINode Title="USBDeviceDescriptor Class" Url="html/3ff83bb1-a519-1784-95e5-c320bbce7468.htm" />
+    <HelpKINode Title="about USBDeviceDescriptor class" Url="html/3ff83bb1-a519-1784-95e5-c320bbce7468.htm" />
+    <HelpKINode Title="methods" Url="html/8d336d5e-410d-6546-4a64-f1713f4906dc.htm" />
+    <HelpKINode Title="properties" Url="html/c4b7f93e-e405-356a-ff76-cb84fd833862.htm" />
+  </HelpKINode>
+  <HelpKINode Title="USBDeviceDescriptor.BaseClass property" Url="html/d42b9b27-2263-e482-6abb-ce5045d69bad.htm" />
+  <HelpKINode Title="USBDeviceDescriptor.ClassValue property" Url="html/7616f3cd-fba1-607d-a0de-7caa07ba899c.htm" />
+  <HelpKINode Title="USBDeviceDescriptor.FullName property" Url="html/d9fc3f3b-f4c3-5d9a-0ced-a515de13f99d.htm" />
+  <HelpKINode Title="USBDeviceDescriptor.Manufacturer property" Url="html/172aaff1-0c5e-1ee7-adaa-160de4c462c7.htm" />
+  <HelpKINode Title="USBDeviceDescriptor.PathName property" Url="html/804cc7d1-2b71-3cae-6984-e359c69f633b.htm" />
+  <HelpKINode Title="USBDeviceDescriptor.PID property" Url="html/87d20662-66cb-236b-8a24-5594915d0b84.htm" />
+  <HelpKINode Title="USBDeviceDescriptor.Product property" Url="html/a3c0705d-1e8d-10bb-aa25-6ce6d9872ee6.htm" />
+  <HelpKINode Title="USBDeviceDescriptor.Protocol property" Url="html/e378dee3-1940-31c6-26ca-297a0cdfd4e9.htm" />
+  <HelpKINode Title="USBDeviceDescriptor.SerialNumber property" Url="html/9ef74267-d079-62f1-8984-4316b279c80e.htm" />
+  <HelpKINode Title="USBDeviceDescriptor.SubClass property" Url="html/3a1a9b62-2e0f-2d4b-92e8-5c4e7a9199f7.htm" />
+  <HelpKINode Title="USBDeviceDescriptor.VID property" Url="html/e7d08724-4001-2dc0-ad1b-dd42e2454988.htm" />
+  <HelpKINode Title="USBDeviceInfo class">
+    <HelpKINode Title="USBDeviceInfo Class" Url="html/c61ff858-a9bf-7a45-bf1d-cd4ddbbaca1d.htm" />
+    <HelpKINode Title="about USBDeviceInfo class" Url="html/c61ff858-a9bf-7a45-bf1d-cd4ddbbaca1d.htm" />
+    <HelpKINode Title="methods" Url="html/1ddd446a-3ab4-df2e-2ccb-373f03fb4622.htm" />
+    <HelpKINode Title="properties" Url="html/f41385fd-cbbc-9422-b8a7-ef055b721a74.htm" />
+  </HelpKINode>
+  <HelpKINode Title="USBDeviceInfo.DeviceDescription property" Url="html/cc234790-fa71-bfee-4838-8686c8147438.htm" />
+  <HelpKINode Title="USBDeviceInfo.DevicePath property" Url="html/d41c61ee-0ee4-b5aa-6b63-81d197fa6a3e.htm" />
+  <HelpKINode Title="USBDeviceInfo.Manufacturer property" Url="html/9d290571-1f0c-4c76-9fea-db047331b9ac.htm" />
+  <HelpKINode Title="USBDeviceInfo.PID property" Url="html/7db4f4f6-c082-41e7-3ced-470e00472292.htm" />
+  <HelpKINode Title="USBDeviceInfo.VID property" Url="html/7402409d-9255-fd96-883b-539e946fd76d.htm" />
+  <HelpKINode Title="USBEvent class">
+    <HelpKINode Title="USBEvent Class" Url="html/ff46d303-4be6-2dbe-cef0-54b438187ee2.htm" />
+    <HelpKINode Title="about USBEvent class" Url="html/ff46d303-4be6-2dbe-cef0-54b438187ee2.htm" />
+    <HelpKINode Title="fields" Url="html/6aad2ba0-bff3-970d-db9e-b6fb2cb3b528.htm" />
+    <HelpKINode Title="methods" Url="html/62e6842b-d7e0-b21a-fc27-221206e2a88d.htm" />
+  </HelpKINode>
+  <HelpKINode Title="USBEvent.DevicePath field" Url="html/571c0825-03c2-c974-a6d1-413b0a457d61.htm" />
+  <HelpKINode Title="USBEvent.Guid field" Url="html/70699b72-1d27-dd2d-e4e8-1836ddd2c185.htm" />
+  <HelpKINode Title="USBEvent.Type field" Url="html/d3a40b8b-6f5b-c510-63d4-9289895c195c.htm" />
+  <HelpKINode Title="USBEventHandler delegate" Url="html/124bd9e2-dbd0-427f-2b96-cb26c2b937d2.htm" />
+  <HelpKINode Title="USBEventType enumeration" Url="html/a9db1df8-d459-7059-6042-428644957d8e.htm" />
+  <HelpKINode Title="USBException class">
+    <HelpKINode Title="USBException Class" Url="html/cc7fd4df-ca2a-eb22-cd5b-1ba956faf79a.htm" />
+    <HelpKINode Title="about USBException class" Url="html/cc7fd4df-ca2a-eb22-cd5b-1ba956faf79a.htm" />
+    <HelpKINode Title="constructor" Url="html/b62c7000-2e54-9628-f787-1ee676dc7b8c.htm" />
+    <HelpKINode Title="methods" Url="html/79cd4b4a-313b-f6dd-6a01-8f0eb3d52a60.htm" />
+    <HelpKINode Title="properties" Url="html/f6c38000-7baf-cd69-dfdd-20f22f0f36ea.htm" />
+  </HelpKINode>
+  <HelpKINode Title="USBException.USBException constructor" Url="html/b62c7000-2e54-9628-f787-1ee676dc7b8c.htm" />
+  <HelpKINode Title="USBInterface class">
+    <HelpKINode Title="USBInterface Class" Url="html/1d516022-b0f0-fdcd-726d-e0da1e4fc78f.htm" />
+    <HelpKINode Title="about USBInterface class" Url="html/1d516022-b0f0-fdcd-726d-e0da1e4fc78f.htm" />
+    <HelpKINode Title="methods" Url="html/481b6170-7643-79db-9236-ce8f9135d8f9.htm" />
+    <HelpKINode Title="properties" Url="html/83e8fedf-7b58-9898-46f9-e18b2f96b25c.htm" />
+  </HelpKINode>
+  <HelpKINode Title="USBInterface.BaseClass property" Url="html/b5c16b38-7b1e-8b57-7c04-ddb89f7708d9.htm" />
+  <HelpKINode Title="USBInterface.ClassValue property" Url="html/27dce75c-5b58-7ce4-2750-818083f704a0.htm" />
+  <HelpKINode Title="USBInterface.Device property" Url="html/26c4d8d6-6023-f5f5-b840-888ad721794c.htm" />
+  <HelpKINode Title="USBInterface.InPipe property" Url="html/6b5659f0-6589-6090-60f0-d37ecc5a3adb.htm" />
+  <HelpKINode Title="USBInterface.Number property" Url="html/c768f823-6462-834d-dd52-233dd43633f8.htm" />
+  <HelpKINode Title="USBInterface.OutPipe property" Url="html/839bde7a-19a9-9298-4fee-46a330980977.htm" />
+  <HelpKINode Title="USBInterface.Pipes property" Url="html/672b2022-58da-50a6-0234-9d4c86a961b3.htm" />
+  <HelpKINode Title="USBInterface.Protocol property" Url="html/68a475a2-c3e3-ed4c-b509-42952c04a210.htm" />
+  <HelpKINode Title="USBInterface.SubClass property" Url="html/f538dd2f-afff-5ace-9a86-e13a4c59868c.htm" />
+  <HelpKINode Title="USBInterfaceCollection class">
+    <HelpKINode Title="USBInterfaceCollection Class" Url="html/7d93ee88-0e99-710a-e3b0-71395cbc4287.htm" />
+    <HelpKINode Title="about USBInterfaceCollection class" Url="html/7d93ee88-0e99-710a-e3b0-71395cbc4287.htm" />
+    <HelpKINode Title="methods" Url="html/554cdaf6-e2b2-1c80-7d70-5151e2f15b93.htm" />
+    <HelpKINode Title="properties" Url="html/5fc41c74-9669-d1ef-d33e-83d01b9e68bf.htm" />
+  </HelpKINode>
+  <HelpKINode Title="USBInterfaceCollection.Find method" Url="html/9224d257-84f0-6c42-a7c5-821401c34baa.htm" />
+  <HelpKINode Title="USBInterfaceCollection.FindAll method" Url="html/ad7a4dee-8e36-f1ba-ee50-777a153f4d57.htm" />
+  <HelpKINode Title="USBInterfaceCollection.GetEnumerator method" Url="html/1be3afc8-2165-075c-c2f1-d7c747d6ea87.htm" />
+  <HelpKINode Title="USBInterfaceCollection.Item property" Url="html/f70ca71b-dd3c-5d0b-9675-defa3e63ecf9.htm" />
+  <HelpKINode Title="USBNotifier class">
+    <HelpKINode Title="USBNotifier Class" Url="html/5b769d73-5d4b-96d5-7c58-ade7bb843e0b.htm" />
+    <HelpKINode Title="about USBNotifier class" Url="html/5b769d73-5d4b-96d5-7c58-ade7bb843e0b.htm" />
+    <HelpKINode Title="constructor" Url="html/2ce4151d-a112-0855-caa1-b024e127e680.htm" />
+    <HelpKINode Title="events" Url="html/4e7f1f2a-0037-3db5-14cd-e3df08f14875.htm" />
+    <HelpKINode Title="methods" Url="html/d3cfb879-3f1f-be57-5acc-edd1216fc2a6.htm" />
+    <HelpKINode Title="properties" Url="html/e5cc6991-f728-70c2-f87e-d63ec8380892.htm" />
+  </HelpKINode>
+  <HelpKINode Title="USBNotifier.Arrival event" Url="html/1d91092f-b6e1-ff71-3dd9-b38096a1131a.htm" />
+  <HelpKINode Title="USBNotifier.Dispose method" Url="html/0e7f4d6b-f6ba-98d4-a66c-0e360f164440.htm" />
+  <HelpKINode Title="USBNotifier.Guid property" Url="html/6a1704a1-0ffc-546c-c116-acfab692075b.htm" />
+  <HelpKINode Title="USBNotifier.OnArrival method" Url="html/a28e7d2f-fe81-c62f-a1e6-f3a30846a87f.htm" />
+  <HelpKINode Title="USBNotifier.OnRemoval method" Url="html/c6f1a3ac-cd45-865c-faa6-fdb4090a001e.htm" />
+  <HelpKINode Title="USBNotifier.Removal event" Url="html/58fac66f-782c-a3ee-dd88-6017369d6b3d.htm" />
+  <HelpKINode Title="USBNotifier.USBNotifier constructor" Url="html/2ce4151d-a112-0855-caa1-b024e127e680.htm" />
+  <HelpKINode Title="USBPipe class">
+    <HelpKINode Title="USBPipe Class" Url="html/4535bf73-54d1-127d-c21d-8403b5419220.htm" />
+    <HelpKINode Title="about USBPipe class" Url="html/4535bf73-54d1-127d-c21d-8403b5419220.htm" />
+    <HelpKINode Title="methods" Url="html/a2420285-170d-7b1d-7635-c363087e8f79.htm" />
+    <HelpKINode Title="properties" Url="html/28d833fb-d634-9ed3-09f4-51ef9fbaf5ef.htm" />
+  </HelpKINode>
+  <HelpKINode Title="USBPipe.Abort method" Url="html/807636f7-a107-b613-d168-86ae67a5e74f.htm" />
+  <HelpKINode Title="USBPipe.Address property" Url="html/6ba9c716-820b-ef3f-499e-74c193187506.htm" />
+  <HelpKINode Title="USBPipe.BeginRead method" Url="html/1657c5f2-496b-9be4-6668-8560d3d8c4aa.htm" />
+  <HelpKINode Title="USBPipe.BeginWrite method" Url="html/906a073d-7123-9301-7a1f-77f98eadc038.htm" />
+  <HelpKINode Title="USBPipe.Device property" Url="html/01bb4d89-1b24-7da2-e695-e0f56d6aa822.htm" />
+  <HelpKINode Title="USBPipe.EndRead method" Url="html/9d38b00a-d35d-12f0-63d6-7b76cc97eac5.htm" />
+  <HelpKINode Title="USBPipe.EndWrite method" Url="html/7a7585a0-ab09-2348-2a57-a8c9acfabc74.htm" />
+  <HelpKINode Title="USBPipe.Flush method" Url="html/b82613eb-5e84-197c-15eb-29aa348cad0f.htm" />
+  <HelpKINode Title="USBPipe.Interface property" Url="html/23d92fbc-3ec6-ea8f-bb34-ddb0da68611c.htm" />
+  <HelpKINode Title="USBPipe.IsIn property" Url="html/a7c41154-04a2-3a74-7ee4-772d8f650b94.htm" />
+  <HelpKINode Title="USBPipe.IsOut property" Url="html/91575489-88c4-f26a-6945-df35dd8d62b7.htm" />
+  <HelpKINode Title="USBPipe.MaximumPacketSize property" Url="html/cbdc7869-74bc-4f97-46f5-88974e3fcf42.htm" />
+  <HelpKINode Title="USBPipe.Policy property" Url="html/78fb29f6-3324-fbe5-0f4e-98101fa0bd3c.htm" />
+  <HelpKINode Title="USBPipe.Read method" Url="html/28202dd8-9e59-5f23-6775-dd00132cba9c.htm" />
+  <HelpKINode Title="USBPipe.Write method" Url="html/f21b25a6-1ceb-ac6e-9108-75938da1fa63.htm" />
+  <HelpKINode Title="USBPipeCollection class">
+    <HelpKINode Title="USBPipeCollection Class" Url="html/a966f02e-801c-39cd-4324-d4c85ec8b6bb.htm" />
+    <HelpKINode Title="about USBPipeCollection class" Url="html/a966f02e-801c-39cd-4324-d4c85ec8b6bb.htm" />
+    <HelpKINode Title="methods" Url="html/d05908c5-8911-615f-661b-65286f2d92e3.htm" />
+    <HelpKINode Title="properties" Url="html/1beb0398-cf22-872f-4c61-61233f288496.htm" />
+  </HelpKINode>
+  <HelpKINode Title="USBPipeCollection.GetEnumerator method" Url="html/1d5ba5c3-ea5b-c566-3674-9a3c648b5b3e.htm" />
+  <HelpKINode Title="USBPipeCollection.Item property" Url="html/1687875c-f73a-80a8-da71-fe818bb4cae3.htm" />
+  <HelpKINode Title="USBPipePolicy class">
+    <HelpKINode Title="USBPipePolicy Class" Url="html/178c6ec1-e40c-dd08-8ed3-e83383a98498.htm" />
+    <HelpKINode Title="about USBPipePolicy class" Url="html/178c6ec1-e40c-dd08-8ed3-e83383a98498.htm" />
+    <HelpKINode Title="methods" Url="html/bbaf0ea7-6c05-e522-d931-ff287a09036c.htm" />
+    <HelpKINode Title="properties" Url="html/faf284b0-ffc7-47f6-b23e-f088246c76ae.htm" />
+  </HelpKINode>
+  <HelpKINode Title="USBPipePolicy.AllowPartialReads property" Url="html/72d6d059-254d-b77c-bdc3-6505ce2113a2.htm" />
+  <HelpKINode Title="USBPipePolicy.AutoClearStall property" Url="html/9910f22b-ab8a-8f9e-e8b2-aa14a3f5f466.htm" />
+  <HelpKINode Title="USBPipePolicy.AutoFlush property" Url="html/b000e0fd-bd3e-0245-c58c-99518ee80a11.htm" />
+  <HelpKINode Title="USBPipePolicy.IgnoreShortPackets property" Url="html/98ab3d6e-58de-aa66-af4d-7503766c5471.htm" />
+  <HelpKINode Title="USBPipePolicy.PipeTransferTimeout property" Url="html/d850a48f-1fb3-9fe1-b97d-b2fc31d748d5.htm" />
+  <HelpKINode Title="USBPipePolicy.RawIO property" Url="html/a9feb5cc-306d-934d-a5ff-f3afc9960c03.htm" />
+  <HelpKINode Title="USBPipePolicy.ShortPacketTerminate property" Url="html/672a2c5d-4d54-730f-6e77-63421d89cd46.htm" />
+  <HelpKINode Title="VendorSpecific enumeration member" Url="html/b0387ab6-5bed-abb2-9284-f09a9fe71283.htm" />
+  <HelpKINode Title="VID property">
+    <HelpKINode Title="USBDeviceDescriptor.VID Property " Url="html/e7d08724-4001-2dc0-ad1b-dd42e2454988.htm" />
+    <HelpKINode Title="USBDeviceInfo.VID Property " Url="html/7402409d-9255-fd96-883b-539e946fd76d.htm" />
+  </HelpKINode>
+  <HelpKINode Title="Video enumeration member" Url="html/b0387ab6-5bed-abb2-9284-f09a9fe71283.htm" />
+  <HelpKINode Title="WirelessController enumeration member" Url="html/b0387ab6-5bed-abb2-9284-f09a9fe71283.htm" />
+  <HelpKINode Title="Write method" Url="html/f21b25a6-1ceb-ac6e-9108-75938da1fa63.htm" />
+</HelpKI>
