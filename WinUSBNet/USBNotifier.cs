@@ -124,6 +124,33 @@ namespace MadWizard.WinUSBNet
         }
 
         /// <summary>
+        /// Constructs a new USBNotifier that will watch for events on 
+        /// devices matching the given interface GUID. A windows handle
+        /// is needed since the notifier relies on window messages.
+        /// </summary>
+        /// <param name="windowHandle">Window handle of a window that will be used internally for device notification messages.</param>
+        /// <param name="guid">The interface GUID of the devices to watch.</param>
+        public USBNotifier(IntPtr windowHandle, Guid guid)
+        {
+            _guid = guid;
+            _hook = new DeviceNotifyHook(this, windowHandle, _guid);
+        }
+
+        /// <summary>
+        /// Constructs a new USBNotifier that will watch for events on 
+        /// devices matching the given interface GUID. A Windows Forms control 
+        /// is needed since the notifier relies on window messages.
+        /// </summary>
+        /// <param name="windowHandle">Window handle of a window that will be used internally for device notification messages.</param>
+        /// <param name="guid">The interface GUID of the devices to watch.</param>
+        /// <param name="guidString">The interface GUID string of the devices to watch.</param>
+        public USBNotifier(IntPtr windowHandle, string guidString) :
+            this(windowHandle, new Guid(guidString))
+        {
+            // Handled in other constructor
+        }
+        
+        /// <summary>
         /// Triggers the arrival event
         /// </summary>
         /// <param name="devicePath">Device pathname of the device that has been connected</param>

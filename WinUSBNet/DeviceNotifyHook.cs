@@ -19,17 +19,24 @@ namespace MadWizard.WinUSBNet
 
         // TODO: disposed exception when disposed
 
-        private Control _parent;
         private USBNotifier _notifier;
         private Guid _guid;
         private IntPtr _notifyHandle;
 
+        private const int WM_NCDESTROY = 0x0082;
+
         public DeviceNotifyHook(USBNotifier notifier, Control parent, Guid guid)
         {
-            _parent = parent;
             _guid = guid;
-            _parent.HandleCreated += new EventHandler(this.OnHandleCreated);
-            _parent.HandleDestroyed += new EventHandler(this.OnHandleDestroyed);
+            parent.HandleCreated += new EventHandler(this.OnHandleCreated);
+            parent.HandleDestroyed += new EventHandler(this.OnHandleDestroyed);
+            _notifier = notifier;
+        }
+        
+        public DeviceNotifyHook(USBNotifier notifier, IntPtr windowHandle, Guid guid)
+        {
+            _guid = guid;
+            RegisterNotify(windowHandle);   // TODO handle StopNotify on handle destroy
             _notifier = notifier;
         }
 
@@ -39,20 +46,13 @@ namespace MadWizard.WinUSBNet
         }
 
         // Listen for the control's window creation and then hook into it.
-        internal void OnHandleCreated(object sender, EventArgs e)
+        private void OnHandleCreated(object sender, EventArgs e)
         {
             try
             {
                 // Window is now created, assign handle to NativeWindow.
                 IntPtr handle = ((Control)sender).Handle;
-                AssignHandle(handle);
-
-                if (_notifyHandle != IntPtr.Zero)
-                {
-                    API.DeviceManagement.StopDeviceDeviceNotifications(_notifyHandle);
-                    _notifyHandle = IntPtr.Zero;
-                }
-                API.DeviceManagement.RegisterForDeviceNotifications(handle, _guid, ref _notifyHandle);
+                RegisterNotify(handle);
             }
             catch (API.APIException ex)
             {
@@ -60,17 +60,12 @@ namespace MadWizard.WinUSBNet
             }
         }
 
-        internal void OnHandleDestroyed(object sender, EventArgs e)
+        private void OnHandleDestroyed(object sender, EventArgs e)
         {
             try
             {
                 // Window was destroyed, release hook.
-                ReleaseHandle();
-                if (_notifyHandle != IntPtr.Zero)
-                {
-                    API.DeviceManagement.StopDeviceDeviceNotifications(_notifyHandle);
-                    _notifyHandle = IntPtr.Zero;
-                }
+                StopNotify();
             }
             catch (API.APIException ex)
             {
@@ -78,6 +73,27 @@ namespace MadWizard.WinUSBNet
             }
         }
 
+        private void RegisterNotify(IntPtr handle)
+        {
+            AssignHandle(handle);
+
+            if (_notifyHandle != IntPtr.Zero)
+            {
+                API.DeviceManagement.StopDeviceDeviceNotifications(_notifyHandle);
+                _notifyHandle = IntPtr.Zero;
+            }
+            API.DeviceManagement.RegisterForDeviceNotifications(handle, _guid, ref _notifyHandle);
+        }
+
+        private void StopNotify()
+        {
+            //ReleaseHandle();
+            if (_notifyHandle != IntPtr.Zero)
+            {
+                API.DeviceManagement.StopDeviceDeviceNotifications(_notifyHandle);
+                _notifyHandle = IntPtr.Zero;
+            }
+        }
 
         protected override void WndProc(ref Message m)
         {
@@ -87,6 +103,17 @@ namespace MadWizard.WinUSBNet
             {
                 case API.DeviceManagement.WM_DEVICECHANGE:
                     _notifier.HandleDeviceChange(m);
+                    break;
+                case WM_NCDESTROY:
+                    // Note: when a control is used, OnHandleDestroyed will be called and the
+                    // handle is already released from NativeWindow. In that case, this 
+                    // WM_NCDESTROY message will not be caught here. This is no problem since
+                    // StopNotify is already called. Even if it does, calling it twice does not cause
+                    // problems.
+                    // When a window handle is used instead of a Control the OnHandle events will not
+                    // fire and this handler is necessary to release the handle and stop notifications
+                    // when the window is destroyed.
+                    StopNotify();
                     break;
             }
             base.WndProc(ref m);
