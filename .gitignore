@@ -220,3 +220,7 @@ pip-log.txt
 
 #VS Code
 .vscode/
+
+HelpProject/output
+WinUSBNet/*.nupkg
+
