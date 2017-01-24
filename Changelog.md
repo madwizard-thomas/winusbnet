@@ -1,6 +1,10 @@
 # Changelog
 
-## 1.0.2
+## 1.0.3 (2017-01-24)
+
+* Allow raw window handle for USBNotifier
+
+## 1.0.2 (2016-02-14)
 
 * Proper use of language ID in string descriptors (issue #8, pr #14)
 * Device notification handle bugfix (issue #9)
