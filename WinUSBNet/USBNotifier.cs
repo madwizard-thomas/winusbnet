@@ -156,7 +156,7 @@ namespace MadWizard.WinUSBNet
                 Arrival(this, new USBEvent(USBEventType.DeviceArrival, _guid, devicePath));
         }
         /// <summary>
-        /// Trigggers the removal event
+        /// Triggers the removal event
         /// </summary>
         /// <param name="devicePath">Device pathname of the device that has been connected</param>
         protected void OnRemoval(string devicePath)

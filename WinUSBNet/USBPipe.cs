@@ -161,7 +161,7 @@ namespace MadWizard.WinUSBNet
         /// <param name="length">Length of the data to transfer.</param>
         /// <param name="userCallback">An optional asynchronous callback, to be called when the operation is complete. Can be null if no callback is required.</param>
         /// <param name="stateObject">A user-provided object that distinguishes this particular asynchronous operation. Can be null if not required.</param>
-        /// <returns>An <see cref="IAsyncResult"/> object repesenting the asynchronous operation, which could still be pending.</returns>
+        /// <returns>An <see cref="IAsyncResult"/> object representing the asynchronous operation, which could still be pending.</returns>
         /// <remarks>This method always completes immediately even if the operation is still pending. The <see cref="IAsyncResult"/> object returned represents the operation
         /// and must be passed to <see cref="EndRead"/> to retrieve the result of the operation. For every call to this method a matching call to
         /// <see cref="EndRead"/> must be made. When <paramref name="userCallback"/> specifies a callback function, this function will be called when the operation is completed. The optional
@@ -193,13 +193,13 @@ namespace MadWizard.WinUSBNet
         /// <summary>
         /// Waits for a pending asynchronous read operation to complete.
         /// </summary>
-        /// <param name="asyncResult">The <see cref="IAsyncResult"/> object representing the asynchonous operation,
+        /// <param name="asyncResult">The <see cref="IAsyncResult"/> object representing the asynchronous operation,
         /// as returned by <see cref="BeginRead"/>.</param>
         /// <returns>The number of bytes transfered during the operation.</returns>
         /// <remarks>Every call to <see cref="BeginRead"/> must have a matching call to <see cref="EndRead"/> to dispose
         /// of any resources used and to retrieve the result of the operation. When the operation was successful the method returns the number
         /// of bytes that were transfered. If an error occurred during the operation this method will throw the exceptions that would
-        /// otherwise have ocurred during the operation. If the operation is not yet finished EndWrite will wait for the
+        /// otherwise have occurred during the operation. If the operation is not yet finished EndWrite will wait for the
         /// operation to finish before returning.</remarks>
         public int EndRead(IAsyncResult asyncResult)
         {
@@ -262,7 +262,7 @@ namespace MadWizard.WinUSBNet
         /// <param name="length">Length of the data to transfer.</param>
         /// <param name="userCallback">An optional asynchronous callback, to be called when the operation is complete. Can be null if no callback is required.</param>
         /// <param name="stateObject">A user-provided object that distinguishes this particular asynchronous operation. Can be null if not required.</param>
-        /// <returns>An <see cref="IAsyncResult"/> object repesenting the asynchronous operation, which could still be pending.</returns>
+        /// <returns>An <see cref="IAsyncResult"/> object representing the asynchronous operation, which could still be pending.</returns>
         /// <remarks>This method always completes immediately even if the operation is still pending. The <see cref="IAsyncResult"/> object returned represents the operation
         /// and must be passed to <see cref="EndWrite"/> to retrieve the result of the operation. For every call to this method a matching call to
         /// <see cref="EndWrite"/> must be made. When <paramref name="userCallback"/> specifies a callback function, this function will be called when the operation is completed. The optional
@@ -294,13 +294,13 @@ namespace MadWizard.WinUSBNet
         /// <summary>
         /// Waits for a pending asynchronous write operation to complete.
         /// </summary>
-        /// <param name="asyncResult">The <see cref="IAsyncResult"/> object representing the asynchonous operation,
+        /// <param name="asyncResult">The <see cref="IAsyncResult"/> object representing the asynchronous operation,
         /// as returned by <see cref="BeginWrite"/>.</param>
         /// <returns>The number of bytes transfered during the operation.</returns>
         /// <remarks>Every call to <see cref="BeginWrite"/> must have a matching call to <see cref="EndWrite"/> to dispose
         /// of any resources used and to retrieve the result of the operation. When the operation was successful the method returns the number
         /// of bytes that were transfered. If an error occurred during the operation this method will throw the exceptions that would
-        /// otherwise have ocurred during the operation. If the operation is not yet finished EndWrite will wait for the
+        /// otherwise have occurred during the operation. If the operation is not yet finished EndWrite will wait for the
         /// operation to finish before returning.</remarks>
         public void EndWrite(IAsyncResult asyncResult)
         {

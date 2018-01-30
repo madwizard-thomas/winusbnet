@@ -73,7 +73,7 @@ namespace MadWizard.WinUSBNet
         /// <summary>
         /// Interface class code as defined in the interface descriptor
         /// This property can be used if the class type is not defined
-        /// int the USBBaseClass enumeraiton
+        /// int the USBBaseClass enumeration
         /// </summary>
         public byte ClassValue
         {

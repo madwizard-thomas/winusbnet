@@ -78,7 +78,7 @@ namespace MadWizard.WinUSBNet
         /// <summary>
         /// Disposes the object
         /// </summary>
-        /// <param name="disposing">Indicates wether Dispose was called manually (true) or by
+        /// <param name="disposing">Indicates whether Dispose was called manually (true) or by
         /// the garbage collector (false) via the destructor.</param>
         protected virtual void Dispose(bool disposing)
         {
@@ -233,7 +233,7 @@ namespace MadWizard.WinUSBNet
         /// <param name="length">Length of the data to transfer. Must be equal to or less than the length of <paramref name="buffer"/>. The setup packet's length member will be set to this length.</param>
         /// <param name="userCallback">An optional asynchronous callback, to be called when the control transfer is complete. Can be null if no callback is required.</param>
         /// <param name="stateObject">A user-provided object that distinguishes this particular asynchronous operation. Can be null if not required.</param>
-        /// <returns>An <see cref="IAsyncResult"/> object repesenting the asynchronous control transfer, which could still be pending.</returns>
+        /// <returns>An <see cref="IAsyncResult"/> object representing the asynchronous control transfer, which could still be pending.</returns>
         /// <remarks>This method always completes immediately even if the operation is still pending. The <see cref="IAsyncResult"/> object returned represents the operation
         /// and must be passed to <see cref="EndControlTransfer"/> to retrieve the result of the operation. For every call to this method a matching call to
         /// <see cref="EndControlTransfer"/> must be made. When <paramref name="userCallback"/> specifies a callback function, this function will be called when the operation is completed. The optional
@@ -280,7 +280,7 @@ namespace MadWizard.WinUSBNet
         /// be set to the length of this buffer. Note: This buffer is not allowed to change for the duration of the asynchronous operation. </param>
         /// <param name="userCallback">An optional asynchronous callback, to be called when the control transfer is complete. Can be null if no callback is required.</param>
         /// <param name="stateObject">A user-provided object that distinguishes this particular asynchronous operation. Can be null if not required.</param>
-        /// <returns>An <see cref="IAsyncResult"/> object repesenting the asynchronous control transfer, which could still be pending.</returns>
+        /// <returns>An <see cref="IAsyncResult"/> object representing the asynchronous control transfer, which could still be pending.</returns>
         /// <remarks>This method always completes immediately even if the operation is still pending. The <see cref="IAsyncResult"/> object returned represents the operation
         /// and must be passed to <see cref="EndControlTransfer"/> to retrieve the result of the operation. For every call to this method a matching call to
         /// <see cref="EndControlTransfer"/> must be made. When <paramref name="userCallback"/> specifies a callback function, this function will be called when the operation is completed. The optional
@@ -296,13 +296,13 @@ namespace MadWizard.WinUSBNet
         /// <summary>
         /// Waits for a pending asynchronous control transfer to complete.
         /// </summary>
-        /// <param name="asyncResult">The <see cref="IAsyncResult"/> object representing the asynchonous operation,
+        /// <param name="asyncResult">The <see cref="IAsyncResult"/> object representing the asynchronous operation,
         /// as returned by one of the ControlIn, ControlOut or ControlTransfer methods.</param>
         /// <returns>The number of bytes transfered during the operation.</returns>
         /// <remarks>Every asynchronous control transfer must have a matching call to <see cref="EndControlTransfer"/> to dispose
         /// of any resources used and to retrieve the result of the operation. When the operation was successful the method returns the number
         /// of bytes that were transfered. If an error occurred during the operation this method will throw the exceptions that would
-        /// otherwise have ocurred during the operation. If the operation is not yet finished EndControlTransfer will wait for the
+        /// otherwise have occurred during the operation. If the operation is not yet finished EndControlTransfer will wait for the
         /// operation to finish before returning.</remarks>
         public int EndControlTransfer(IAsyncResult asyncResult)
         {
@@ -507,7 +507,7 @@ namespace MadWizard.WinUSBNet
         /// <param name="index">The index member in the setup packet. Its meaning depends on the request. Index should be between zero and 65535 (0xFFFF).</param>
         /// <param name="userCallback">An optional asynchronous callback, to be called when the control transfer is complete. Can be null if no callback is required.</param>
         /// <param name="stateObject">A user-provided object that distinguishes this particular asynchronous operation. Can be null if not required.</param>
-        /// <returns>An <see cref="IAsyncResult"/> object repesenting the asynchronous control transfer, which could still be pending.</returns>
+        /// <returns>An <see cref="IAsyncResult"/> object representing the asynchronous control transfer, which could still be pending.</returns>
         /// <remarks>This method always completes immediately even if the operation is still pending. The <see cref="IAsyncResult"/> object returned represents the operation
         /// and must be passed to <see cref="EndControlTransfer"/> to retrieve the result of the operation. For every call to this method a matching call to
         /// <see cref="EndControlTransfer"/> must be made. When <paramref name="userCallback"/> specifies a callback function, this function will be called when the operation is completed. The optional
@@ -533,7 +533,7 @@ namespace MadWizard.WinUSBNet
         /// <param name="length">Length of the data to transfer. Must be equal to or less than the length of <paramref name="buffer"/>. The setup packet's length member will be set to this length.</param>
         /// <param name="userCallback">An optional asynchronous callback, to be called when the control transfer is complete. Can be null if no callback is required.</param>
         /// <param name="stateObject">A user-provided object that distinguishes this particular asynchronous operation. Can be null if not required.</param>
-        /// <returns>An <see cref="IAsyncResult"/> object repesenting the asynchronous control transfer, which could still be pending.</returns>
+        /// <returns>An <see cref="IAsyncResult"/> object representing the asynchronous control transfer, which could still be pending.</returns>
         /// <remarks>This method always completes immediately even if the operation is still pending. The <see cref="IAsyncResult"/> object returned represents the operation
         /// and must be passed to <see cref="EndControlTransfer"/> to retrieve the result of the operation. For every call to this method a matching call to
         /// <see cref="EndControlTransfer"/> must be made. When <paramref name="userCallback"/> specifies a callback function, this function will be called when the operation is completed. The optional
@@ -556,7 +556,7 @@ namespace MadWizard.WinUSBNet
         /// <param name="buffer">The buffer that will receive the data transfered. The setup packet's length member will be set to the length of this buffer.</param>
         /// <param name="userCallback">An optional asynchronous callback, to be called when the control transfer is complete. Can be null if no callback is required.</param>
         /// <param name="stateObject">A user-provided object that distinguishes this particular asynchronous operation. Can be null if not required.</param>
-        /// <returns>An <see cref="IAsyncResult"/> object repesenting the asynchronous control transfer, which could still be pending.</returns>
+        /// <returns>An <see cref="IAsyncResult"/> object representing the asynchronous control transfer, which could still be pending.</returns>
         /// <remarks>This method always completes immediately even if the operation is still pending. The <see cref="IAsyncResult"/> object returned represents the operation
         /// and must be passed to <see cref="EndControlTransfer"/> to retrieve the result of the operation. For every call to this method a matching call to
         /// <see cref="EndControlTransfer"/> must be made. When <paramref name="userCallback"/> specifies a callback function, this function will be called when the operation is completed. The optional
@@ -579,7 +579,7 @@ namespace MadWizard.WinUSBNet
         /// <param name="index">The index member in the setup packet. Its meaning depends on the request. Index should be between zero and 65535 (0xFFFF).</param>
         /// <param name="userCallback">An optional asynchronous callback, to be called when the control transfer is complete. Can be null if no callback is required.</param>
         /// <param name="stateObject">A user-provided object that distinguishes this particular asynchronous operation. Can be null if not required.</param>
-        /// <returns>An <see cref="IAsyncResult"/> object repesenting the asynchronous control transfer, which could still be pending.</returns>
+        /// <returns>An <see cref="IAsyncResult"/> object representing the asynchronous control transfer, which could still be pending.</returns>
         /// <remarks>This method always completes immediately even if the operation is still pending. The <see cref="IAsyncResult"/> object returned represents the operation
         /// and must be passed to <see cref="EndControlTransfer"/> to retrieve the result of the operation. For every call to this method a matching call to
         /// <see cref="EndControlTransfer"/> must be made. When <paramref name="userCallback"/> specifies a callback function, this function will be called when the operation is completed. The optional
@@ -603,7 +603,7 @@ namespace MadWizard.WinUSBNet
         /// <param name="length">Length of the data to transfer. Must be equal to or less than the length of <paramref name="buffer"/>. The setup packet's length member will be set to this length.</param>
         /// <param name="userCallback">An optional asynchronous callback, to be called when the control transfer is complete. Can be null if no callback is required.</param>
         /// <param name="stateObject">A user-provided object that distinguishes this particular asynchronous operation. Can be null if not required.</param>
-        /// <returns>An <see cref="IAsyncResult"/> object repesenting the asynchronous control transfer, which could still be pending.</returns>
+        /// <returns>An <see cref="IAsyncResult"/> object representing the asynchronous control transfer, which could still be pending.</returns>
         /// <remarks>This method always completes immediately even if the operation is still pending. The <see cref="IAsyncResult"/> object returned represents the operation
         /// and must be passed to <see cref="EndControlTransfer"/> to retrieve the result of the operation. For every call to this method a matching call to
         /// <see cref="EndControlTransfer"/> must be made. When <paramref name="userCallback"/> specifies a callback function, this function will be called when the operation is completed. The optional
@@ -626,7 +626,7 @@ namespace MadWizard.WinUSBNet
         /// <param name="buffer">The buffer that contains the data to be transfered. The setup packet's length member will be set to the length of this buffer.</param>
         /// <param name="userCallback">An optional asynchronous callback, to be called when the control transfer is complete. Can be null if no callback is required.</param>
         /// <param name="stateObject">A user-provided object that distinguishes this particular asynchronous operation. Can be null if not required.</param>
-        /// <returns>An <see cref="IAsyncResult"/> object repesenting the asynchronous control transfer, which could still be pending.</returns>
+        /// <returns>An <see cref="IAsyncResult"/> object representing the asynchronous control transfer, which could still be pending.</returns>
         /// <remarks>This method always completes immediately even if the operation is still pending. The <see cref="IAsyncResult"/> object returned represents the operation
         /// and must be passed to <see cref="EndControlTransfer"/> to retrieve the result of the operation. For every call to this method a matching call to
         /// <see cref="EndControlTransfer"/> must be made. When <paramref name="userCallback"/> specifies a callback function, this function will be called when the operation is completed. The optional
@@ -649,7 +649,7 @@ namespace MadWizard.WinUSBNet
         /// <param name="index">The index member in the setup packet. Its meaning depends on the request. Index should be between zero and 65535 (0xFFFF).</param>
         /// <param name="userCallback">An optional asynchronous callback, to be called when the control transfer is complete. Can be null if no callback is required.</param>
         /// <param name="stateObject">A user-provided object that distinguishes this particular asynchronous operation. Can be null if not required.</param>
-        /// <returns>An <see cref="IAsyncResult"/> object repesenting the asynchronous control transfer, which could still be pending.</returns>
+        /// <returns>An <see cref="IAsyncResult"/> object representing the asynchronous control transfer, which could still be pending.</returns>
         /// <remarks>This method always completes immediately even if the operation is still pending. The <see cref="IAsyncResult"/> object returned represents the operation
         /// and must be passed to <see cref="EndControlTransfer"/> to retrieve the result of the operation. For every call to this method a matching call to
         /// <see cref="EndControlTransfer"/> must be made. When <paramref name="userCallback"/> specifies a callback function, this function will be called when the operation is completed. The optional
