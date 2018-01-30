@@ -5,8 +5,6 @@
  *  http://www.opensource.org/licenses/mit-license.php
  */
 
-using System;
-
 
 namespace MadWizard.WinUSBNet
 {
@@ -75,6 +73,5 @@ namespace MadWizard.WinUSBNet
 
         /// <summary>Vendor specific base class (0xFF)</summary>
         VendorSpecific = 0xFF,
-    };
-
+    }
 }

@@ -6,7 +6,6 @@
  */
 
 using System;
-using System.Text;
 using System.Collections;
 using System.Collections.Generic;
 
@@ -45,7 +44,6 @@ namespace MadWizard.WinUSBNet
                 {
                     return _interfaces[_index];
                 }
-
                 catch (IndexOutOfRangeException)
                 {
                     throw new InvalidOperationException();

@@ -33,7 +33,7 @@ namespace MadWizard.WinUSBNet.API
         public byte iProduct;
         public byte iSerialNumber;
         public byte bNumConfigurations;
-    };
+    }
 
     [StructLayout(LayoutKind.Sequential)]
     struct USB_CONFIGURATION_DESCRIPTOR
@@ -60,7 +60,8 @@ namespace MadWizard.WinUSBNet.API
         public byte bInterfaceSubClass;
         public byte bInterfaceProtocol;
         public byte iInterface;
-    };
+    }
+
     enum USBD_PIPE_TYPE : int
     {
         UsbdPipeTypeControl,
@@ -68,6 +69,7 @@ namespace MadWizard.WinUSBNet.API
         UsbdPipeTypeBulk,
         UsbdPipeTypeInterrupt,
     }
+
     [StructLayout(LayoutKind.Sequential)]
     struct WINUSB_PIPE_INFORMATION
     {

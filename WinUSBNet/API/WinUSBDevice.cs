@@ -14,7 +14,6 @@ using Microsoft.Win32.SafeHandles;
 using System.Runtime.InteropServices;
 using System.Collections.Generic;
 using System.Threading;
-using System.ComponentModel;
 
 namespace MadWizard.WinUSBNet.API
 {

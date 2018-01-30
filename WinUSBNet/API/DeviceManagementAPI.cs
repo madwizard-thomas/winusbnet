@@ -74,14 +74,14 @@ namespace MadWizard.WinUSBNet.API
         private struct SP_DEVICE_INTERFACE_DATA
         {
             internal Int32 cbSize;
-            internal System.Guid InterfaceClassGuid;
+            internal Guid InterfaceClassGuid;
             internal Int32 Flags;
             internal IntPtr Reserved;
         }
         private struct SP_DEVINFO_DATA
         {
             internal Int32 cbSize;
-            internal System.Guid ClassGuid;
+            internal Guid ClassGuid;
             internal Int32 DevInst;
             internal IntPtr Reserved;
         }
@@ -111,8 +111,7 @@ namespace MadWizard.WinUSBNet.API
             SPDRP_MAXIMUM_PROPERTY = 0x00000013,
 
             SPDRP_ENUMERATOR_NAME = 0x16,
-        };
-
+        }
 
         private enum RegTypes : int
         {
@@ -120,7 +119,6 @@ namespace MadWizard.WinUSBNet.API
             REG_SZ = 1,
             REG_MULTI_SZ = 7
         }
-
 
         [DllImport("user32.dll", CharSet = CharSet.Unicode, SetLastError = true)]
         private static extern IntPtr RegisterDeviceNotification(IntPtr hRecipient, IntPtr NotificationFilter, Int32 Flags);

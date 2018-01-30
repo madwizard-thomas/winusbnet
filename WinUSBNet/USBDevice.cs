@@ -7,7 +7,6 @@
 
 using System;
 using System.Collections.Generic;
-using System.Text;
 
 namespace MadWizard.WinUSBNet
 {
@@ -27,9 +26,6 @@ namespace MadWizard.WinUSBNet
             get;
             private set;
         }
-
-
-
 
         /// <summary>
         /// Collection of all interfaces available on the USB device

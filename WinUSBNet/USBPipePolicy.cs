@@ -6,9 +6,6 @@
  */
 
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 
 namespace MadWizard.WinUSBNet
 {
@@ -93,7 +90,7 @@ namespace MadWizard.WinUSBNet
             get
             {
                 RequireDirectionIn();
-                return _device.InternalDevice.GetPipePolicyBool(_interfaceIndex, _pipeID, API.POLICY_TYPE.AUTO_FLUSH); ;
+                return _device.InternalDevice.GetPipePolicyBool(_interfaceIndex, _pipeID, API.POLICY_TYPE.AUTO_FLUSH);
             }
             set
             {
@@ -150,7 +147,7 @@ namespace MadWizard.WinUSBNet
         {
             get
             {
-                return _device.InternalDevice.GetPipePolicyBool(_interfaceIndex, _pipeID, API.POLICY_TYPE.RAW_IO); ;
+                return _device.InternalDevice.GetPipePolicyBool(_interfaceIndex, _pipeID, API.POLICY_TYPE.RAW_IO);
             }
             set
             {

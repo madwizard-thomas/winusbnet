@@ -48,7 +48,7 @@ namespace MadWizard.WinUSBNet.API
                 // in the strucutre that are not part of dbch_name and dividing by 2 because there are
                 // 2 bytes per character.
 
-                stringSize = System.Convert.ToInt32((devBroadcastHeader.dbch_size - 32) / 2);
+                stringSize = Convert.ToInt32((devBroadcastHeader.dbch_size - 32) / 2);
 
                 // The dbcc_name parameter of devBroadcastDeviceInterface contains the device name.
                 // Trim dbcc_name to match the size of the String.
