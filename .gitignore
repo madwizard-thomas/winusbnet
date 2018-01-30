@@ -41,6 +41,9 @@ local.properties
 *.user
 *.sln.docstates
 
+# Exclude the folder that is used by Visual Studio 2015 and up for user-specific files
+.vs/
+
 # Build results
 
 [Dd]ebug/
