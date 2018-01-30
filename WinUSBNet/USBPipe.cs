@@ -139,9 +139,9 @@ namespace MadWizard.WinUSBNet
 
             int bufferLength = buffer.Length;
             if (offset < 0 || offset >= bufferLength)
-                throw new ArgumentOutOfRangeException("Offset of data to read is outside the buffer boundaries.");
+                throw new ArgumentOutOfRangeException(nameof(offset), "Offset of data to read is outside the buffer boundaries.");
             if (length < 0 || (offset + length) > bufferLength)
-                throw new ArgumentOutOfRangeException("Length of data to read is outside the buffer boundaries.");
+                throw new ArgumentOutOfRangeException(nameof(length), "Length of data to read is outside the buffer boundaries.");
         }
         private void CheckWriteParams(byte[] buffer, int offset, int length)
         {
@@ -150,10 +150,9 @@ namespace MadWizard.WinUSBNet
 
             int bufferLength = buffer.Length;
             if (offset < 0 || offset >= bufferLength)
-                throw new ArgumentOutOfRangeException("Offset of data to write is outside the buffer boundaries.");
+                throw new ArgumentOutOfRangeException(nameof(offset), "Offset of data to write is outside the buffer boundaries.");
             if (length < 0 || (offset + length) > bufferLength)
-                throw new ArgumentOutOfRangeException("Length of data to write is outside the buffer boundaries.");
-
+                throw new ArgumentOutOfRangeException(nameof(length), "Length of data to write is outside the buffer boundaries.");
         }
 
         /// <summary>Initiates an asynchronous read operation on the pipe. </summary>

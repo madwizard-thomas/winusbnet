@@ -158,13 +158,13 @@ namespace MadWizard.WinUSBNet
         private void CheckControlParams(int value, int index, byte[] buffer, int length)
         {
             if (value < ushort.MinValue || value > ushort.MaxValue)
-                throw new ArgumentOutOfRangeException("Value parameter out of range.");
+                throw new ArgumentOutOfRangeException(nameof(value), "Value parameter out of range.");
             if (index < ushort.MinValue || index > ushort.MaxValue)
-                throw new ArgumentOutOfRangeException("Index parameter out of range.");
+                throw new ArgumentOutOfRangeException(nameof(index), "Index parameter out of range.");
             if (length > buffer.Length)
-                throw new ArgumentOutOfRangeException("Length parameter is larger than the size of the buffer.");
+                throw new ArgumentOutOfRangeException(nameof(length), "Length parameter is larger than the size of the buffer.");
             if (length > ushort.MaxValue)
-                throw new ArgumentOutOfRangeException("Length too large");
+                throw new ArgumentOutOfRangeException(nameof(length), "Length too large");
         }
 
         /// <summary>
@@ -181,7 +181,7 @@ namespace MadWizard.WinUSBNet
             set
             {
                 if (value < 0)
-                    throw new ArgumentOutOfRangeException("Control pipe timeout cannot be negative.");
+                    throw new ArgumentOutOfRangeException(nameof(value), "Control pipe timeout cannot be negative.");
                 _wuDevice.SetPipePolicy(0, 0x00, API.POLICY_TYPE.PIPE_TRANSFER_TIMEOUT, (uint)value);
             }
         }

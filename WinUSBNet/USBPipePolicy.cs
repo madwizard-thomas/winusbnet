@@ -1,4 +1,4 @@
-﻿/*  WinUSBNet library
+/*  WinUSBNet library
  *  (C) 2010 Thomas Bleeker (www.madwizard.org)
  *
  *  Licensed under the MIT license, see license.txt or:
@@ -131,7 +131,7 @@ namespace MadWizard.WinUSBNet
             set
             {
                 if (value < 0)
-                    throw new ArgumentOutOfRangeException("Pipe transfer timeout cannot be negative.");
+                    throw new ArgumentOutOfRangeException(nameof(value), "Pipe transfer timeout cannot be negative.");
                 _device.InternalDevice.SetPipePolicy(_interfaceIndex, _pipeID, API.POLICY_TYPE.PIPE_TRANSFER_TIMEOUT, (uint)value);
             }
         }
