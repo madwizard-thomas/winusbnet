@@ -1,6 +1,6 @@
-﻿/*  WinUSBNet library
+/*  WinUSBNet library
  *  (C) 2010 Thomas Bleeker (www.madwizard.org)
- *  
+ *
  *  Licensed under the MIT license, see license.txt or:
  *  http://www.opensource.org/licenses/mit-license.php
  */
@@ -19,7 +19,7 @@ namespace MadWizard.WinUSBNet
     /// <param name="sender">The source of the event</param>
     /// <param name="e">Details of the event</param>
     public delegate void USBEventHandler(object sender, USBEvent e);
-    
+
     /// <summary>
     /// Event type enumeration for WinUSB events
     /// </summary>
@@ -65,7 +65,7 @@ namespace MadWizard.WinUSBNet
     }
 
     /// <summary>
-    /// Helper class to receive notifications on USB device changes such as 
+    /// Helper class to receive notifications on USB device changes such as
     /// connecting or removing a device.
     /// </summary>
     public class USBNotifier : IDisposable
@@ -95,11 +95,11 @@ namespace MadWizard.WinUSBNet
         }
 
         /// <summary>
-        /// Constructs a new USBNotifier that will watch for events on 
-        /// devices matching the given interface GUID. A Windows Forms control 
+        /// Constructs a new USBNotifier that will watch for events on
+        /// devices matching the given interface GUID. A Windows Forms control
         /// is needed since the notifier relies on window messages.
         /// </summary>
-        /// <param name="control">A control that will be used internally for device notification messages. 
+        /// <param name="control">A control that will be used internally for device notification messages.
         /// You can use a Form object for example.</param>
         /// <param name="guidString">The interface GUID string of the devices to watch.</param>
         public USBNotifier(Control control, string guidString) :
@@ -110,11 +110,11 @@ namespace MadWizard.WinUSBNet
 
 
         /// <summary>
-        /// Constructs a new USBNotifier that will watch for events on 
-        /// devices matching the given interface GUID. A Windows Forms control 
+        /// Constructs a new USBNotifier that will watch for events on
+        /// devices matching the given interface GUID. A Windows Forms control
         /// is needed since the notifier relies on window messages.
         /// </summary>
-        /// <param name="control">A control that will be used internally for device notification messages. 
+        /// <param name="control">A control that will be used internally for device notification messages.
         /// You can use a Form object for example.</param>
         /// <param name="guid">The interface GUID of the devices to watch.</param>
         public USBNotifier(Control control, Guid guid)
@@ -124,7 +124,7 @@ namespace MadWizard.WinUSBNet
         }
 
         /// <summary>
-        /// Constructs a new USBNotifier that will watch for events on 
+        /// Constructs a new USBNotifier that will watch for events on
         /// devices matching the given interface GUID. A window handle
         /// is needed since the notifier relies on window messages.
         /// </summary>
@@ -137,8 +137,8 @@ namespace MadWizard.WinUSBNet
         }
 
         /// <summary>
-        /// Constructs a new USBNotifier that will watch for events on 
-        /// devices matching the given interface GUID. A window handle 
+        /// Constructs a new USBNotifier that will watch for events on
+        /// devices matching the given interface GUID. A window handle
         /// is needed since the notifier relies on window messages.
         /// </summary>
         /// <param name="windowHandle">Window handle of a window that will be used internally for device notification messages.</param>
@@ -148,7 +148,7 @@ namespace MadWizard.WinUSBNet
         {
             // Handled in other constructor
         }
-        
+
         /// <summary>
         /// Triggers the arrival event
         /// </summary>
@@ -191,13 +191,13 @@ namespace MadWizard.WinUSBNet
         }
 
         /// <summary>
-        /// Disposes the USBNotifier object and frees all resources. 
+        /// Disposes the USBNotifier object and frees all resources.
         /// Call this method when the object is no longer needed.
         /// </summary>
         public void Dispose()
         {
             Dispose(true);
-            GC.SuppressFinalize(this); 
+            GC.SuppressFinalize(this);
         }
 
         /// <summary>

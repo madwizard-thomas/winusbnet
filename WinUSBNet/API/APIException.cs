@@ -1,6 +1,6 @@
-﻿/*  WinUSBNet library
+/*  WinUSBNet library
  *  (C) 2010 Thomas Bleeker (www.madwizard.org)
- *  
+ *
  *  Licensed under the MIT license, see license.txt or:
  *  http://www.opensource.org/licenses/mit-license.php
  */
@@ -24,8 +24,8 @@ namespace MadWizard.WinUSBNet.API
         public APIException(string message) :
             base(message)
         {
-            
         }
+
         public APIException(string message, Exception innerException) : base(message, innerException)
         {
         }
@@ -34,12 +34,11 @@ namespace MadWizard.WinUSBNet.API
         {
             return APIException.Win32(message, Marshal.GetLastWin32Error());
         }
-        
-        public static APIException Win32(string message, int errorCode) 
+
+        public static APIException Win32(string message, int errorCode)
         {
             return new APIException(message, new Win32Exception(errorCode));
-            
-        }
 
+        }
     }
 }

@@ -1,6 +1,6 @@
-﻿/*  WinUSBNet library
+/*  WinUSBNet library
  *  (C) 2010 Thomas Bleeker (www.madwizard.org)
- *  
+ *
  *  Licensed under the MIT license, see license.txt or:
  *  http://www.opensource.org/licenses/mit-license.php
  */
@@ -10,6 +10,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading;
+
 namespace MadWizard.WinUSBNet
 {
     internal class USBAsyncResult : IAsyncResult, IDisposable
@@ -21,7 +22,7 @@ namespace MadWizard.WinUSBNet
         private ManualResetEvent _waitEvent;
         private int _bytesTransfered;
         private Exception _error;
-        
+
         public USBAsyncResult(AsyncCallback userCallback, object stateObject)
         {
             _stateObject = stateObject;
@@ -33,7 +34,7 @@ namespace MadWizard.WinUSBNet
 
         public object AsyncState
         {
-            get 
+            get
             {
                 return _stateObject;
             }
@@ -55,7 +56,7 @@ namespace MadWizard.WinUSBNet
         }
         public WaitHandle AsyncWaitHandle
         {
-            get 
+            get
             {
                 lock (this)
                 {
@@ -68,7 +69,7 @@ namespace MadWizard.WinUSBNet
 
         public bool CompletedSynchronously
         {
-            get 
+            get
             {
                 lock (this)
                 {
@@ -79,7 +80,7 @@ namespace MadWizard.WinUSBNet
 
         public bool IsCompleted
         {
-            get 
+            get
             {
                 lock (this)
                 {
@@ -114,10 +115,12 @@ namespace MadWizard.WinUSBNet
             }
 
         }
+
         private void RunCallback(object state)
         {
             _userCallback(this);
         }
+
         protected virtual void Dispose(bool disposing)
         {
             if (disposing)
@@ -130,7 +133,5 @@ namespace MadWizard.WinUSBNet
                 }
             }
         }
-
-    
     }
 }

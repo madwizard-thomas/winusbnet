@@ -1,6 +1,6 @@
-﻿/*  WinUSBNet library
+/*  WinUSBNet library
  *  (C) 2010 Thomas Bleeker (www.madwizard.org)
- *  
+ *
  *  Licensed under the MIT license, see license.txt or:
  *  http://www.opensource.org/licenses/mit-license.php
  */
@@ -82,7 +82,7 @@ namespace MadWizard.WinUSBNet
         }
 
         /// <summary>
-        /// Finds the first interface with that matches the device class 
+        /// Finds the first interface with that matches the device class
         /// given by the <paramref name="interfaceClass"/> parameter.
         /// </summary>
         /// <param name="interfaceClass">The device class the interface should match</param>
@@ -100,11 +100,11 @@ namespace MadWizard.WinUSBNet
         }
 
         /// <summary>
-        /// Finds all interfaces matching the device class given by the 
+        /// Finds all interfaces matching the device class given by the
         /// <paramref name="interfaceClass"/> parameter.
         /// </summary>
         /// <param name="interfaceClass">The device class the interface should match</param>
-        /// <returns>An array of USBInterface objects matching the device class, or an empty 
+        /// <returns>An array of USBInterface objects matching the device class, or an empty
         /// array if no interface matches.</returns>
         public USBInterface[] FindAll(USBBaseClass interfaceClass)
         {

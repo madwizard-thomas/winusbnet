@@ -1,6 +1,6 @@
-﻿/*  WinUSBNet library
+/*  WinUSBNet library
  *  (C) 2010 Thomas Bleeker (www.madwizard.org)
- *  
+ *
  *  Licensed under the MIT license, see license.txt or:
  *  http://www.opensource.org/licenses/mit-license.php
  */
@@ -30,7 +30,7 @@ namespace MadWizard.WinUSBNet
 
 
 
-        
+
         /// <summary>
         /// Collection of all interfaces available on the USB device
         /// </summary>
@@ -153,7 +153,7 @@ namespace MadWizard.WinUSBNet
                 //if (descriptor.iInterface != 0)
                 //    _wuDevice.GetStringDescriptor(descriptor.iInterface);
                 USBPipeCollection pipeCollection = new USBPipeCollection(interfacePipes);
-                interfaces[i] = new USBInterface(this, i, descriptor, pipeCollection); 
+                interfaces[i] = new USBInterface(this, i, descriptor, pipeCollection);
             }
             Pipes = new USBPipeCollection(allPipes.ToArray());
             Interfaces = new USBInterfaceCollection(interfaces);
@@ -201,16 +201,16 @@ namespace MadWizard.WinUSBNet
         /// <param name="request">The setup packet device request.</param>
         /// <param name="value">The value member in the setup packet. Its meaning depends on the request. Value should be between zero and 65535 (0xFFFF).</param>
         /// <param name="index">The index member in the setup packet. Its meaning depends on the request. Index should be between zero and 65535 (0xFFFF).</param>
-        /// <param name="buffer">The data to transfer in the data stage of the control. When the transfer is in the IN direction the data received will be 
+        /// <param name="buffer">The data to transfer in the data stage of the control. When the transfer is in the IN direction the data received will be
         /// written to this buffer. For an OUT direction transfer the contents of the buffer are written sent through the pipe.</param>
-        /// <param name="length">Length of the data to transfer. Must be equal to or less than the length of <paramref name="buffer"/>. 
+        /// <param name="length">Length of the data to transfer. Must be equal to or less than the length of <paramref name="buffer"/>.
         /// The setup packet's length member will be set to this length.</param>
         public void ControlTransfer(byte requestType, byte request, int value, int index, byte[] buffer, int length)
         {
             // Parameters are int and not ushort because ushort is not CLS compliant.
             CheckNotDisposed();
             CheckControlParams(value, index, buffer, length);
-            
+
             try
             {
                 _wuDevice.ControlTransfer(requestType, request, (ushort)value, (ushort)index, (ushort)length, buffer);
@@ -224,14 +224,14 @@ namespace MadWizard.WinUSBNet
         /// <summary>
         /// Initiates an asynchronous control transfer over the default control endpoint. This method allows both IN and OUT direction transfers, depending
         /// on the highest bit of the <paramref name="requestType"/> parameter. Alternatively, <see cref="BeginControlIn(byte,byte,int,int,byte[],int,AsyncCallback,object)"/> and
-        /// <see cref="BeginControlIn(byte,byte,int,int,byte[],int,AsyncCallback,object)"/> can be used for asynchronous control transfers in a specific direction, which is 
-        /// the recommended way because it prevents using the wrong direction accidentally. Use the BeginControlTransfer method when the direction is not 
+        /// <see cref="BeginControlIn(byte,byte,int,int,byte[],int,AsyncCallback,object)"/> can be used for asynchronous control transfers in a specific direction, which is
+        /// the recommended way because it prevents using the wrong direction accidentally. Use the BeginControlTransfer method when the direction is not
         /// known at compile time. </summary>
         /// <param name="requestType">The setup packet request type.</param>
         /// <param name="request">The setup packet device request.</param>
         /// <param name="value">The value member in the setup packet. Its meaning depends on the request. Value should be between zero and 65535 (0xFFFF).</param>
         /// <param name="index">The index member in the setup packet. Its meaning depends on the request. Index should be between zero and 65535 (0xFFFF).</param>
-        /// <param name="buffer">The data to transfer in the data stage of the control. When the transfer is in the IN direction the data received will be 
+        /// <param name="buffer">The data to transfer in the data stage of the control. When the transfer is in the IN direction the data received will be
         /// written to this buffer. For an OUT direction transfer the contents of the buffer are written sent through the pipe. Note: This buffer is not allowed
         /// to change for the duration of the asynchronous operation.</param>
         /// <param name="length">Length of the data to transfer. Must be equal to or less than the length of <paramref name="buffer"/>. The setup packet's length member will be set to this length.</param>
@@ -241,7 +241,7 @@ namespace MadWizard.WinUSBNet
         /// <remarks>This method always completes immediately even if the operation is still pending. The <see cref="IAsyncResult"/> object returned represents the operation
         /// and must be passed to <see cref="EndControlTransfer"/> to retrieve the result of the operation. For every call to this method a matching call to
         /// <see cref="EndControlTransfer"/> must be made. When <paramref name="userCallback"/> specifies a callback function, this function will be called when the operation is completed. The optional
-        /// <paramref name="stateObject"/> parameter can be used to pass user-defined information to this callback or the <see cref="IAsyncResult"/>. The <see cref="IAsyncResult"/> 
+        /// <paramref name="stateObject"/> parameter can be used to pass user-defined information to this callback or the <see cref="IAsyncResult"/>. The <see cref="IAsyncResult"/>
         /// also provides an event handle (<see cref="IAsyncResult.AsyncWaitHandle" />) that will be triggered when the operation is complete as well.
         /// </remarks>
         public IAsyncResult BeginControlTransfer(byte requestType, byte request, int value, int index, byte[] buffer, int length, AsyncCallback userCallback, object stateObject)
@@ -251,7 +251,7 @@ namespace MadWizard.WinUSBNet
             CheckControlParams(value, index, buffer, length);
 
             USBAsyncResult result = new USBAsyncResult(userCallback, stateObject);
-            
+
             try
             {
                 _wuDevice.ControlTransferOverlapped(requestType, request, (ushort)value, (ushort)index, (ushort)length, buffer, result);
@@ -274,15 +274,15 @@ namespace MadWizard.WinUSBNet
         /// <summary>
         /// Initiates an asynchronous control transfer over the default control endpoint. This method allows both IN and OUT direction transfers, depending
         /// on the highest bit of the <paramref name="requestType"/> parameter. Alternatively, <see cref="BeginControlIn(byte,byte,int,int,byte[],int,AsyncCallback,object)"/> and
-        /// <see cref="BeginControlIn(byte,byte,int,int,byte[],int,AsyncCallback,object)"/> can be used for asynchronous control transfers in a specific direction, which is 
-        /// the recommended way because it prevents using the wrong direction accidentally. Use the BeginControlTransfer method when the direction is not 
+        /// <see cref="BeginControlIn(byte,byte,int,int,byte[],int,AsyncCallback,object)"/> can be used for asynchronous control transfers in a specific direction, which is
+        /// the recommended way because it prevents using the wrong direction accidentally. Use the BeginControlTransfer method when the direction is not
         /// known at compile time. </summary>
         /// <param name="requestType">The setup packet request type.</param>
         /// <param name="request">The setup packet device request.</param>
         /// <param name="value">The value member in the setup packet. Its meaning depends on the request. Value should be between zero and 65535 (0xFFFF).</param>
         /// <param name="index">The index member in the setup packet. Its meaning depends on the request. Index should be between zero and 65535 (0xFFFF).</param>
-        /// <param name="buffer">The data to transfer in the data stage of the control. When the transfer is in the IN direction the data received will be 
-        /// written to this buffer. For an OUT direction transfer the contents of the buffer are written sent through the pipe. The setup packet's length member will 
+        /// <param name="buffer">The data to transfer in the data stage of the control. When the transfer is in the IN direction the data received will be
+        /// written to this buffer. For an OUT direction transfer the contents of the buffer are written sent through the pipe. The setup packet's length member will
         /// be set to the length of this buffer. Note: This buffer is not allowed to change for the duration of the asynchronous operation. </param>
         /// <param name="userCallback">An optional asynchronous callback, to be called when the control transfer is complete. Can be null if no callback is required.</param>
         /// <param name="stateObject">A user-provided object that distinguishes this particular asynchronous operation. Can be null if not required.</param>
@@ -290,7 +290,7 @@ namespace MadWizard.WinUSBNet
         /// <remarks>This method always completes immediately even if the operation is still pending. The <see cref="IAsyncResult"/> object returned represents the operation
         /// and must be passed to <see cref="EndControlTransfer"/> to retrieve the result of the operation. For every call to this method a matching call to
         /// <see cref="EndControlTransfer"/> must be made. When <paramref name="userCallback"/> specifies a callback function, this function will be called when the operation is completed. The optional
-        /// <paramref name="stateObject"/> parameter can be used to pass user-defined information to this callback or the <see cref="IAsyncResult"/>. The <see cref="IAsyncResult"/> 
+        /// <paramref name="stateObject"/> parameter can be used to pass user-defined information to this callback or the <see cref="IAsyncResult"/>. The <see cref="IAsyncResult"/>
         /// also provides an event handle (<see cref="IAsyncResult.AsyncWaitHandle" />) that will be triggered when the operation is complete as well.
         /// </remarks>
         public IAsyncResult BeginControlTransfer(byte requestType, byte request, int value, int index, byte[] buffer, AsyncCallback userCallback, object stateObject)
@@ -306,9 +306,9 @@ namespace MadWizard.WinUSBNet
         /// as returned by one of the ControlIn, ControlOut or ControlTransfer methods.</param>
         /// <returns>The number of bytes transfered during the operation.</returns>
         /// <remarks>Every asynchronous control transfer must have a matching call to <see cref="EndControlTransfer"/> to dispose
-        /// of any resources used and to retrieve the result of the operation. When the operation was successful the method returns the number 
-        /// of bytes that were transfered. If an error occurred during the operation this method will throw the exceptions that would 
-        /// otherwise have ocurred during the operation. If the operation is not yet finished EndControlTransfer will wait for the 
+        /// of any resources used and to retrieve the result of the operation. When the operation was successful the method returns the number
+        /// of bytes that were transfered. If an error occurred during the operation this method will throw the exceptions that would
+        /// otherwise have ocurred during the operation. If the operation is not yet finished EndControlTransfer will wait for the
         /// operation to finish before returning.</remarks>
         public int EndControlTransfer(IAsyncResult asyncResult)
         {
@@ -347,7 +347,7 @@ namespace MadWizard.WinUSBNet
         /// <param name="request">The setup packet device request.</param>
         /// <param name="value">The value member in the setup packet. Its meaning depends on the request. Value should be between zero and 65535 (0xFFFF).</param>
         /// <param name="index">The index member in the setup packet. Its meaning depends on the request. Index should be between zero and 65535 (0xFFFF).</param>
-        /// <param name="buffer">The data to transfer in the data stage of the control. When the transfer is in the IN direction the data received will be 
+        /// <param name="buffer">The data to transfer in the data stage of the control. When the transfer is in the IN direction the data received will be
         /// written to this buffer. For an OUT direction transfer the contents of the buffer are written sent through the pipe. The length of this
         /// buffer is used as the number of bytes in the control transfer. The setup packet's length member will be set to this length as well.</param>
         public void ControlTransfer(byte requestType, byte request, int value, int index, byte[] buffer)
@@ -391,7 +391,7 @@ namespace MadWizard.WinUSBNet
         /// <param name="request">The setup packet device request.</param>
         /// <param name="value">The value member in the setup packet. Its meaning depends on the request. Value should be between zero and 65535 (0xFFFF).</param>
         /// <param name="index">The index member in the setup packet. Its meaning depends on the request. Index should be between zero and 65535 (0xFFFF).</param>
-        /// <param name="length">Length of the data to transfer. A buffer will be created with this length and the length member of the setup packet 
+        /// <param name="length">Length of the data to transfer. A buffer will be created with this length and the length member of the setup packet
         /// will be set to this length.</param>
         /// <returns>A buffer containing the data transfered.</returns>
         public byte[] ControlIn(byte requestType, byte request, int value, int index, int length)
@@ -412,7 +412,7 @@ namespace MadWizard.WinUSBNet
         /// <param name="value">The value member in the setup packet. Its meaning depends on the request. Value should be between zero and 65535 (0xFFFF).</param>
         /// <param name="index">The index member in the setup packet. Its meaning depends on the request. Index should be between zero and 65535 (0xFFFF).</param>
         /// <param name="buffer">The buffer that will receive the data transfered.</param>
-        /// <param name="length">Length of the data to transfer. The length member of the setup packet will be set to this length. The buffer specified 
+        /// <param name="length">Length of the data to transfer. The length member of the setup packet will be set to this length. The buffer specified
         /// by the <paramref name="buffer"/> parameter should have at least this length.</param>
         public void ControlIn(byte requestType, byte request, int value, int index, byte[] buffer, int length)
         {
@@ -483,7 +483,7 @@ namespace MadWizard.WinUSBNet
             CheckOut(requestType);
             ControlTransfer(requestType, request, value, index, buffer);
         }
-       
+
         /// <summary>
         /// Initiates a control transfer without a data stage over the default control endpoint. The request should have an OUT direction (specified by the highest bit
         /// of the <paramref name="requestType"/> parameter. The setup packets' length member will be set to zero.
@@ -499,13 +499,13 @@ namespace MadWizard.WinUSBNet
             ControlTransfer(requestType, request, value, index, new byte[0]);
         }
 
- 
+
 
         /// <summary>
         /// Initiates an asynchronous control transfer without a data stage over the default control endpoint. This method allows both IN and OUT direction transfers, depending
         /// on the highest bit of the <paramref name="requestType"/> parameter. Alternatively, <see cref="BeginControlIn(byte,byte,int,int,byte[],int,AsyncCallback,object)"/> and
-        /// <see cref="BeginControlIn(byte,byte,int,int,byte[],int,AsyncCallback,object)"/> can be used for asynchronous control transfers in a specific direction, which is 
-        /// the recommended way because it prevents using the wrong direction accidentally. Use the BeginControlTransfer method when the direction is not 
+        /// <see cref="BeginControlIn(byte,byte,int,int,byte[],int,AsyncCallback,object)"/> can be used for asynchronous control transfers in a specific direction, which is
+        /// the recommended way because it prevents using the wrong direction accidentally. Use the BeginControlTransfer method when the direction is not
         /// known at compile time. </summary>
         /// <param name="requestType">The setup packet request type.</param>
         /// <param name="request">The setup packet device request.</param>
@@ -517,7 +517,7 @@ namespace MadWizard.WinUSBNet
         /// <remarks>This method always completes immediately even if the operation is still pending. The <see cref="IAsyncResult"/> object returned represents the operation
         /// and must be passed to <see cref="EndControlTransfer"/> to retrieve the result of the operation. For every call to this method a matching call to
         /// <see cref="EndControlTransfer"/> must be made. When <paramref name="userCallback"/> specifies a callback function, this function will be called when the operation is completed. The optional
-        /// <paramref name="stateObject"/> parameter can be used to pass user-defined information to this callback or the <see cref="IAsyncResult"/>. The <see cref="IAsyncResult"/> 
+        /// <paramref name="stateObject"/> parameter can be used to pass user-defined information to this callback or the <see cref="IAsyncResult"/>. The <see cref="IAsyncResult"/>
         /// also provides an event handle (<see cref="IAsyncResult.AsyncWaitHandle" />) that will be triggered when the operation is complete as well.
         /// </remarks>
         public IAsyncResult BeginControlTransfer(byte requestType, byte request, int value, int index, AsyncCallback userCallback, object stateObject)
@@ -543,7 +543,7 @@ namespace MadWizard.WinUSBNet
         /// <remarks>This method always completes immediately even if the operation is still pending. The <see cref="IAsyncResult"/> object returned represents the operation
         /// and must be passed to <see cref="EndControlTransfer"/> to retrieve the result of the operation. For every call to this method a matching call to
         /// <see cref="EndControlTransfer"/> must be made. When <paramref name="userCallback"/> specifies a callback function, this function will be called when the operation is completed. The optional
-        /// <paramref name="stateObject"/> parameter can be used to pass user-defined information to this callback or the <see cref="IAsyncResult"/>. The <see cref="IAsyncResult"/> 
+        /// <paramref name="stateObject"/> parameter can be used to pass user-defined information to this callback or the <see cref="IAsyncResult"/>. The <see cref="IAsyncResult"/>
         /// also provides an event handle (<see cref="IAsyncResult.AsyncWaitHandle" />) that will be triggered when the operation is complete as well.
         /// </remarks>
         public IAsyncResult BeginControlIn(byte requestType, byte request, int value, int index, byte[] buffer, int length, AsyncCallback userCallback, object stateObject)
@@ -566,7 +566,7 @@ namespace MadWizard.WinUSBNet
         /// <remarks>This method always completes immediately even if the operation is still pending. The <see cref="IAsyncResult"/> object returned represents the operation
         /// and must be passed to <see cref="EndControlTransfer"/> to retrieve the result of the operation. For every call to this method a matching call to
         /// <see cref="EndControlTransfer"/> must be made. When <paramref name="userCallback"/> specifies a callback function, this function will be called when the operation is completed. The optional
-        /// <paramref name="stateObject"/> parameter can be used to pass user-defined information to this callback or the <see cref="IAsyncResult"/>. The <see cref="IAsyncResult"/> 
+        /// <paramref name="stateObject"/> parameter can be used to pass user-defined information to this callback or the <see cref="IAsyncResult"/>. The <see cref="IAsyncResult"/>
         /// also provides an event handle (<see cref="IAsyncResult.AsyncWaitHandle" />) that will be triggered when the operation is complete as well.
         /// </remarks>
         public IAsyncResult BeginControlIn(byte requestType, byte request, int value, int index, byte[] buffer, AsyncCallback userCallback, object stateObject)
@@ -576,7 +576,7 @@ namespace MadWizard.WinUSBNet
         }
 
         /// <summary>
-        /// Initiates an asynchronous control transfer without a data stage over the default control endpoint. 
+        /// Initiates an asynchronous control transfer without a data stage over the default control endpoint.
         /// The request should have an IN direction (specified by the highest bit of the <paramref name="requestType"/> parameter).
         /// The setup packets' length member will be set to zero.</summary>
         /// <param name="requestType">The setup packet request type. The request type must specify the IN direction (highest bit set).</param>
@@ -589,7 +589,7 @@ namespace MadWizard.WinUSBNet
         /// <remarks>This method always completes immediately even if the operation is still pending. The <see cref="IAsyncResult"/> object returned represents the operation
         /// and must be passed to <see cref="EndControlTransfer"/> to retrieve the result of the operation. For every call to this method a matching call to
         /// <see cref="EndControlTransfer"/> must be made. When <paramref name="userCallback"/> specifies a callback function, this function will be called when the operation is completed. The optional
-        /// <paramref name="stateObject"/> parameter can be used to pass user-defined information to this callback or the <see cref="IAsyncResult"/>. The <see cref="IAsyncResult"/> 
+        /// <paramref name="stateObject"/> parameter can be used to pass user-defined information to this callback or the <see cref="IAsyncResult"/>. The <see cref="IAsyncResult"/>
         /// also provides an event handle (<see cref="IAsyncResult.AsyncWaitHandle" />) that will be triggered when the operation is complete as well.
         /// </remarks>
         public IAsyncResult BeginControlIn(byte requestType, byte request, int value, int index, AsyncCallback userCallback, object stateObject)
@@ -613,7 +613,7 @@ namespace MadWizard.WinUSBNet
         /// <remarks>This method always completes immediately even if the operation is still pending. The <see cref="IAsyncResult"/> object returned represents the operation
         /// and must be passed to <see cref="EndControlTransfer"/> to retrieve the result of the operation. For every call to this method a matching call to
         /// <see cref="EndControlTransfer"/> must be made. When <paramref name="userCallback"/> specifies a callback function, this function will be called when the operation is completed. The optional
-        /// <paramref name="stateObject"/> parameter can be used to pass user-defined information to this callback or the <see cref="IAsyncResult"/>. The <see cref="IAsyncResult"/> 
+        /// <paramref name="stateObject"/> parameter can be used to pass user-defined information to this callback or the <see cref="IAsyncResult"/>. The <see cref="IAsyncResult"/>
         /// also provides an event handle (<see cref="IAsyncResult.AsyncWaitHandle" />) that will be triggered when the operation is complete as well.
         /// </remarks>
         public IAsyncResult BeginControlOut(byte requestType, byte request, int value, int index, byte[] buffer, int length, AsyncCallback userCallback, object stateObject)
@@ -636,7 +636,7 @@ namespace MadWizard.WinUSBNet
         /// <remarks>This method always completes immediately even if the operation is still pending. The <see cref="IAsyncResult"/> object returned represents the operation
         /// and must be passed to <see cref="EndControlTransfer"/> to retrieve the result of the operation. For every call to this method a matching call to
         /// <see cref="EndControlTransfer"/> must be made. When <paramref name="userCallback"/> specifies a callback function, this function will be called when the operation is completed. The optional
-        /// <paramref name="stateObject"/> parameter can be used to pass user-defined information to this callback or the <see cref="IAsyncResult"/>. The <see cref="IAsyncResult"/> 
+        /// <paramref name="stateObject"/> parameter can be used to pass user-defined information to this callback or the <see cref="IAsyncResult"/>. The <see cref="IAsyncResult"/>
         /// also provides an event handle (<see cref="IAsyncResult.AsyncWaitHandle" />) that will be triggered when the operation is complete as well.
         /// </remarks>
         public IAsyncResult BeginControlOut(byte requestType, byte request, int value, int index, byte[] buffer, AsyncCallback userCallback, object stateObject)
@@ -646,7 +646,7 @@ namespace MadWizard.WinUSBNet
         }
 
         /// <summary>
-        /// Initiates an asynchronous control transfer without a data stage over the default control endpoint. 
+        /// Initiates an asynchronous control transfer without a data stage over the default control endpoint.
         /// The request should have an OUT direction (specified by the highest bit of the <paramref name="requestType"/> parameter).
         /// The setup packets' length member will be set to zero.</summary>
         /// <param name="requestType">The setup packet request type. The request type must specify the OUT direction (highest bit cleared).</param>
@@ -659,7 +659,7 @@ namespace MadWizard.WinUSBNet
         /// <remarks>This method always completes immediately even if the operation is still pending. The <see cref="IAsyncResult"/> object returned represents the operation
         /// and must be passed to <see cref="EndControlTransfer"/> to retrieve the result of the operation. For every call to this method a matching call to
         /// <see cref="EndControlTransfer"/> must be made. When <paramref name="userCallback"/> specifies a callback function, this function will be called when the operation is completed. The optional
-        /// <paramref name="stateObject"/> parameter can be used to pass user-defined information to this callback or the <see cref="IAsyncResult"/>. The <see cref="IAsyncResult"/> 
+        /// <paramref name="stateObject"/> parameter can be used to pass user-defined information to this callback or the <see cref="IAsyncResult"/>. The <see cref="IAsyncResult"/>
         /// also provides an event handle (<see cref="IAsyncResult.AsyncWaitHandle" />) that will be triggered when the operation is complete as well.
         /// </remarks>
         public IAsyncResult BeginControlOut(byte requestType, byte request, int value, int index, AsyncCallback userCallback, object stateObject)
@@ -669,7 +669,7 @@ namespace MadWizard.WinUSBNet
             return BeginControlTransfer(requestType, request, value, index, new byte[0], userCallback, stateObject);
         }
 
- 
+
         private void CheckNotDisposed()
         {
             if (_disposed)
@@ -680,10 +680,10 @@ namespace MadWizard.WinUSBNet
         /// Finds WinUSB devices with a GUID matching the parameter guidString
         /// </summary>
         /// <param name="guidString">The GUID string that the device should match.
-        /// The format of this string may be any format accepted by the constructor 
+        /// The format of this string may be any format accepted by the constructor
         /// of the System.Guid class</param>
-        /// <returns>An array of USBDeviceInfo objects representing the 
-        /// devices found. When no devices are found an empty array is 
+        /// <returns>An array of USBDeviceInfo objects representing the
+        /// devices found. When no devices are found an empty array is
         /// returned.</returns>
         public static USBDeviceInfo[] GetDevices(string guidString)
         {
@@ -694,8 +694,8 @@ namespace MadWizard.WinUSBNet
         /// Finds WinUSB devices with a GUID matching the parameter guid
         /// </summary>
         /// <param name="guid">The GUID that the device should match.</param>
-        /// <returns>An array of USBDeviceInfo objects representing the 
-        /// devices found. When no devices are found an empty array is 
+        /// <returns>An array of USBDeviceInfo objects representing the
+        /// devices found. When no devices are found an empty array is
         /// returned.</returns>
         public static USBDeviceInfo[] GetDevices(Guid guid)
         {
@@ -723,7 +723,7 @@ namespace MadWizard.WinUSBNet
             if (detailList.Length == 0)
                 return null;
 
-      
+
             return new USBDevice(detailList[0].DevicePath);
         }
 
@@ -736,8 +736,8 @@ namespace MadWizard.WinUSBNet
         /// no device with the given GUID could be found null is returned.</returns>
         public static USBDevice GetSingleDevice(string guidString)
         {
-            
-            return USBDevice.GetSingleDevice(new Guid(guidString));         
+
+            return USBDevice.GetSingleDevice(new Guid(guidString));
         }
 
         private static USBDeviceDescriptor GetDeviceDescriptor(string devicePath)
@@ -755,7 +755,7 @@ namespace MadWizard.WinUSBNet
                     ushort langID = 0;
                     if (langIDs.Length > 0)
                         langID = langIDs[0];
-            
+
                     string manufacturer = null, product = null, serialNumber = null;
                     byte idx = 0;
                     idx = deviceDesc.iManufacturer;
@@ -779,6 +779,6 @@ namespace MadWizard.WinUSBNet
                 throw new USBException("Failed to retrieve device descriptor.", e);
             }
         }
-        
+
     }
 }

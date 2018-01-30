@@ -1,6 +1,6 @@
-﻿/*  WinUSBNet library
+/*  WinUSBNet library
  *  (C) 2010 Thomas Bleeker (www.madwizard.org)
- *  
+ *
  *  Licensed under the MIT license, see license.txt or:
  *  http://www.opensource.org/licenses/mit-license.php
  */
@@ -31,7 +31,7 @@ namespace MadWizard.WinUSBNet
         }
 
         /// <summary>
-        /// Returns the pipe from the collection with the given pipe address 
+        /// Returns the pipe from the collection with the given pipe address
         /// </summary>
         /// <param name="pipeAddress">Address of the pipe to return</param>
         /// <returns>The pipe with the given pipe address</returns>
@@ -63,6 +63,7 @@ namespace MadWizard.WinUSBNet
             {
                 // Empty
             }
+
             private USBPipe GetCurrent()
             {
                 try
@@ -80,11 +81,10 @@ namespace MadWizard.WinUSBNet
             {
                 get
                 {
-                    return GetCurrent(); 
+                    return GetCurrent();
                 }
             }
-            
-            
+
             object IEnumerator.Current
             {
                 get
@@ -122,7 +122,7 @@ namespace MadWizard.WinUSBNet
         {
             return new UsbPipeEnumerator(GetPipeList());
         }
-       
+
         /// <summary>
         /// Returns an enumerator that iterates through a collection.
         /// </summary>
