@@ -179,14 +179,12 @@ namespace MadWizard.WinUSBNet
             }
             catch (API.APIException e)
             {
-                if (result != null)
-                    result.Dispose();
+                result.Dispose();
                 throw new USBException("Failed to read from pipe.", e);
             }
             catch (Exception)
             {
-                if (result != null)
-                    result.Dispose();
+                result.Dispose();
                 throw;
             }
             return result;
@@ -282,14 +280,12 @@ namespace MadWizard.WinUSBNet
             }
             catch (API.APIException e)
             {
-                if (result != null)
-                    result.Dispose();
+                result.Dispose();
                 throw new USBException("Failed to write to pipe.", e);
             }
             catch (Exception)
             {
-                if (result != null)
-                    result.Dispose();
+                result.Dispose();
                 throw;
             }
             return result;

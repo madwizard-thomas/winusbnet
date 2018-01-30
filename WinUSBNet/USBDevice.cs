@@ -254,14 +254,12 @@ namespace MadWizard.WinUSBNet
             }
             catch (API.APIException e)
             {
-                if (result != null)
-                    result.Dispose();
-                 throw new USBException("Asynchronous control transfer failed", e);
+                result.Dispose();
+                throw new USBException("Asynchronous control transfer failed", e);
             }
             catch (Exception)
             {
-                if (result != null)
-                    result.Dispose();
+                result.Dispose();
                 throw;
             }
             return result;
