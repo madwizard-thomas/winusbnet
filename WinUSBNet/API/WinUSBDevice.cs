@@ -1,6 +1,6 @@
 /*  WinUSBNet library
  *  (C) 2010 Thomas Bleeker (www.madwizard.org)
- *  
+ *
  *  Licensed under the MIT license, see license.txt or:
  *  http://www.opensource.org/licenses/mit-license.php
  */
@@ -14,17 +14,16 @@ using Microsoft.Win32.SafeHandles;
 using System.Runtime.InteropServices;
 using System.Collections.Generic;
 using System.Threading;
-using System.ComponentModel;
 
 namespace MadWizard.WinUSBNet.API
 {
-	/// <summary>
-	///  Wrapper for a WinUSB device dealing with the WinUSB and additional interface handles
-	/// </summary>
-	partial class WinUSBDevice : IDisposable
-	{
+    /// <summary>
+    ///  Wrapper for a WinUSB device dealing with the WinUSB and additional interface handles
+    /// </summary>
+    partial class WinUSBDevice : IDisposable
+    {
         private bool _disposed = false;
-		private SafeFileHandle _deviceHandle;
+        private SafeFileHandle _deviceHandle;
         private IntPtr _winUsbHandle = IntPtr.Zero;
         private IntPtr[] _addInterfaces = null;
         public WinUSBDevice()
@@ -57,13 +56,13 @@ namespace MadWizard.WinUSBNet.API
 
             if (disposing)
             {
-            	// Dispose managed resources
+                // Dispose managed resources
                 if (_deviceHandle != null && !_deviceHandle.IsInvalid)
                     _deviceHandle.Dispose();
                 _deviceHandle = null;
             }
 
-			// Dispose unmanaged resources
+            // Dispose unmanaged resources
             FreeWinUSB();
             _disposed = true;
         }
@@ -105,10 +104,10 @@ namespace MadWizard.WinUSBNet.API
                         index, languageID, buffer, (uint)buffer.Length, out transfered);
             if (!success)
                 throw APIException.Win32("Failed to get USB string descriptor (" + index + ").");
-            
+
             if (transfered == 0)
                 throw new APIException("No data returned when reading USB descriptor.");
-            
+
             int length = buffer[0];
             if (length != transfered)
                 throw new APIException("Unexpected length when reading USB descriptor.");
@@ -122,7 +121,7 @@ namespace MadWizard.WinUSBNet.API
             length -= 2; // Skip length byte and descriptor type
             if (length < 0 || (length % 2) != 0)
                 throw new APIException("Unexpected length when reading supported languages.");
-            
+
             ushort[] langIDs = new ushort[length / 2];
             Buffer.BlockCopy(buffer, 2, langIDs, 0, length);
             return langIDs;
@@ -140,10 +139,10 @@ namespace MadWizard.WinUSBNet.API
         }
 
         public void ControlTransfer(byte requestType, byte request, ushort value, ushort index, ushort length, byte[] data)
-		{
-			uint bytesReturned = 0;
-			WINUSB_SETUP_PACKET setupPacket;
-			
+        {
+            uint bytesReturned = 0;
+            WINUSB_SETUP_PACKET setupPacket;
+
             setupPacket.RequestType = requestType;
             setupPacket.Request = request;
             setupPacket.Value = value;
@@ -153,20 +152,20 @@ namespace MadWizard.WinUSBNet.API
             bool success = WinUsb_ControlTransfer(_winUsbHandle, setupPacket, data, length, ref bytesReturned, IntPtr.Zero);
             if (!success) // todo check bytes returned?
                 throw APIException.Win32("Control transfer on WinUSB device failed.");
-		}
+        }
 
-	
-		public void OpenDevice(string devicePathName)
-		{
+
+        public void OpenDevice(string devicePathName)
+        {
             try
             {
-			    _deviceHandle = FileIO.CreateFile(devicePathName,
-				        (FileIO.GENERIC_WRITE | FileIO.GENERIC_READ),
-				        FileIO.FILE_SHARE_READ | FileIO.FILE_SHARE_WRITE,
-				        IntPtr.Zero,
-				        FileIO.OPEN_EXISTING,
-				        FileIO.FILE_ATTRIBUTE_NORMAL | FileIO.FILE_FLAG_OVERLAPPED,
-				        0);
+                _deviceHandle = FileIO.CreateFile(devicePathName,
+                        (FileIO.GENERIC_WRITE | FileIO.GENERIC_READ),
+                        FileIO.FILE_SHARE_READ | FileIO.FILE_SHARE_WRITE,
+                        IntPtr.Zero,
+                        FileIO.OPEN_EXISTING,
+                        FileIO.FILE_ATTRIBUTE_NORMAL | FileIO.FILE_FLAG_OVERLAPPED,
+                        0);
                 if (_deviceHandle.IsInvalid)
                     throw APIException.Win32("Failed to open WinUSB device handle.");
                 InitializeDevice();
@@ -182,7 +181,7 @@ namespace MadWizard.WinUSBNet.API
                 FreeWinUSB();
                 throw;
             }
-		}
+        }
 
         private IntPtr InterfaceHandle(int index)
         {
@@ -219,11 +218,11 @@ namespace MadWizard.WinUSBNet.API
             pipes = pipeList.ToArray();
 
         }
-		private void InitializeDevice()
-		{
-			bool success;
+        private void InitializeDevice()
+        {
+            bool success;
 
-			success = WinUsb_Initialize(_deviceHandle, ref _winUsbHandle);
+            success = WinUsb_Initialize(_deviceHandle, ref _winUsbHandle);
 
             if (!success)
                 throw APIException.Win32("Failed to initialize WinUSB handle. Device might not be connected.");
@@ -253,7 +252,7 @@ namespace MadWizard.WinUSBNet.API
             finally
             {
                 // Save interface handles (will be cleaned by Dispose)
-                // also in case of exception (which is why it is in finally block), 
+                // also in case of exception (which is why it is in finally block),
                 // because some handles might have already been opened and need
                 // to be disposed.
                 _addInterfaces = interfaces.ToArray();
@@ -262,10 +261,10 @@ namespace MadWizard.WinUSBNet.API
             // Bind handle (needed for overlapped I/O thread pool)
             ThreadPool.BindHandle(_deviceHandle);
             // TODO: bind interface handles as well? doesn't seem to be necessary
-		}
+        }
 
         public void ReadPipe(int ifaceIndex, byte pipeID, byte[] buffer, int offset, int bytesToRead,  out uint bytesRead)
-		{
+        {
             bool success;
             unsafe
             {
@@ -277,7 +276,7 @@ namespace MadWizard.WinUSBNet.API
             }
             if (!success)
                 throw APIException.Win32("Failed to read pipe on WinUSB device.");
-		}
+        }
 
         private unsafe void HandleOverlappedAPI(bool success, string errorMessage, NativeOverlapped* pOverlapped, USBAsyncResult result, int bytesTransfered)
         {
@@ -299,13 +298,13 @@ namespace MadWizard.WinUSBNet.API
                 result.OnCompletion(true, null, bytesTransfered, false);
                 // is the callback still called in this case?? todo
             }
-                
+
         }
 
         public void ReadPipeOverlapped(int ifaceIndex, byte pipeID, byte[] buffer, int offset, int bytesToRead, USBAsyncResult result)
         {
             Overlapped overlapped = new Overlapped();
-            
+
             overlapped.AsyncResult = result;
 
             unsafe
@@ -336,7 +335,7 @@ namespace MadWizard.WinUSBNet.API
 
                 uint bytesWritten;
                 pOverlapped = overlapped.Pack(PipeIOCallback, buffer);
-                
+
                 bool success;
                 // Buffer is pinned already by overlapped.Pack
                 fixed (byte* pBuffer = buffer)
@@ -349,13 +348,13 @@ namespace MadWizard.WinUSBNet.API
             }
         }
 
-      
+
 
         public void ControlTransferOverlapped(byte requestType, byte request, ushort value, ushort index, ushort length, byte[] data, USBAsyncResult result)
-		{
-			uint bytesReturned = 0;
-			WINUSB_SETUP_PACKET setupPacket;
-			
+        {
+            uint bytesReturned = 0;
+            WINUSB_SETUP_PACKET setupPacket;
+
             setupPacket.RequestType = requestType;
             setupPacket.Request = request;
             setupPacket.Value = value;
@@ -372,7 +371,7 @@ namespace MadWizard.WinUSBNet.API
                 bool success = WinUsb_ControlTransfer(_winUsbHandle, setupPacket, data, length, ref bytesReturned, pOverlapped);
                 HandleOverlappedAPI(success, "Asynchronous control transfer on WinUSB device failed.", pOverlapped, result, (int)bytesReturned);
             }
-		}
+        }
 
         private unsafe void PipeIOCallback(uint errorCode, uint numBytes, NativeOverlapped* pOverlapped)
         {
@@ -408,7 +407,7 @@ namespace MadWizard.WinUSBNet.API
         }
 
         public void WritePipe(int ifaceIndex, byte pipeID, byte[] buffer, int offset, int length)
-		{
+        {
             uint bytesWritten;
             bool success;
             unsafe
@@ -421,8 +420,8 @@ namespace MadWizard.WinUSBNet.API
             }
             if (!success || (bytesWritten != length))
                 throw APIException.Win32("Failed to write pipe on WinUSB device.");
-          
-		}
+
+        }
 
         public void FlushPipe(int ifaceIndex, byte pipeID)
         {
@@ -432,29 +431,29 @@ namespace MadWizard.WinUSBNet.API
         }
 
         public void SetPipePolicy(int ifaceIndex, byte pipeID, POLICY_TYPE policyType, bool value)
-		{
+        {
             byte byteVal = (byte)(value ? 1 : 0);
             bool success = WinUsb_SetPipePolicy(InterfaceHandle(ifaceIndex), pipeID, (uint)policyType, 1, ref byteVal);
             if (!success)
                 throw APIException.Win32("Failed to set WinUSB pipe policy.");
-		}
+        }
 
 
         public void SetPipePolicy(int ifaceIndex, byte pipeID, POLICY_TYPE policyType, uint value)
-		{
-			
+        {
+
             bool success = WinUsb_SetPipePolicy(InterfaceHandle(ifaceIndex), pipeID, (uint)policyType, 4, ref value);
 
             if (!success)
                 throw APIException.Win32("Failed to set WinUSB pipe policy.");
-		}
+        }
 
 
         public bool GetPipePolicyBool(int ifaceIndex, byte pipeID, POLICY_TYPE policyType)
         {
             byte result;
             uint length = 1;
-          
+
             bool success = WinUsb_GetPipePolicy(InterfaceHandle(ifaceIndex), pipeID, (uint)policyType, ref length, out result);
             if (!success || length != 1)
                 throw APIException.Win32("Failed to get WinUSB pipe policy.");
@@ -464,7 +463,7 @@ namespace MadWizard.WinUSBNet.API
 
         public uint GetPipePolicyUInt(int ifaceIndex, byte pipeID, POLICY_TYPE policyType)
         {
-           
+
             uint result;
             uint length = 4;
             bool success = WinUsb_GetPipePolicy(InterfaceHandle(ifaceIndex), pipeID, (uint)policyType, ref length, out result);
@@ -473,5 +472,5 @@ namespace MadWizard.WinUSBNet.API
                 throw APIException.Win32("Failed to get WinUSB pipe policy.");
             return result;
         }
-	}
+    }
 }

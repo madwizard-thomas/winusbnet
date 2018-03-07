@@ -1,13 +1,11 @@
-﻿/*  WinUSBNet library
+/*  WinUSBNet library
  *  (C) 2010 Thomas Bleeker (www.madwizard.org)
- *  
+ *
  *  Licensed under the MIT license, see license.txt or:
  *  http://www.opensource.org/licenses/mit-license.php
  */
 
 using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace MadWizard.WinUSBNet
 {
@@ -33,7 +31,7 @@ namespace MadWizard.WinUSBNet
             get;
             private set;
         }
-      
+
         /// <summary>
         /// USB device associated with this interface
         /// </summary>
@@ -75,7 +73,7 @@ namespace MadWizard.WinUSBNet
         /// <summary>
         /// Interface class code as defined in the interface descriptor
         /// This property can be used if the class type is not defined
-        /// int the USBBaseClass enumeraiton
+        /// int the USBBaseClass enumeration
         /// </summary>
         public byte ClassValue
         {
@@ -100,7 +98,7 @@ namespace MadWizard.WinUSBNet
             get;
             private set;
         }
-       
+
         /// Zero based interface index in WinUSB.
         /// Note that this is not necessarily the same as the interface *number*
         /// from the interface descriptor. There might be interfaces within the
@@ -128,7 +126,7 @@ namespace MadWizard.WinUSBNet
             {
                 BaseClass = (USBBaseClass)(int)rawDesc.bInterfaceClass;
             }
-           
+
 
             Device = device;
             Pipes = pipes;
@@ -146,7 +144,7 @@ namespace MadWizard.WinUSBNet
                     OutPipe = pipe;
 
             }
-        
+
         }
     }
 }

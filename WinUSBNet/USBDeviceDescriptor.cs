@@ -1,13 +1,11 @@
-﻿/*  WinUSBNet library
+/*  WinUSBNet library
  *  (C) 2010 Thomas Bleeker (www.madwizard.org)
- *  
+ *
  *  Licensed under the MIT license, see license.txt or:
  *  http://www.opensource.org/licenses/mit-license.php
  */
 
 using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace MadWizard.WinUSBNet
 {
@@ -48,12 +46,12 @@ namespace MadWizard.WinUSBNet
 
 
         /// <summary>
-        /// Friendly device name, or path name when no 
+        /// Friendly device name, or path name when no
         /// further device information is available
         /// </summary>
-        public string FullName 
-        { 
-            get 
+        public string FullName
+        {
+            get
             {
                 if (Manufacturer != null && Product != null)
                     return Product + " - " + Manufacturer;
@@ -69,7 +67,7 @@ namespace MadWizard.WinUSBNet
         /// <summary>
         /// Device class code as defined in the interface descriptor
         /// This property can be used if the class type is not defined
-        /// int the USBBaseClass enumeraiton
+        /// int the USBBaseClass enumeration
         /// </summary>
         public byte ClassValue
         {
@@ -127,9 +125,6 @@ namespace MadWizard.WinUSBNet
             {
                 BaseClass = (USBBaseClass)(int)deviceDesc.bDeviceClass;
             }
-           
-
-
         }
     }
 }

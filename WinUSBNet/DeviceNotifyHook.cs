@@ -1,14 +1,11 @@
-﻿/*  WinUSBNet library
+/*  WinUSBNet library
  *  (C) 2010 Thomas Bleeker (www.madwizard.org)
- *  
+ *
  *  Licensed under the MIT license, see license.txt or:
  *  http://www.opensource.org/licenses/mit-license.php
  */
 
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Windows.Forms;
 
 namespace MadWizard.WinUSBNet
@@ -32,7 +29,7 @@ namespace MadWizard.WinUSBNet
             parent.HandleDestroyed += new EventHandler(this.OnHandleDestroyed);
             _notifier = notifier;
         }
-        
+
         public DeviceNotifyHook(USBNotifier notifier, IntPtr windowHandle, Guid guid)
         {
             _guid = guid;
@@ -106,7 +103,7 @@ namespace MadWizard.WinUSBNet
                     break;
                 case WM_NCDESTROY:
                     // Note: when a control is used, OnHandleDestroyed will be called and the
-                    // handle is already released from NativeWindow. In that case, this 
+                    // handle is already released from NativeWindow. In that case, this
                     // WM_NCDESTROY message will not be caught here. This is no problem since
                     // StopNotify is already called. Even if it does, calling it twice does not cause
                     // problems.
@@ -130,7 +127,7 @@ namespace MadWizard.WinUSBNet
             if (disposing)
             {
                 // clean managed resources
-                
+
                 // do not clean the notifier here. the notifier owns and will dispose this object.
             }
             if (_notifyHandle != IntPtr.Zero)
