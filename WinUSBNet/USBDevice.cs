@@ -210,7 +210,7 @@ namespace MadWizard.WinUSBNet
 
             try
             {
-                return (int)_wuDevice.ControlTransfer(requestType, request, (ushort)value, (ushort)index, (ushort)length, buffer);
+                return _wuDevice.ControlTransfer(requestType, request, (ushort)value, (ushort)index, (ushort)length, buffer);
             }
             catch (API.APIException e)
             {
