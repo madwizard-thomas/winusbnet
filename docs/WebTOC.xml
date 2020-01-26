@@ -1,69 +1,69 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <HelpTOC>
 
-  <HelpTOCNode Id="1b74c972-ee20-42bc-b855-5dcebf62de54" Title="MadWizard.WinUSBNet" Url="html/9a5a817b-556c-88ca-5e4f-5d076246fda0.htm">
+  <HelpTOCNode Id="7175938f-29f5-49d0-9f6b-ddc1df03ce82" Title="MadWizard.WinUSBNet" Url="html/9a5a817b-556c-88ca-5e4f-5d076246fda0.htm">
     <HelpTOCNode Title="USBBaseClass Enumeration" Url="html/b0387ab6-5bed-abb2-9284-f09a9fe71283.htm" />
-    <HelpTOCNode Id="c9b89a70-879f-41fa-b036-421d7a2449b8" Title="USBDevice Class" Url="html/fd43734c-38e1-81a4-d77c-957819af0a08.htm">
-      <HelpTOCNode Id="a3da67d1-ade1-498f-a2e4-950b43d9d33c" Title="USBDevice Constructor " Url="html/7720979d-410c-13a0-a385-9ea859a8c8ca.htm">
+    <HelpTOCNode Id="65358c4c-186b-4b95-9126-36f747c1e6e4" Title="USBDevice Class" Url="html/fd43734c-38e1-81a4-d77c-957819af0a08.htm">
+      <HelpTOCNode Id="6c4b8eb7-7ab0-4f2f-a6ad-8a4ff2a97ecc" Title="USBDevice Constructor " Url="html/7720979d-410c-13a0-a385-9ea859a8c8ca.htm">
         <HelpTOCNode Title="USBDevice Constructor (String)" Url="html/2a25ee8b-9564-b90e-6e0e-a20333e78301.htm" />
         <HelpTOCNode Title="USBDevice Constructor (USBDeviceInfo)" Url="html/2e434965-5ab3-6bfe-cd25-91e2cfb4017b.htm" />
       </HelpTOCNode>
-      <HelpTOCNode Id="5225149d-18ea-4bf8-9d25-18e230101e56" Title="USBDevice Properties" Url="html/106fb3b0-8ade-014f-a279-246db2b66bdc.htm">
+      <HelpTOCNode Id="54584fa5-b948-4485-919b-9fb9e5a7cdc2" Title="USBDevice Properties" Url="html/106fb3b0-8ade-014f-a279-246db2b66bdc.htm">
         <HelpTOCNode Title="ControlPipeTimeout Property " Url="html/d7784fe9-2cd3-032b-c56e-b0a906a3c477.htm" />
         <HelpTOCNode Title="Descriptor Property " Url="html/3b901736-ae7e-a9d3-b462-30fab1a99975.htm" />
         <HelpTOCNode Title="Interfaces Property " Url="html/13bd445b-8e79-39cf-5463-835042129d66.htm" />
         <HelpTOCNode Title="Pipes Property " Url="html/65d0e84f-4285-6878-9530-b6e20b3f6195.htm" />
       </HelpTOCNode>
-      <HelpTOCNode Id="1daf553e-aa9a-4d4c-80f9-1e66ccd730a2" Title="USBDevice Methods" Url="html/d1c27647-5989-955f-5d4f-a244f109ebdc.htm">
-        <HelpTOCNode Id="4b7214b0-03a2-418e-809d-2fd600d0ab1e" Title="BeginControlIn Method " Url="html/1b65d974-bafb-6df1-a4a0-c9b02eb1c76b.htm">
+      <HelpTOCNode Id="f70b0b37-a713-4e3a-b520-4a9919b665c3" Title="USBDevice Methods" Url="html/d1c27647-5989-955f-5d4f-a244f109ebdc.htm">
+        <HelpTOCNode Id="6db4565e-902f-4cb7-8937-bfd784e91e10" Title="BeginControlIn Method " Url="html/1b65d974-bafb-6df1-a4a0-c9b02eb1c76b.htm">
           <HelpTOCNode Title="BeginControlIn Method (Byte, Byte, Int32, Int32, AsyncCallback, Object)" Url="html/9c8662d7-f692-792e-4c7c-9170b8358f50.htm" />
           <HelpTOCNode Title="BeginControlIn Method (Byte, Byte, Int32, Int32, Byte[], AsyncCallback, Object)" Url="html/270170e5-6007-0eff-9621-15eaeef0a0ea.htm" />
           <HelpTOCNode Title="BeginControlIn Method (Byte, Byte, Int32, Int32, Byte[], Int32, AsyncCallback, Object)" Url="html/d8dae847-9ffc-0b67-ad7d-ff2640951ab6.htm" />
         </HelpTOCNode>
-        <HelpTOCNode Id="e002cbfb-1530-48ef-b2db-1fdbc7effee8" Title="BeginControlOut Method " Url="html/2cc28c41-519b-04c7-ede4-c1aa0fde03ba.htm">
+        <HelpTOCNode Id="801cbd9a-2916-491f-a0c5-4314543ba79b" Title="BeginControlOut Method " Url="html/2cc28c41-519b-04c7-ede4-c1aa0fde03ba.htm">
           <HelpTOCNode Title="BeginControlOut Method (Byte, Byte, Int32, Int32, AsyncCallback, Object)" Url="html/71f6f35d-e7fc-f7af-d86f-ee127d150ad3.htm" />
           <HelpTOCNode Title="BeginControlOut Method (Byte, Byte, Int32, Int32, Byte[], AsyncCallback, Object)" Url="html/9c400ee0-2e65-fb1a-6f15-300eace06da6.htm" />
           <HelpTOCNode Title="BeginControlOut Method (Byte, Byte, Int32, Int32, Byte[], Int32, AsyncCallback, Object)" Url="html/e7b73e4f-7deb-2b30-4f18-9b88db9cb26b.htm" />
         </HelpTOCNode>
-        <HelpTOCNode Id="eb4b7cab-b1aa-4672-a742-381fc84edb68" Title="BeginControlTransfer Method " Url="html/0b0d3bed-9bb4-1518-b774-04577e847b52.htm">
+        <HelpTOCNode Id="12f13cf1-e31b-4adb-b63c-f6e9f9ad2098" Title="BeginControlTransfer Method " Url="html/0b0d3bed-9bb4-1518-b774-04577e847b52.htm">
           <HelpTOCNode Title="BeginControlTransfer Method (Byte, Byte, Int32, Int32, AsyncCallback, Object)" Url="html/772f715a-1ba0-a1cb-4360-17a715136cc1.htm" />
           <HelpTOCNode Title="BeginControlTransfer Method (Byte, Byte, Int32, Int32, Byte[], AsyncCallback, Object)" Url="html/0119af65-85fc-f343-2e68-df12be049e27.htm" />
           <HelpTOCNode Title="BeginControlTransfer Method (Byte, Byte, Int32, Int32, Byte[], Int32, AsyncCallback, Object)" Url="html/ca020231-ac72-6595-5ddf-71c1504f2ad8.htm" />
         </HelpTOCNode>
-        <HelpTOCNode Id="a773e36f-1a53-4bbb-a2d3-782f313172dc" Title="ControlIn Method " Url="html/94d61afa-1d41-dd1e-29ff-fd3d8844e1a0.htm">
+        <HelpTOCNode Id="fed2977b-78fc-4b74-b714-4aa97f4c2af3" Title="ControlIn Method " Url="html/94d61afa-1d41-dd1e-29ff-fd3d8844e1a0.htm">
           <HelpTOCNode Title="ControlIn Method (Byte, Byte, Int32, Int32)" Url="html/d9de5002-e68d-18f0-9ee8-c56a72d5edfa.htm" />
           <HelpTOCNode Title="ControlIn Method (Byte, Byte, Int32, Int32, Byte[])" Url="html/f8f98c7f-c17b-ad55-c3a0-28efee46bc44.htm" />
           <HelpTOCNode Title="ControlIn Method (Byte, Byte, Int32, Int32, Int32)" Url="html/26f1cc8f-5a0a-60d4-a547-9abb5cadac9c.htm" />
           <HelpTOCNode Title="ControlIn Method (Byte, Byte, Int32, Int32, Byte[], Int32)" Url="html/6b71ceae-ee41-6a32-89d8-03e0c0db1f78.htm" />
         </HelpTOCNode>
-        <HelpTOCNode Id="277997a7-f7f7-4761-b619-065c71becedd" Title="ControlOut Method " Url="html/222d6b7a-31dd-5616-f5f2-3559c5968c73.htm">
+        <HelpTOCNode Id="e3ece519-3209-4b62-aaae-7492cd264b00" Title="ControlOut Method " Url="html/222d6b7a-31dd-5616-f5f2-3559c5968c73.htm">
           <HelpTOCNode Title="ControlOut Method (Byte, Byte, Int32, Int32)" Url="html/a8de3944-15b9-8fc3-ff6b-5a0633093681.htm" />
           <HelpTOCNode Title="ControlOut Method (Byte, Byte, Int32, Int32, Byte[])" Url="html/9b9952ee-c5ce-6319-0c53-6e653f82978a.htm" />
           <HelpTOCNode Title="ControlOut Method (Byte, Byte, Int32, Int32, Byte[], Int32)" Url="html/12cdb794-330a-9016-039f-0a5f62f5fc38.htm" />
         </HelpTOCNode>
-        <HelpTOCNode Id="05289f0f-05c2-4c1e-9f40-2a8d1d92985b" Title="ControlTransfer Method " Url="html/2da4db22-a48c-3ce2-de27-140cda075643.htm">
+        <HelpTOCNode Id="90d0e18e-48ac-4f66-8c94-1f880a429ab8" Title="ControlTransfer Method " Url="html/2da4db22-a48c-3ce2-de27-140cda075643.htm">
           <HelpTOCNode Title="ControlTransfer Method (Byte, Byte, Int32, Int32)" Url="html/3a0308a3-f53f-acdc-c24c-57ef6ae7169f.htm" />
           <HelpTOCNode Title="ControlTransfer Method (Byte, Byte, Int32, Int32, Byte[])" Url="html/c3bdf33f-30d6-7c9f-c376-b537703475d1.htm" />
           <HelpTOCNode Title="ControlTransfer Method (Byte, Byte, Int32, Int32, Byte[], Int32)" Url="html/67124875-0fd2-cfed-a918-70ee867c8cce.htm" />
         </HelpTOCNode>
-        <HelpTOCNode Id="cb8bca34-9444-4ec0-960c-09cbb10d75fc" Title="Dispose Method " Url="html/3e9cbd97-86cd-2005-9946-32dee3e4c5ca.htm">
+        <HelpTOCNode Id="8f98fe56-e539-4a3d-93e8-ff407e35a4bf" Title="Dispose Method " Url="html/3e9cbd97-86cd-2005-9946-32dee3e4c5ca.htm">
           <HelpTOCNode Title="Dispose Method " Url="html/aaea862a-c560-7e9c-5f2f-f6f76cb4ad47.htm" />
           <HelpTOCNode Title="Dispose Method (Boolean)" Url="html/ef08b41b-a3c9-5da4-f660-e245ec7bc855.htm" />
         </HelpTOCNode>
         <HelpTOCNode Title="EndControlTransfer Method " Url="html/178e53b3-6ada-daca-7d0b-1b8d40fe2140.htm" />
         <HelpTOCNode Title="Finalize Method " Url="html/d7b482fa-6d9a-1d2a-1ced-c0a9e7beb13a.htm" />
-        <HelpTOCNode Id="8c20aa11-76eb-4b68-95c6-8c193e17fe6f" Title="GetDevices Method " Url="html/134d763a-1e78-da45-6043-091ae68cf232.htm">
+        <HelpTOCNode Id="732229c6-9c7d-4868-9354-3ee4f809e194" Title="GetDevices Method " Url="html/134d763a-1e78-da45-6043-091ae68cf232.htm">
           <HelpTOCNode Title="GetDevices Method (Guid)" Url="html/ce794191-b45a-8f8b-7835-a3dca1260ef5.htm" />
           <HelpTOCNode Title="GetDevices Method (String)" Url="html/f7c42679-2d92-8be9-9a89-0c1bbe1015ab.htm" />
         </HelpTOCNode>
-        <HelpTOCNode Id="3ef995e8-da1c-46b4-b611-4d7392d0cc46" Title="GetSingleDevice Method " Url="html/82273b6f-6630-428a-fe87-40e4cb64ca32.htm">
+        <HelpTOCNode Id="79924a7e-e211-4600-a16a-89b2a64adcb8" Title="GetSingleDevice Method " Url="html/82273b6f-6630-428a-fe87-40e4cb64ca32.htm">
           <HelpTOCNode Title="GetSingleDevice Method (Guid)" Url="html/defcdcfb-d187-4140-695f-713bf3e657a6.htm" />
           <HelpTOCNode Title="GetSingleDevice Method (String)" Url="html/6bfb037f-5a04-1bb5-3491-0bcc5fae9d09.htm" />
         </HelpTOCNode>
       </HelpTOCNode>
     </HelpTOCNode>
-    <HelpTOCNode Id="1c712610-de9f-404a-8c35-1f97cbdc3423" Title="USBDeviceDescriptor Class" Url="html/3ff83bb1-a519-1784-95e5-c320bbce7468.htm">
-      <HelpTOCNode Id="184be1fa-66b5-46dc-b39a-fef2a0a490d6" Title="USBDeviceDescriptor Properties" Url="html/c4b7f93e-e405-356a-ff76-cb84fd833862.htm">
+    <HelpTOCNode Id="71a980c1-0fad-4b72-8bd8-9e69dbd4c339" Title="USBDeviceDescriptor Class" Url="html/3ff83bb1-a519-1784-95e5-c320bbce7468.htm">
+      <HelpTOCNode Id="4c50bb26-dcf1-41e0-858a-f4ddfddf19a1" Title="USBDeviceDescriptor Properties" Url="html/c4b7f93e-e405-356a-ff76-cb84fd833862.htm">
         <HelpTOCNode Title="BaseClass Property " Url="html/d42b9b27-2263-e482-6abb-ce5045d69bad.htm" />
         <HelpTOCNode Title="ClassValue Property " Url="html/7616f3cd-fba1-607d-a0de-7caa07ba899c.htm" />
         <HelpTOCNode Title="FullName Property " Url="html/d9fc3f3b-f4c3-5d9a-0ced-a515de13f99d.htm" />
@@ -78,8 +78,8 @@
       </HelpTOCNode>
       <HelpTOCNode Title="USBDeviceDescriptor Methods" Url="html/8d336d5e-410d-6546-4a64-f1713f4906dc.htm" />
     </HelpTOCNode>
-    <HelpTOCNode Id="5ba9f7ca-b1f6-43f6-ba42-04c0c0cfff43" Title="USBDeviceInfo Class" Url="html/c61ff858-a9bf-7a45-bf1d-cd4ddbbaca1d.htm">
-      <HelpTOCNode Id="7f30888e-e102-4728-8a5d-978fe86bc1bf" Title="USBDeviceInfo Properties" Url="html/f41385fd-cbbc-9422-b8a7-ef055b721a74.htm">
+    <HelpTOCNode Id="c0adeac7-a3dc-446a-8c7b-86140aba6d73" Title="USBDeviceInfo Class" Url="html/c61ff858-a9bf-7a45-bf1d-cd4ddbbaca1d.htm">
+      <HelpTOCNode Id="60c930bb-85d8-4a68-ad5d-5bf6dd7591e7" Title="USBDeviceInfo Properties" Url="html/f41385fd-cbbc-9422-b8a7-ef055b721a74.htm">
         <HelpTOCNode Title="DeviceDescription Property " Url="html/cc234790-fa71-bfee-4838-8686c8147438.htm" />
         <HelpTOCNode Title="DevicePath Property " Url="html/d41c61ee-0ee4-b5aa-6b63-81d197fa6a3e.htm" />
         <HelpTOCNode Title="Manufacturer Property " Url="html/9d290571-1f0c-4c76-9fea-db047331b9ac.htm" />
@@ -88,9 +88,9 @@
       </HelpTOCNode>
       <HelpTOCNode Title="USBDeviceInfo Methods" Url="html/1ddd446a-3ab4-df2e-2ccb-373f03fb4622.htm" />
     </HelpTOCNode>
-    <HelpTOCNode Id="39b99225-fb25-468e-8027-d39165b7d215" Title="USBEvent Class" Url="html/ff46d303-4be6-2dbe-cef0-54b438187ee2.htm">
+    <HelpTOCNode Id="559c17ed-5b73-4106-86c6-05d12995f6d2" Title="USBEvent Class" Url="html/ff46d303-4be6-2dbe-cef0-54b438187ee2.htm">
       <HelpTOCNode Title="USBEvent Methods" Url="html/62e6842b-d7e0-b21a-fc27-221206e2a88d.htm" />
-      <HelpTOCNode Id="1586988a-b340-4d1b-882f-a7ba4e72e499" Title="USBEvent Fields" Url="html/6aad2ba0-bff3-970d-db9e-b6fb2cb3b528.htm">
+      <HelpTOCNode Id="6a6a5e0a-0701-4f35-9245-209d39b026ba" Title="USBEvent Fields" Url="html/6aad2ba0-bff3-970d-db9e-b6fb2cb3b528.htm">
         <HelpTOCNode Title="DevicePath Field" Url="html/571c0825-03c2-c974-a6d1-413b0a457d61.htm" />
         <HelpTOCNode Title="Guid Field" Url="html/70699b72-1d27-dd2d-e4e8-1836ddd2c185.htm" />
         <HelpTOCNode Title="Type Field" Url="html/d3a40b8b-6f5b-c510-63d4-9289895c195c.htm" />
@@ -98,16 +98,16 @@
     </HelpTOCNode>
     <HelpTOCNode Title="USBEventHandler Delegate" Url="html/124bd9e2-dbd0-427f-2b96-cb26c2b937d2.htm" />
     <HelpTOCNode Title="USBEventType Enumeration" Url="html/a9db1df8-d459-7059-6042-428644957d8e.htm" />
-    <HelpTOCNode Id="0f5b1c2b-b2b1-44f4-b6cc-0ef024d37f7d" Title="USBException Class" Url="html/cc7fd4df-ca2a-eb22-cd5b-1ba956faf79a.htm">
-      <HelpTOCNode Id="5c48e10e-9863-42a8-9dad-824e7c10af4e" Title="USBException Constructor " Url="html/b62c7000-2e54-9628-f787-1ee676dc7b8c.htm">
+    <HelpTOCNode Id="1acf9bc6-aaff-4a58-a086-f5219db91941" Title="USBException Class" Url="html/cc7fd4df-ca2a-eb22-cd5b-1ba956faf79a.htm">
+      <HelpTOCNode Id="d5061dd1-4402-4e8e-9861-705549c7f35f" Title="USBException Constructor " Url="html/b62c7000-2e54-9628-f787-1ee676dc7b8c.htm">
         <HelpTOCNode Title="USBException Constructor (String)" Url="html/a903e1c0-76cc-78c9-a6e9-b69e807ed398.htm" />
         <HelpTOCNode Title="USBException Constructor (String, Exception)" Url="html/86dd19fd-4a68-dbfc-0852-97fbcb7df328.htm" />
       </HelpTOCNode>
       <HelpTOCNode Title="USBException Properties" Url="html/f6c38000-7baf-cd69-dfdd-20f22f0f36ea.htm" />
       <HelpTOCNode Title="USBException Methods" Url="html/79cd4b4a-313b-f6dd-6a01-8f0eb3d52a60.htm" />
     </HelpTOCNode>
-    <HelpTOCNode Id="6b4abf32-14ab-4b27-a83c-5a324cbbe128" Title="USBInterface Class" Url="html/1d516022-b0f0-fdcd-726d-e0da1e4fc78f.htm">
-      <HelpTOCNode Id="9a950ee4-222e-4728-8315-86e6d251c4d3" Title="USBInterface Properties" Url="html/83e8fedf-7b58-9898-46f9-e18b2f96b25c.htm">
+    <HelpTOCNode Id="b5d34954-ca9e-4a03-8562-9ec018053bb2" Title="USBInterface Class" Url="html/1d516022-b0f0-fdcd-726d-e0da1e4fc78f.htm">
+      <HelpTOCNode Id="d960660a-5696-48a6-8ea2-7b8961fd7252" Title="USBInterface Properties" Url="html/83e8fedf-7b58-9898-46f9-e18b2f96b25c.htm">
         <HelpTOCNode Title="BaseClass Property " Url="html/b5c16b38-7b1e-8b57-7c04-ddb89f7708d9.htm" />
         <HelpTOCNode Title="ClassValue Property " Url="html/27dce75c-5b58-7ce4-2750-818083f704a0.htm" />
         <HelpTOCNode Title="Device Property " Url="html/26c4d8d6-6023-f5f5-b840-888ad721794c.htm" />
@@ -120,41 +120,41 @@
       </HelpTOCNode>
       <HelpTOCNode Title="USBInterface Methods" Url="html/481b6170-7643-79db-9236-ce8f9135d8f9.htm" />
     </HelpTOCNode>
-    <HelpTOCNode Id="c7c5737e-791a-41f5-bdf7-a656b2800bf3" Title="USBInterfaceCollection Class" Url="html/7d93ee88-0e99-710a-e3b0-71395cbc4287.htm">
-      <HelpTOCNode Id="a0903687-550c-4eb1-b301-673c4239d15d" Title="USBInterfaceCollection Properties" Url="html/5fc41c74-9669-d1ef-d33e-83d01b9e68bf.htm">
+    <HelpTOCNode Id="b4e66cab-e9d9-4457-a3df-b2108219c1bf" Title="USBInterfaceCollection Class" Url="html/7d93ee88-0e99-710a-e3b0-71395cbc4287.htm">
+      <HelpTOCNode Id="860d6f34-729e-4804-ba7c-58dcada1f588" Title="USBInterfaceCollection Properties" Url="html/5fc41c74-9669-d1ef-d33e-83d01b9e68bf.htm">
         <HelpTOCNode Title="Item Property " Url="html/f70ca71b-dd3c-5d0b-9675-defa3e63ecf9.htm" />
       </HelpTOCNode>
-      <HelpTOCNode Id="92a93957-0b69-490b-8b7c-1164050f42ee" Title="USBInterfaceCollection Methods" Url="html/554cdaf6-e2b2-1c80-7d70-5151e2f15b93.htm">
+      <HelpTOCNode Id="e1a32d76-48c3-46c3-955d-e3318f78d50d" Title="USBInterfaceCollection Methods" Url="html/554cdaf6-e2b2-1c80-7d70-5151e2f15b93.htm">
         <HelpTOCNode Title="Find Method " Url="html/9224d257-84f0-6c42-a7c5-821401c34baa.htm" />
         <HelpTOCNode Title="FindAll Method " Url="html/ad7a4dee-8e36-f1ba-ee50-777a153f4d57.htm" />
         <HelpTOCNode Title="GetEnumerator Method " Url="html/1be3afc8-2165-075c-c2f1-d7c747d6ea87.htm" />
       </HelpTOCNode>
     </HelpTOCNode>
-    <HelpTOCNode Id="af49cf3c-fc2b-497b-964f-a18fc7d99bd3" Title="USBNotifier Class" Url="html/5b769d73-5d4b-96d5-7c58-ade7bb843e0b.htm">
-      <HelpTOCNode Id="64f6dadc-2be0-4eb5-9bbc-700c5e6e0fb4" Title="USBNotifier Constructor " Url="html/2ce4151d-a112-0855-caa1-b024e127e680.htm">
+    <HelpTOCNode Id="3036c654-7b83-43dc-9d97-4dc76bdef622" Title="USBNotifier Class" Url="html/5b769d73-5d4b-96d5-7c58-ade7bb843e0b.htm">
+      <HelpTOCNode Id="01f6a446-a63f-40bc-b55b-261c1be57816" Title="USBNotifier Constructor " Url="html/2ce4151d-a112-0855-caa1-b024e127e680.htm">
         <HelpTOCNode Title="USBNotifier Constructor (IntPtr, Guid)" Url="html/207e4d4d-a7e9-f126-ba2e-3a49bba811b7.htm" />
         <HelpTOCNode Title="USBNotifier Constructor (IntPtr, String)" Url="html/91a721ec-93c1-8fb6-464b-273451d83d85.htm" />
         <HelpTOCNode Title="USBNotifier Constructor (Control, Guid)" Url="html/4b950b77-7ffe-b1ef-676d-d6b69b59cb88.htm" />
         <HelpTOCNode Title="USBNotifier Constructor (Control, String)" Url="html/121d34dd-712e-145c-b2df-f5e1aa3b093a.htm" />
       </HelpTOCNode>
-      <HelpTOCNode Id="c78554fc-e713-4e36-ae46-2120dfb4e721" Title="USBNotifier Properties" Url="html/e5cc6991-f728-70c2-f87e-d63ec8380892.htm">
+      <HelpTOCNode Id="21c961f5-6e29-4c5b-af0e-279b36ba6a93" Title="USBNotifier Properties" Url="html/e5cc6991-f728-70c2-f87e-d63ec8380892.htm">
         <HelpTOCNode Title="Guid Property " Url="html/6a1704a1-0ffc-546c-c116-acfab692075b.htm" />
       </HelpTOCNode>
-      <HelpTOCNode Id="b1db7081-5371-4bcc-a6a6-0821ecef29d8" Title="USBNotifier Methods" Url="html/d3cfb879-3f1f-be57-5acc-edd1216fc2a6.htm">
-        <HelpTOCNode Id="73ee1548-ab71-471d-b4fb-cf5e0d3ad737" Title="Dispose Method " Url="html/0e7f4d6b-f6ba-98d4-a66c-0e360f164440.htm">
+      <HelpTOCNode Id="73bff988-8ba3-4a06-af7a-7c19080ed840" Title="USBNotifier Methods" Url="html/d3cfb879-3f1f-be57-5acc-edd1216fc2a6.htm">
+        <HelpTOCNode Id="aff1941b-8366-4a5e-9bc3-12afa4c8da53" Title="Dispose Method " Url="html/0e7f4d6b-f6ba-98d4-a66c-0e360f164440.htm">
           <HelpTOCNode Title="Dispose Method " Url="html/523c86b9-0b37-f52a-1644-7ee364bfe0ca.htm" />
           <HelpTOCNode Title="Dispose Method (Boolean)" Url="html/d70f2716-afb4-413f-d5e0-82eb767baa32.htm" />
         </HelpTOCNode>
         <HelpTOCNode Title="OnArrival Method " Url="html/a28e7d2f-fe81-c62f-a1e6-f3a30846a87f.htm" />
         <HelpTOCNode Title="OnRemoval Method " Url="html/c6f1a3ac-cd45-865c-faa6-fdb4090a001e.htm" />
       </HelpTOCNode>
-      <HelpTOCNode Id="648036cb-438d-4b18-8166-2123164c9ba2" Title="USBNotifier Events" Url="html/4e7f1f2a-0037-3db5-14cd-e3df08f14875.htm">
+      <HelpTOCNode Id="323029f2-fef3-404a-9cd4-6bf8dfefe136" Title="USBNotifier Events" Url="html/4e7f1f2a-0037-3db5-14cd-e3df08f14875.htm">
         <HelpTOCNode Title="Arrival Event" Url="html/1d91092f-b6e1-ff71-3dd9-b38096a1131a.htm" />
         <HelpTOCNode Title="Removal Event" Url="html/58fac66f-782c-a3ee-dd88-6017369d6b3d.htm" />
       </HelpTOCNode>
     </HelpTOCNode>
-    <HelpTOCNode Id="3e909d96-a300-47dc-991b-d2490433493f" Title="USBPipe Class" Url="html/4535bf73-54d1-127d-c21d-8403b5419220.htm">
-      <HelpTOCNode Id="f889372a-4540-4bb2-a147-2a54abcc71fa" Title="USBPipe Properties" Url="html/28d833fb-d634-9ed3-09f4-51ef9fbaf5ef.htm">
+    <HelpTOCNode Id="b8311e31-f573-41db-a75c-d1631b274428" Title="USBPipe Class" Url="html/4535bf73-54d1-127d-c21d-8403b5419220.htm">
+      <HelpTOCNode Id="520036f8-1c9b-4be0-a8a0-49121f8b2c1b" Title="USBPipe Properties" Url="html/28d833fb-d634-9ed3-09f4-51ef9fbaf5ef.htm">
         <HelpTOCNode Title="Address Property " Url="html/6ba9c716-820b-ef3f-499e-74c193187506.htm" />
         <HelpTOCNode Title="Device Property " Url="html/01bb4d89-1b24-7da2-e695-e0f56d6aa822.htm" />
         <HelpTOCNode Title="Interface Property " Url="html/23d92fbc-3ec6-ea8f-bb34-ddb0da68611c.htm" />
@@ -163,33 +163,33 @@
         <HelpTOCNode Title="MaximumPacketSize Property " Url="html/cbdc7869-74bc-4f97-46f5-88974e3fcf42.htm" />
         <HelpTOCNode Title="Policy Property " Url="html/78fb29f6-3324-fbe5-0f4e-98101fa0bd3c.htm" />
       </HelpTOCNode>
-      <HelpTOCNode Id="4739cb91-843e-4e97-804b-9eac2ba7c82f" Title="USBPipe Methods" Url="html/a2420285-170d-7b1d-7635-c363087e8f79.htm">
+      <HelpTOCNode Id="93dc6cfc-971b-4f82-99d1-0fb73fc6be94" Title="USBPipe Methods" Url="html/a2420285-170d-7b1d-7635-c363087e8f79.htm">
         <HelpTOCNode Title="Abort Method " Url="html/807636f7-a107-b613-d168-86ae67a5e74f.htm" />
         <HelpTOCNode Title="BeginRead Method " Url="html/1657c5f2-496b-9be4-6668-8560d3d8c4aa.htm" />
         <HelpTOCNode Title="BeginWrite Method " Url="html/906a073d-7123-9301-7a1f-77f98eadc038.htm" />
         <HelpTOCNode Title="EndRead Method " Url="html/9d38b00a-d35d-12f0-63d6-7b76cc97eac5.htm" />
         <HelpTOCNode Title="EndWrite Method " Url="html/7a7585a0-ab09-2348-2a57-a8c9acfabc74.htm" />
         <HelpTOCNode Title="Flush Method " Url="html/b82613eb-5e84-197c-15eb-29aa348cad0f.htm" />
-        <HelpTOCNode Id="bbd3a152-1fd4-42c5-b964-26c0f464d17a" Title="Read Method " Url="html/28202dd8-9e59-5f23-6775-dd00132cba9c.htm">
+        <HelpTOCNode Id="fb779508-ae49-4392-8763-a3e641a39f92" Title="Read Method " Url="html/28202dd8-9e59-5f23-6775-dd00132cba9c.htm">
           <HelpTOCNode Title="Read Method (Byte[])" Url="html/ddbf7e5e-60ef-863b-4457-2f8ac9c78a0c.htm" />
           <HelpTOCNode Title="Read Method (Byte[], Int32, Int32)" Url="html/cf581729-4261-ec4b-2229-2ad943da8a7c.htm" />
         </HelpTOCNode>
-        <HelpTOCNode Id="5b64673c-e810-4caa-8a0e-ec85ac1dd8f2" Title="Write Method " Url="html/f21b25a6-1ceb-ac6e-9108-75938da1fa63.htm">
+        <HelpTOCNode Id="8522afe3-6a8d-4204-bc24-f1aedd3b1c7a" Title="Write Method " Url="html/f21b25a6-1ceb-ac6e-9108-75938da1fa63.htm">
           <HelpTOCNode Title="Write Method (Byte[])" Url="html/f8c22600-bbdb-0eaf-8565-6ebcd12a802e.htm" />
           <HelpTOCNode Title="Write Method (Byte[], Int32, Int32)" Url="html/34aa8609-8bed-6d35-7c51-92c8a7fe6039.htm" />
         </HelpTOCNode>
       </HelpTOCNode>
     </HelpTOCNode>
-    <HelpTOCNode Id="872f37a1-5968-45a4-8eb5-6853d2d2c0ec" Title="USBPipeCollection Class" Url="html/a966f02e-801c-39cd-4324-d4c85ec8b6bb.htm">
-      <HelpTOCNode Id="40c2eb3c-819e-4d3e-88b4-05e8fc0507c9" Title="USBPipeCollection Properties" Url="html/1beb0398-cf22-872f-4c61-61233f288496.htm">
+    <HelpTOCNode Id="7f37425e-23e7-4147-91c7-d5c4a1aaf78d" Title="USBPipeCollection Class" Url="html/a966f02e-801c-39cd-4324-d4c85ec8b6bb.htm">
+      <HelpTOCNode Id="d24c3582-1414-4f40-99e5-ab0724d90fbc" Title="USBPipeCollection Properties" Url="html/1beb0398-cf22-872f-4c61-61233f288496.htm">
         <HelpTOCNode Title="Item Property " Url="html/1687875c-f73a-80a8-da71-fe818bb4cae3.htm" />
       </HelpTOCNode>
-      <HelpTOCNode Id="5a2be95c-e204-47df-b5da-ae5d0384ed5b" Title="USBPipeCollection Methods" Url="html/d05908c5-8911-615f-661b-65286f2d92e3.htm">
+      <HelpTOCNode Id="6fcf55f6-35d8-45ac-ad08-b13035cac265" Title="USBPipeCollection Methods" Url="html/d05908c5-8911-615f-661b-65286f2d92e3.htm">
         <HelpTOCNode Title="GetEnumerator Method " Url="html/1d5ba5c3-ea5b-c566-3674-9a3c648b5b3e.htm" />
       </HelpTOCNode>
     </HelpTOCNode>
-    <HelpTOCNode Id="8a51fe6f-f6de-4a08-8c65-089af9c79c5e" Title="USBPipePolicy Class" Url="html/178c6ec1-e40c-dd08-8ed3-e83383a98498.htm">
-      <HelpTOCNode Id="851d86ef-df6f-4c3e-bcf3-75c26ceef301" Title="USBPipePolicy Properties" Url="html/faf284b0-ffc7-47f6-b23e-f088246c76ae.htm">
+    <HelpTOCNode Id="afe1951e-67d1-4938-a585-406ad0ce51d7" Title="USBPipePolicy Class" Url="html/178c6ec1-e40c-dd08-8ed3-e83383a98498.htm">
+      <HelpTOCNode Id="cd6b6c03-0bb1-4517-b6f1-20666b4d41a8" Title="USBPipePolicy Properties" Url="html/faf284b0-ffc7-47f6-b23e-f088246c76ae.htm">
         <HelpTOCNode Title="AllowPartialReads Property " Url="html/72d6d059-254d-b77c-bdc3-6505ce2113a2.htm" />
         <HelpTOCNode Title="AutoClearStall Property " Url="html/9910f22b-ab8a-8f9e-e8b2-aa14a3f5f466.htm" />
         <HelpTOCNode Title="AutoFlush Property " Url="html/b000e0fd-bd3e-0245-c58c-99518ee80a11.htm" />

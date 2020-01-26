@@ -133,7 +133,6 @@
   <HelpKINode Title="USBBaseClass enumeration" Url="html/b0387ab6-5bed-abb2-9284-f09a9fe71283.htm" />
   <HelpKINode Title="USBDevice class">
     <HelpKINode Title="USBDevice Class" Url="html/fd43734c-38e1-81a4-d77c-957819af0a08.htm" />
-    <HelpKINode Title="about USBDevice class" Url="html/fd43734c-38e1-81a4-d77c-957819af0a08.htm" />
     <HelpKINode Title="constructor" Url="html/7720979d-410c-13a0-a385-9ea859a8c8ca.htm" />
     <HelpKINode Title="methods" Url="html/d1c27647-5989-955f-5d4f-a244f109ebdc.htm" />
     <HelpKINode Title="properties" Url="html/106fb3b0-8ade-014f-a279-246db2b66bdc.htm" />
@@ -156,7 +155,6 @@
   <HelpKINode Title="USBDevice.USBDevice constructor" Url="html/7720979d-410c-13a0-a385-9ea859a8c8ca.htm" />
   <HelpKINode Title="USBDeviceDescriptor class">
     <HelpKINode Title="USBDeviceDescriptor Class" Url="html/3ff83bb1-a519-1784-95e5-c320bbce7468.htm" />
-    <HelpKINode Title="about USBDeviceDescriptor class" Url="html/3ff83bb1-a519-1784-95e5-c320bbce7468.htm" />
     <HelpKINode Title="methods" Url="html/8d336d5e-410d-6546-4a64-f1713f4906dc.htm" />
     <HelpKINode Title="properties" Url="html/c4b7f93e-e405-356a-ff76-cb84fd833862.htm" />
   </HelpKINode>
@@ -173,7 +171,6 @@
   <HelpKINode Title="USBDeviceDescriptor.VID property" Url="html/e7d08724-4001-2dc0-ad1b-dd42e2454988.htm" />
   <HelpKINode Title="USBDeviceInfo class">
     <HelpKINode Title="USBDeviceInfo Class" Url="html/c61ff858-a9bf-7a45-bf1d-cd4ddbbaca1d.htm" />
-    <HelpKINode Title="about USBDeviceInfo class" Url="html/c61ff858-a9bf-7a45-bf1d-cd4ddbbaca1d.htm" />
     <HelpKINode Title="methods" Url="html/1ddd446a-3ab4-df2e-2ccb-373f03fb4622.htm" />
     <HelpKINode Title="properties" Url="html/f41385fd-cbbc-9422-b8a7-ef055b721a74.htm" />
   </HelpKINode>
@@ -184,7 +181,6 @@
   <HelpKINode Title="USBDeviceInfo.VID property" Url="html/7402409d-9255-fd96-883b-539e946fd76d.htm" />
   <HelpKINode Title="USBEvent class">
     <HelpKINode Title="USBEvent Class" Url="html/ff46d303-4be6-2dbe-cef0-54b438187ee2.htm" />
-    <HelpKINode Title="about USBEvent class" Url="html/ff46d303-4be6-2dbe-cef0-54b438187ee2.htm" />
     <HelpKINode Title="fields" Url="html/6aad2ba0-bff3-970d-db9e-b6fb2cb3b528.htm" />
     <HelpKINode Title="methods" Url="html/62e6842b-d7e0-b21a-fc27-221206e2a88d.htm" />
   </HelpKINode>
@@ -195,7 +191,6 @@
   <HelpKINode Title="USBEventType enumeration" Url="html/a9db1df8-d459-7059-6042-428644957d8e.htm" />
   <HelpKINode Title="USBException class">
     <HelpKINode Title="USBException Class" Url="html/cc7fd4df-ca2a-eb22-cd5b-1ba956faf79a.htm" />
-    <HelpKINode Title="about USBException class" Url="html/cc7fd4df-ca2a-eb22-cd5b-1ba956faf79a.htm" />
     <HelpKINode Title="constructor" Url="html/b62c7000-2e54-9628-f787-1ee676dc7b8c.htm" />
     <HelpKINode Title="methods" Url="html/79cd4b4a-313b-f6dd-6a01-8f0eb3d52a60.htm" />
     <HelpKINode Title="properties" Url="html/f6c38000-7baf-cd69-dfdd-20f22f0f36ea.htm" />
@@ -203,7 +198,6 @@
   <HelpKINode Title="USBException.USBException constructor" Url="html/b62c7000-2e54-9628-f787-1ee676dc7b8c.htm" />
   <HelpKINode Title="USBInterface class">
     <HelpKINode Title="USBInterface Class" Url="html/1d516022-b0f0-fdcd-726d-e0da1e4fc78f.htm" />
-    <HelpKINode Title="about USBInterface class" Url="html/1d516022-b0f0-fdcd-726d-e0da1e4fc78f.htm" />
     <HelpKINode Title="methods" Url="html/481b6170-7643-79db-9236-ce8f9135d8f9.htm" />
     <HelpKINode Title="properties" Url="html/83e8fedf-7b58-9898-46f9-e18b2f96b25c.htm" />
   </HelpKINode>
@@ -218,7 +212,6 @@
   <HelpKINode Title="USBInterface.SubClass property" Url="html/f538dd2f-afff-5ace-9a86-e13a4c59868c.htm" />
   <HelpKINode Title="USBInterfaceCollection class">
     <HelpKINode Title="USBInterfaceCollection Class" Url="html/7d93ee88-0e99-710a-e3b0-71395cbc4287.htm" />
-    <HelpKINode Title="about USBInterfaceCollection class" Url="html/7d93ee88-0e99-710a-e3b0-71395cbc4287.htm" />
     <HelpKINode Title="methods" Url="html/554cdaf6-e2b2-1c80-7d70-5151e2f15b93.htm" />
     <HelpKINode Title="properties" Url="html/5fc41c74-9669-d1ef-d33e-83d01b9e68bf.htm" />
   </HelpKINode>
@@ -228,7 +221,6 @@
   <HelpKINode Title="USBInterfaceCollection.Item property" Url="html/f70ca71b-dd3c-5d0b-9675-defa3e63ecf9.htm" />
   <HelpKINode Title="USBNotifier class">
     <HelpKINode Title="USBNotifier Class" Url="html/5b769d73-5d4b-96d5-7c58-ade7bb843e0b.htm" />
-    <HelpKINode Title="about USBNotifier class" Url="html/5b769d73-5d4b-96d5-7c58-ade7bb843e0b.htm" />
     <HelpKINode Title="constructor" Url="html/2ce4151d-a112-0855-caa1-b024e127e680.htm" />
     <HelpKINode Title="events" Url="html/4e7f1f2a-0037-3db5-14cd-e3df08f14875.htm" />
     <HelpKINode Title="methods" Url="html/d3cfb879-3f1f-be57-5acc-edd1216fc2a6.htm" />
@@ -243,7 +235,6 @@
   <HelpKINode Title="USBNotifier.USBNotifier constructor" Url="html/2ce4151d-a112-0855-caa1-b024e127e680.htm" />
   <HelpKINode Title="USBPipe class">
     <HelpKINode Title="USBPipe Class" Url="html/4535bf73-54d1-127d-c21d-8403b5419220.htm" />
-    <HelpKINode Title="about USBPipe class" Url="html/4535bf73-54d1-127d-c21d-8403b5419220.htm" />
     <HelpKINode Title="methods" Url="html/a2420285-170d-7b1d-7635-c363087e8f79.htm" />
     <HelpKINode Title="properties" Url="html/28d833fb-d634-9ed3-09f4-51ef9fbaf5ef.htm" />
   </HelpKINode>
@@ -264,7 +255,6 @@
   <HelpKINode Title="USBPipe.Write method" Url="html/f21b25a6-1ceb-ac6e-9108-75938da1fa63.htm" />
   <HelpKINode Title="USBPipeCollection class">
     <HelpKINode Title="USBPipeCollection Class" Url="html/a966f02e-801c-39cd-4324-d4c85ec8b6bb.htm" />
-    <HelpKINode Title="about USBPipeCollection class" Url="html/a966f02e-801c-39cd-4324-d4c85ec8b6bb.htm" />
     <HelpKINode Title="methods" Url="html/d05908c5-8911-615f-661b-65286f2d92e3.htm" />
     <HelpKINode Title="properties" Url="html/1beb0398-cf22-872f-4c61-61233f288496.htm" />
   </HelpKINode>
@@ -272,7 +262,6 @@
   <HelpKINode Title="USBPipeCollection.Item property" Url="html/1687875c-f73a-80a8-da71-fe818bb4cae3.htm" />
   <HelpKINode Title="USBPipePolicy class">
     <HelpKINode Title="USBPipePolicy Class" Url="html/178c6ec1-e40c-dd08-8ed3-e83383a98498.htm" />
-    <HelpKINode Title="about USBPipePolicy class" Url="html/178c6ec1-e40c-dd08-8ed3-e83383a98498.htm" />
     <HelpKINode Title="methods" Url="html/bbaf0ea7-6c05-e522-d931-ff287a09036c.htm" />
     <HelpKINode Title="properties" Url="html/faf284b0-ffc7-47f6-b23e-f088246c76ae.htm" />
   </HelpKINode>
