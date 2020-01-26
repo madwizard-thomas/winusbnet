@@ -201,7 +201,8 @@ namespace MadWizard.WinUSBNet
         /// written to this buffer. For an OUT direction transfer the contents of the buffer are written sent through the pipe.</param>
         /// <param name="length">Length of the data to transfer. Must be equal to or less than the length of <paramref name="buffer"/>.
         /// The setup packet's length member will be set to this length.</param>
-        public void ControlTransfer(byte requestType, byte request, int value, int index, byte[] buffer, int length)
+        /// <returns>The number of bytes received from the device.</returns>
+        public int ControlTransfer(byte requestType, byte request, int value, int index, byte[] buffer, int length)
         {
             // Parameters are int and not ushort because ushort is not CLS compliant.
             CheckNotDisposed();
@@ -209,7 +210,7 @@ namespace MadWizard.WinUSBNet
 
             try
             {
-                _wuDevice.ControlTransfer(requestType, request, (ushort)value, (ushort)index, (ushort)length, buffer);
+                return _wuDevice.ControlTransfer(requestType, request, (ushort)value, (ushort)index, (ushort)length, buffer);
             }
             catch (API.APIException e)
             {
@@ -344,9 +345,10 @@ namespace MadWizard.WinUSBNet
         /// <param name="buffer">The data to transfer in the data stage of the control. When the transfer is in the IN direction the data received will be
         /// written to this buffer. For an OUT direction transfer the contents of the buffer are written sent through the pipe. The length of this
         /// buffer is used as the number of bytes in the control transfer. The setup packet's length member will be set to this length as well.</param>
-        public void ControlTransfer(byte requestType, byte request, int value, int index, byte[] buffer)
+        /// <returns>The number of bytes received from the device.</returns>
+        public int ControlTransfer(byte requestType, byte request, int value, int index, byte[] buffer)
         {
-            ControlTransfer(requestType, request, value, index, buffer, buffer.Length);
+            return ControlTransfer(requestType, request, value, index, buffer, buffer.Length);
         }
 
         /// <summary>
@@ -388,11 +390,20 @@ namespace MadWizard.WinUSBNet
         /// <param name="length">Length of the data to transfer. A buffer will be created with this length and the length member of the setup packet
         /// will be set to this length.</param>
         /// <returns>A buffer containing the data transfered.</returns>
+        /// <remarks>This routine initially allocates a buffer to hold the <paramref name="length"/> bytes of data expected from the device.
+        /// If the device responds with less data than expected, this routine will allocate a smaller buffer to copy and return only the bytes actually received.
+        /// </remarks>
         public byte[] ControlIn(byte requestType, byte request, int value, int index, int length)
         {
             CheckIn(requestType);
             byte[] buffer = new byte[length];
-            ControlTransfer(requestType, request, value, index, buffer, buffer.Length);
+            int actuallyReceived = ControlTransfer(requestType, request, value, index, buffer, buffer.Length);
+            if (actuallyReceived < length)
+            {
+                byte[] outBuffer = new byte[actuallyReceived];
+                Array.Copy(buffer, 0, outBuffer, 0, actuallyReceived);
+                return outBuffer;
+            }
             return buffer;
         }
 
@@ -408,10 +419,11 @@ namespace MadWizard.WinUSBNet
         /// <param name="buffer">The buffer that will receive the data transfered.</param>
         /// <param name="length">Length of the data to transfer. The length member of the setup packet will be set to this length. The buffer specified
         /// by the <paramref name="buffer"/> parameter should have at least this length.</param>
-        public void ControlIn(byte requestType, byte request, int value, int index, byte[] buffer, int length)
+        /// <returns>The number of bytes received from the device.</returns>
+        public int ControlIn(byte requestType, byte request, int value, int index, byte[] buffer, int length)
         {
             CheckIn(requestType);
-            ControlTransfer(requestType, request, value, index, buffer, length);
+            return ControlTransfer(requestType, request, value, index, buffer, length);
         }
 
         /// <summary>
@@ -424,10 +436,11 @@ namespace MadWizard.WinUSBNet
         /// <param name="value">The value member in the setup packet. Its meaning depends on the request. Value should be between zero and 65535 (0xFFFF).</param>
         /// <param name="index">The index member in the setup packet. Its meaning depends on the request. Index should be between zero and 65535 (0xFFFF).</param>
         /// <param name="buffer">The buffer that will receive the data transfered. The length of this buffer will be the number of bytes transfered.</param>
-        public void ControlIn(byte requestType, byte request, int value, int index, byte[] buffer)
+        /// <returns>The number of bytes received from the device.</returns>
+        public int ControlIn(byte requestType, byte request, int value, int index, byte[] buffer)
         {
             CheckIn(requestType);
-            ControlTransfer(requestType, request, value, index, buffer);
+            return ControlTransfer(requestType, request, value, index, buffer);
         }
 
         /// <summary>

@@ -138,7 +138,7 @@ namespace MadWizard.WinUSBNet.API
             return new string(chars);
         }
 
-        public void ControlTransfer(byte requestType, byte request, ushort value, ushort index, ushort length, byte[] data)
+        public int ControlTransfer(byte requestType, byte request, ushort value, ushort index, ushort length, byte[] data)
         {
             uint bytesReturned = 0;
             WINUSB_SETUP_PACKET setupPacket;
@@ -152,6 +152,7 @@ namespace MadWizard.WinUSBNet.API
             bool success = WinUsb_ControlTransfer(_winUsbHandle, setupPacket, data, length, ref bytesReturned, IntPtr.Zero);
             if (!success) // todo check bytes returned?
                 throw APIException.Win32("Control transfer on WinUSB device failed.");
+            return (int)bytesReturned;
         }
 
 
