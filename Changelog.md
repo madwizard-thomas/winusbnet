@@ -1,5 +1,10 @@
 # Changelog
 
+## 2.0.0 (2020-01-26)
+
+* Fix ControlTransfer methods to return the actual number of bytes received. Thanks to @adadurov!
+* This is a small but breaking change, so this is a new major version.
+
 ## 1.0.3 (2017-01-24)
 
 * Allow raw window handle for USBNotifier

@@ -26,10 +26,6 @@ The library is *stable*. If you find any bugs or problems please report them usi
   * [Library reference online](http://madwizard-thomas.github.io/winusbnet/docs/)
   * [Online wiki with short howto](https://github.com/madwizard-thomas/winusbnet/wiki)
   * [Changelog](Changelog.md)
-  * [WinUSB overview](https://msdn.microsoft.com/en-us/library/ff540196.aspx)
-  * [How to Use WinUSB to Communicate with a USB Device](http://www.microsoft.com/whdc/connect/usb/winusb_howto.mspx)
+  * [WinUSB overview](https://docs.microsoft.com/en-us/windows-hardware/drivers/usbcon/winusb)
+  * [How to Access a USB Device by Using WinUSB Functions](https://docs.microsoft.com/en-us/windows-hardware/drivers/usbcon/using-winusb-api-to-communicate-with-a-usb-device)
   * [Jan Axelson's page on WinUSB](http://janaxelson.com/winusb.htm)
-
-## Migration from google code
-  
-This project was previously available at google code (code.google.com/p/winusbnet/). This github repository is now the official repository for WinUSBNet. 
