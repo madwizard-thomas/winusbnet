@@ -4,6 +4,20 @@
     <RootNamespace>MadWizard.WinUSBNet</RootNamespace>
     <UseWindowsForms>true</UseWindowsForms>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
-    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+    <PackageTags>WinUSB USB</PackageTags>
+    <PackageProjectUrl>https://github.com/madwizard-thomas/winusbnet</PackageProjectUrl>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <PackageId>WinUSBNet</PackageId>
+    <RepositoryUrl>https://github.com/madwizard-thomas/winusbnet</RepositoryUrl>
+    <Version>2.1.0</Version>
+    <Description>WinUSBNet is a .NET class library that provides easy access to the WinUSB API from C#, VB.NET and other .NET languages.</Description>
+    <Copyright>Copyright © 2010 - 2020 by Thomas Bleeker (MadWizard.org)</Copyright>
+    <AssemblyVersion>2.1.0.0</AssemblyVersion>
+    <FileVersion>2.1.0.0</FileVersion>
+    <Company>Madwizard.org</Company>
+    <Authors>Thomas Bleeker</Authors>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
   </PropertyGroup>
+
 </Project>

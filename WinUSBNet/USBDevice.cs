@@ -8,6 +8,8 @@
 using System;
 using System.Collections.Generic;
 
+[assembly: CLSCompliant(true)]
+
 namespace MadWizard.WinUSBNet
 {
     /// <summary>
