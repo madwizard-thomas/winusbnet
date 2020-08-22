@@ -1,5 +1,9 @@
 # Changelog
 
+## 2.1.0 (2020-08-22)
+
+* Change project style to SDK and add .NET Core 3.1 and .NET Framework 4.5 support. Thanks to @tibel!
+
 ## 2.0.0 (2020-01-26)
 
 * Fix ControlTransfer methods to return the actual number of bytes received. Thanks to @adadurov!
