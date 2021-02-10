@@ -302,7 +302,7 @@ namespace MadWizard.WinUSBNet
         /// of bytes that were transfered. If an error occurred during the operation this method will throw the exceptions that would
         /// otherwise have occurred during the operation. If the operation is not yet finished EndWrite will wait for the
         /// operation to finish before returning.</remarks>
-        public void EndWrite(IAsyncResult asyncResult)
+        public int EndWrite(IAsyncResult asyncResult)
         {
             if (asyncResult == null)
                 throw new NullReferenceException("asyncResult cannot be null");
@@ -319,12 +319,52 @@ namespace MadWizard.WinUSBNet
 
                 if (result.Error != null)
                     throw new USBException("Asynchronous write to pipe has failed.", result.Error);
+
+                return result.BytesTransfered;
             }
             finally
             {
                 result.Dispose();
             }
         }
+
+#if !NET35
+        /// <summary>Asynchronously reads a sequence of bytes from the USB pipe.</summary>
+        /// <param name="buffer">Buffer that will receive the data read from the pipe.</param>
+        /// <param name="offset">Byte offset within the buffer at which to begin writing the data received.</param>
+        /// <param name="length">Length of the data to transfer.</param>
+        /// <returns>
+        ///     A task that represents the asynchronous read operation.
+        ///     The value of the TResult parameter contains the total number of bytes that has been transferred.
+        ///     The result value can be less than the number of bytes requested if the number of bytes currently available is less than the requested number,
+        ///     or it can be 0 (zero) if the end of the stream has been reached.
+        /// </returns>
+        public System.Threading.Tasks.Task<int> ReadAsync(byte[] buffer, int offset, int length)
+        {
+            var asyncResult = this.BeginRead(buffer, offset, length, null, null);
+            return System.Threading.Tasks.Task<int>
+                                         .Factory
+                                         .FromAsync(asyncResult, this.EndRead);
+        }
+
+        /// <summary>Asynchronously write a sequence of bytes from the USB pipe.</summary>
+        /// <param name="buffer">Buffer that will receive the data read from the pipe.</param>
+        /// <param name="offset">Byte offset within the buffer at which to begin writing the data received.</param>
+        /// <param name="length">Length of the data to transfer.</param>
+        /// <returns>
+        ///     A task that represents the asynchronous read operation.
+        ///     The value of the TResult parameter contains the total number of bytes that has been transferred.
+        ///     The result value can be less than the number of bytes requested if the number of bytes currently available is less than the requested number,
+        ///     or it can be 0 (zero) if the end of the stream has been reached.
+        /// </returns>
+        public System.Threading.Tasks.Task<int> WriteAsync(byte[] buffer, int offset, int length)
+        {
+            var asyncResult = this.BeginWrite(buffer, offset, length, null, null);
+            return System.Threading.Tasks.Task<int>
+                                         .Factory
+                                         .FromAsync(asyncResult, this.EndWrite);
+        }
+#endif
 
         /// <summary>
         /// Aborts all pending transfers for this pipe.
