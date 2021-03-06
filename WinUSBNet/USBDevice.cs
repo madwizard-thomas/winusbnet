@@ -703,10 +703,21 @@ namespace MadWizard.WinUSBNet
         /// </returns>
         public System.Threading.Tasks.Task<int> ControlTransferAsync(byte requestType, byte request, int value, int index, byte[] buffer, int length)
         {
-            var asyncResult = this.BeginControlTransfer(requestType, request, value, index, buffer, length, null, null);
-            return System.Threading.Tasks.Task<int>
-                                         .Factory
-                                         .FromAsync(asyncResult, this.EndControlTransfer);
+            var tcs = new System.Threading.Tasks.TaskCompletionSource<int>();
+
+            this.BeginControlTransfer(requestType, request, value, index, buffer, length, (iar) =>
+            {
+                try
+                {
+                    tcs.TrySetResult(this.EndControlTransfer(iar));
+                }
+                catch (Exception ex)
+                {
+                    tcs.TrySetException(ex);
+                }
+            }, null);
+
+            return tcs.Task;
         }
 
         /// <summary>
@@ -732,10 +743,22 @@ namespace MadWizard.WinUSBNet
         /// </returns>
         public System.Threading.Tasks.Task<int> ControlTransferAsync(byte requestType, byte request, int value, int index, byte[] buffer)
         {
-            var asyncResult = this.BeginControlTransfer(requestType, request, value, index, buffer, null, null);
-            return System.Threading.Tasks.Task<int>
-                                         .Factory
-                                         .FromAsync(asyncResult, this.EndControlTransfer);
+
+            var tcs = new System.Threading.Tasks.TaskCompletionSource<int>();
+
+            this.BeginControlTransfer(requestType, request, value, index, buffer, (iar) =>
+            {
+                try
+                {
+                    tcs.TrySetResult(this.EndControlTransfer(iar));
+                }
+                catch (Exception ex)
+                {
+                    tcs.TrySetException(ex);
+                }
+            }, null);
+
+            return tcs.Task;
         }
 
         /// <summary>
@@ -758,10 +781,21 @@ namespace MadWizard.WinUSBNet
         /// </returns>
         public System.Threading.Tasks.Task<int> ControlTransferAsync(byte requestType, byte request, int value, int index)
         {
-            var asyncResult = this.BeginControlTransfer(requestType, request, value, index, null, null);
-            return System.Threading.Tasks.Task<int>
-                                         .Factory
-                                         .FromAsync(asyncResult, this.EndControlTransfer);
+            var tcs = new System.Threading.Tasks.TaskCompletionSource<int>();
+
+            this.BeginControlTransfer(requestType, request, value, index, (iar) =>
+            {
+                try
+                {
+                    tcs.TrySetResult(this.EndControlTransfer(iar));
+                }
+                catch (Exception ex)
+                {
+                    tcs.TrySetException(ex);
+                }
+            }, null);
+
+            return tcs.Task;
         }
 
         /// <summary>
@@ -782,10 +816,21 @@ namespace MadWizard.WinUSBNet
         /// </returns>
         public System.Threading.Tasks.Task<int> ControlInAsync(byte requestType, byte request, int value, int index, byte[] buffer, int length)
         {
-            var asyncResult = this.BeginControlIn(requestType, request, value, index, buffer, length, null, null);
-            return System.Threading.Tasks.Task<int>
-                                         .Factory
-                                         .FromAsync(asyncResult, this.EndControlTransfer);
+            var tcs = new System.Threading.Tasks.TaskCompletionSource<int>();
+
+            this.BeginControlIn(requestType, request, value, index, buffer, length, (iar) =>
+            {
+                try
+                {
+                    tcs.TrySetResult(this.EndControlTransfer(iar));
+                }
+                catch (Exception ex)
+                {
+                    tcs.TrySetException(ex);
+                }
+            }, null);
+
+            return tcs.Task;
         }
 
         /// <summary>
@@ -805,10 +850,21 @@ namespace MadWizard.WinUSBNet
         /// </returns>
         public System.Threading.Tasks.Task<int> ControlInAsync(byte requestType, byte request, int value, int index, byte[] buffer)
         {
-            var asyncResult = this.BeginControlIn(requestType, request, value, index, buffer, null, null);
-            return System.Threading.Tasks.Task<int>
-                                         .Factory
-                                         .FromAsync(asyncResult, this.EndControlTransfer);
+            var tcs = new System.Threading.Tasks.TaskCompletionSource<int>();
+
+            this.BeginControlIn(requestType, request, value, index, buffer, (iar) =>
+            {
+                try
+                {
+                    tcs.TrySetResult(this.EndControlTransfer(iar));
+                }
+                catch (Exception ex)
+                {
+                    tcs.TrySetException(ex);
+                }
+            }, null);
+
+            return tcs.Task;
         }
 
         /// <summary>
@@ -827,10 +883,21 @@ namespace MadWizard.WinUSBNet
         /// </returns>
         public System.Threading.Tasks.Task<int> ControlInAsync(byte requestType, byte request, int value, int index)
         {
-            var asyncResult = this.BeginControlIn(requestType, request, value, index, null, null);
-            return System.Threading.Tasks.Task<int>
-                                         .Factory
-                                         .FromAsync(asyncResult, this.EndControlTransfer);
+            var tcs = new System.Threading.Tasks.TaskCompletionSource<int>();
+
+            this.BeginControlIn(requestType, request, value, index, (iar) =>
+            {
+                try
+                {
+                    tcs.TrySetResult(this.EndControlTransfer(iar));
+                }
+                catch (Exception ex)
+                {
+                    tcs.TrySetException(ex);
+                }
+            }, null);
+
+            return tcs.Task;
         }
 
         /// <summary>
@@ -851,10 +918,21 @@ namespace MadWizard.WinUSBNet
         /// </returns>
         public System.Threading.Tasks.Task<int> ControlOutAsync(byte requestType, byte request, int value, int index, byte[] buffer, int length)
         {
-            var asyncResult = this.BeginControlOut(requestType, request, value, index, buffer, length, null, null);
-            return System.Threading.Tasks.Task<int>
-                                         .Factory
-                                         .FromAsync(asyncResult, this.EndControlTransfer);
+            var tcs = new System.Threading.Tasks.TaskCompletionSource<int>();
+
+            this.BeginControlOut(requestType, request, value, index, buffer, length, (iar) =>
+            {
+                try
+                {
+                    tcs.TrySetResult(this.EndControlTransfer(iar));
+                }
+                catch (Exception ex)
+                {
+                    tcs.TrySetException(ex);
+                }
+            }, null);
+
+            return tcs.Task;
         }
 
         /// <summary>
@@ -874,10 +952,21 @@ namespace MadWizard.WinUSBNet
         /// </returns>
         public System.Threading.Tasks.Task<int> ControlOutAsync(byte requestType, byte request, int value, int index, byte[] buffer)
         {
-            var asyncResult = this.BeginControlOut(requestType, request, value, index, buffer, null, null);
-            return System.Threading.Tasks.Task<int>
-                                         .Factory
-                                         .FromAsync(asyncResult, this.EndControlTransfer);
+            var tcs = new System.Threading.Tasks.TaskCompletionSource<int>();
+
+            this.BeginControlOut(requestType, request, value, index, buffer, (iar) =>
+            {
+                try
+                {
+                    tcs.TrySetResult(this.EndControlTransfer(iar));
+                }
+                catch (Exception ex)
+                {
+                    tcs.TrySetException(ex);
+                }
+            }, null);
+
+            return tcs.Task;
         }
 
         /// <summary>
@@ -896,10 +985,21 @@ namespace MadWizard.WinUSBNet
         /// </returns>
         public System.Threading.Tasks.Task<int> ControlOutAsync(byte requestType, byte request, int value, int index)
         {
-            var asyncResult = this.BeginControlOut(requestType, request, value, index, null, null);
-            return System.Threading.Tasks.Task<int>
-                                         .Factory
-                                         .FromAsync(asyncResult, this.EndControlTransfer);
+            var tcs = new System.Threading.Tasks.TaskCompletionSource<int>();
+
+            this.BeginControlOut(requestType, request, value, index, (iar) =>
+            {
+                try
+                {
+                    tcs.TrySetResult(this.EndControlTransfer(iar));
+                }
+                catch (Exception ex)
+                {
+                    tcs.TrySetException(ex);
+                }
+            }, null);
+
+            return tcs.Task;
         }
 #endif
 

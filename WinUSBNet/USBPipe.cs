@@ -341,10 +341,21 @@ namespace MadWizard.WinUSBNet
         /// </returns>
         public System.Threading.Tasks.Task<int> ReadAsync(byte[] buffer, int offset, int length)
         {
-            var asyncResult = this.BeginRead(buffer, offset, length, null, null);
-            return System.Threading.Tasks.Task<int>
-                                         .Factory
-                                         .FromAsync(asyncResult, this.EndRead);
+            var tcs = new System.Threading.Tasks.TaskCompletionSource<int>();
+
+            this.BeginRead(buffer, offset, length, (iar) =>
+            {
+                try
+                {
+                    tcs.TrySetResult(this.EndRead(iar));
+                }
+                catch (Exception ex)
+                {
+                    tcs.TrySetException(ex);
+                }
+            }, null);
+
+            return tcs.Task;
         }
 
         /// <summary>Asynchronously write a sequence of bytes from the USB pipe.</summary>
@@ -359,10 +370,21 @@ namespace MadWizard.WinUSBNet
         /// </returns>
         public System.Threading.Tasks.Task<int> WriteAsync(byte[] buffer, int offset, int length)
         {
-            var asyncResult = this.BeginWrite(buffer, offset, length, null, null);
-            return System.Threading.Tasks.Task<int>
-                                         .Factory
-                                         .FromAsync(asyncResult, this.EndWrite);
+            var tcs = new System.Threading.Tasks.TaskCompletionSource<int>();
+
+            this.BeginWrite(buffer, offset, length, (iar) =>
+            {
+                try
+                {
+                    tcs.TrySetResult(this.EndWrite(iar));
+                }
+                catch (Exception ex)
+                {
+                    tcs.TrySetException(ex);
+                }
+            }, null);
+
+            return tcs.Task;
         }
 #endif
 
