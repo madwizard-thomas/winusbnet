@@ -5,12 +5,14 @@
  *  http://www.opensource.org/licenses/mit-license.php
  */
 
+using MadWizard.WinUSBNet.API;
 using System;
-using System.Windows.Forms;
+using System.Runtime.InteropServices;
 
 namespace MadWizard.WinUSBNet
 {
-    internal class DeviceNotifyHook : NativeWindow, IDisposable
+    
+    internal class DeviceNotifyHook : IDisposable
     {
         // http://msdn.microsoft.com/en-us/library/system.windows.forms.nativewindow.aspx
 
@@ -19,21 +21,27 @@ namespace MadWizard.WinUSBNet
         private USBNotifier _notifier;
         private Guid _guid;
         private IntPtr _notifyHandle;
-
+        private Win32Window win32Window;
         private const int WM_NCDESTROY = 0x0082;
 
-        public DeviceNotifyHook(USBNotifier notifier, Control parent, Guid guid)
+#if false
+        public DeviceNotifyHook(USBNotifier notifier,Guid guid)
         {
             _guid = guid;
-            parent.HandleCreated += new EventHandler(this.OnHandleCreated);
-            parent.HandleDestroyed += new EventHandler(this.OnHandleDestroyed);
+            //parent.HandleCreated += new EventHandler(this.OnHandleCreated);
+            //parent.HandleDestroyed += new EventHandler(this.OnHandleDestroyed);
             _notifier = notifier;
         }
-
-        public DeviceNotifyHook(USBNotifier notifier, IntPtr windowHandle, Guid guid)
+#endif
+        public DeviceNotifyHook(USBNotifier notifier, Guid guid)
         {
             _guid = guid;
-            RegisterNotify(windowHandle);   // TODO handle StopNotify on handle destroy
+            win32Window = new Win32Window(WndProc);
+            if (win32Window.Create() == false)
+            {
+                throw new Exception("Create Win32 window failed!");
+            }
+            RegisterNotify();   // TODO handle StopNotify on handle destroy
             _notifier = notifier;
         }
 
@@ -43,7 +51,7 @@ namespace MadWizard.WinUSBNet
         }
 
         // Listen for the control's window creation and then hook into it.
-        private void OnHandleCreated(object sender, EventArgs e)
+        /*private void OnHandleCreated(object sender, EventArgs e)
         {
             try
             {
@@ -55,9 +63,9 @@ namespace MadWizard.WinUSBNet
             {
                 throw new USBException("Failed to register new window handle for device notification.", ex);
             }
-        }
+        }*/
 
-        private void OnHandleDestroyed(object sender, EventArgs e)
+        /*private void OnHandleDestroyed(object sender, EventArgs e)
         {
             try
             {
@@ -68,18 +76,18 @@ namespace MadWizard.WinUSBNet
             {
                 throw new USBException("Failed to unregister destroyed window handle for device notification.", ex);
             }
-        }
+        }*/
 
-        private void RegisterNotify(IntPtr handle)
+        private void RegisterNotify()
         {
-            AssignHandle(handle);
+            //AssignHandle(handle);
 
             if (_notifyHandle != IntPtr.Zero)
             {
                 API.DeviceManagement.StopDeviceDeviceNotifications(_notifyHandle);
                 _notifyHandle = IntPtr.Zero;
             }
-            API.DeviceManagement.RegisterForDeviceNotifications(handle, _guid, ref _notifyHandle);
+            API.DeviceManagement.RegisterForDeviceNotifications(win32Window.WinFromHwnd, _guid, ref _notifyHandle);
         }
 
         private void StopNotify()
@@ -92,14 +100,14 @@ namespace MadWizard.WinUSBNet
             }
         }
 
-        protected override void WndProc(ref Message m)
+        private IntPtr WndProc(IntPtr hWnd, uint msg, IntPtr wParam, IntPtr lParam)
         {
             // Listen for operating system messages
 
-            switch (m.Msg)
+            switch (msg)
             {
                 case API.DeviceManagement.WM_DEVICECHANGE:
-                    _notifier.HandleDeviceChange(m);
+                    _notifier.HandleDeviceChange( wParam, lParam);
                     break;
                 case WM_NCDESTROY:
                     // Note: when a control is used, OnHandleDestroyed will be called and the
@@ -113,7 +121,7 @@ namespace MadWizard.WinUSBNet
                     StopNotify();
                     break;
             }
-            base.WndProc(ref m);
+            return DeviceManagement.DefWindowProc(hWnd, msg, wParam, lParam);
         }
 
         public void Dispose()
@@ -133,7 +141,7 @@ namespace MadWizard.WinUSBNet
             if (_notifyHandle != IntPtr.Zero)
             {
                 API.DeviceManagement.StopDeviceDeviceNotifications(_notifyHandle);
-				_notifyHandle = IntPtr.Zero;
+                _notifyHandle = IntPtr.Zero;
             }
         }
 
