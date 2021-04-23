@@ -6,7 +6,6 @@
  */
 
 using System;
-using System.Windows.Forms;
 
 namespace MadWizard.WinUSBNet
 {
@@ -99,8 +98,8 @@ namespace MadWizard.WinUSBNet
         /// <param name="control">A control that will be used internally for device notification messages.
         /// You can use a Form object for example.</param>
         /// <param name="guidString">The interface GUID string of the devices to watch.</param>
-        public USBNotifier(Control control, string guidString) :
-            this(control, new Guid(guidString))
+        public USBNotifier(string guidString) :
+            this(new Guid(guidString))
         {
             // Handled in other constructor
         }
@@ -114,10 +113,10 @@ namespace MadWizard.WinUSBNet
         /// <param name="control">A control that will be used internally for device notification messages.
         /// You can use a Form object for example.</param>
         /// <param name="guid">The interface GUID of the devices to watch.</param>
-        public USBNotifier(Control control, Guid guid)
+        public USBNotifier(Guid guid)
         {
             _guid = guid;
-            _hook = new DeviceNotifyHook(this, control, _guid);
+            _hook = new DeviceNotifyHook(this, _guid);
         }
 
         /// <summary>
@@ -130,7 +129,7 @@ namespace MadWizard.WinUSBNet
         public USBNotifier(IntPtr windowHandle, Guid guid)
         {
             _guid = guid;
-            _hook = new DeviceNotifyHook(this, windowHandle, _guid);
+            _hook = new DeviceNotifyHook(this, _guid);
         }
 
         /// <summary>
@@ -165,22 +164,22 @@ namespace MadWizard.WinUSBNet
                 Removal(this, new USBEvent(USBEventType.DeviceRemoval, _guid, devicePath));
         }
 
-        internal void HandleDeviceChange(Message m)
+        internal void HandleDeviceChange(IntPtr WParam,IntPtr LParam)
         {
-            if (m.Msg != API.DeviceManagement.WM_DEVICECHANGE)
-                throw new USBException("Invalid device change message."); // should not happen
+            //if (msg != API.DeviceManagement.WM_DEVICECHANGE)
+            //    throw new USBException("Invalid device change message."); // should not happen
 
-            if ((int)m.WParam == API.DeviceManagement.DBT_DEVICEARRIVAL)
+            if ((int)WParam == API.DeviceManagement.DBT_DEVICEARRIVAL)
             {
 
-                string devName = API.DeviceManagement.GetNotifyMessageDeviceName(m, _guid);
+                string devName = API.DeviceManagement.GetNotifyMessageDeviceName(LParam, _guid);
                 if (devName != null)
                     OnArrival(devName);
             }
 
-            if ((int)m.WParam == API.DeviceManagement.DBT_DEVICEREMOVECOMPLETE)
+            if ((int)WParam == API.DeviceManagement.DBT_DEVICEREMOVECOMPLETE)
             {
-                string devName = API.DeviceManagement.GetNotifyMessageDeviceName(m, _guid);
+                string devName = API.DeviceManagement.GetNotifyMessageDeviceName(LParam, _guid);
                 if (devName != null)
                     OnRemoval(devName);
             }

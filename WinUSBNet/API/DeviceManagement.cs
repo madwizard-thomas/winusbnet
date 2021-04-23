@@ -26,7 +26,7 @@ namespace MadWizard.WinUSBNet.API
         // Get device name from notification message.
         // Also checks checkGuid with the GUID from the message to check the notification
         // is for a relevant device. Other messages might be received.
-        public static string GetNotifyMessageDeviceName(Message m, Guid checkGuid)
+        public static string GetNotifyMessageDeviceName(IntPtr LParam, Guid checkGuid)
         {
             int stringSize;
 
@@ -36,7 +36,7 @@ namespace MadWizard.WinUSBNet.API
 
             // The LParam parameter of Message is a pointer to a DEV_BROADCAST_HDR structure.
 
-            Marshal.PtrToStructure(m.LParam, devBroadcastHeader);
+            Marshal.PtrToStructure(LParam, devBroadcastHeader);
 
             if ((devBroadcastHeader.dbch_devicetype == DBT_DEVTYP_DEVICEINTERFACE))
             {
@@ -58,7 +58,7 @@ namespace MadWizard.WinUSBNet.API
                 // Marshal data from the unmanaged block pointed to by m.LParam
                 // to the managed object devBroadcastDeviceInterface.
 
-                Marshal.PtrToStructure(m.LParam, devBroadcastDeviceInterface);
+                Marshal.PtrToStructure(LParam, devBroadcastDeviceInterface);
 
                 // Check if message is for the GUID
                 if (devBroadcastDeviceInterface.dbcc_classguid != checkGuid)

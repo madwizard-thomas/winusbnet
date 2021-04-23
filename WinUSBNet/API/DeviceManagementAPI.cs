@@ -11,14 +11,135 @@
 
 using System;
 using System.Runtime.InteropServices;
+using System.Threading;
 
 namespace MadWizard.WinUSBNet.API
 {
+    
+    internal class Win32Window
+    {
+
+        //typedef LRESULT(CALLBACK* WNDPROC)(HWND, UINT, WPARAM, LPARAM);
+        private DeviceManagement.WndProc delegWndProc = null;// = myWndProc;
+        private Thread WndProcThread;
+        internal IntPtr WinFromHwnd;
+        //[DllImport("user32.dll")]
+        //static extern bool TranslateMessage([In] ref MSG lpMsg);
+
+        //[DllImport("user32.dll")]
+        //static extern IntPtr DispatchMessage([In] ref MSG lpmsg);
+        public Win32Window(DeviceManagement.WndProc wndProc)
+        {
+            delegWndProc = wndProc;
+           
+        }
+        private bool CreateWindowOperationCompleteFlag = false;
+        private void MessagePool()
+        {
+            DeviceManagement.WNDCLASS wind_class = new DeviceManagement.WNDCLASS();
+            //wind_class.cbSize = Marshal.SizeOf(typeof(DeviceManagement.WNDCLASS));
+            //wind_class.style = (int)(DeviceManagement.CS_HREDRAW | DeviceManagement.CS_VREDRAW | DeviceManagement.CS_DBLCLKS); //Doubleclicks are active
+            //wind_class.hbrBackground = (IntPtr)COLOR_BACKGROUND + 1; //Black background, +1 is necessary
+            wind_class.cbClsExtra = 0;
+            wind_class.cbWndExtra = 0;
+            wind_class.hInstance = Marshal.GetHINSTANCE(this.GetType().Module); ;// alternative: Process.GetCurrentProcess().Handle;
+            wind_class.hIcon = IntPtr.Zero;
+            wind_class.hCursor = DeviceManagement.LoadCursor(IntPtr.Zero, (int)DeviceManagement.IDC_CROSS);// Crosshair cursor;
+            wind_class.lpszMenuName = null;
+            wind_class.lpszClassName = "myClass";
+            wind_class.lpfnWndProc = Marshal.GetFunctionPointerForDelegate(delegWndProc);
+            //wind_class.hIconSm = IntPtr.Zero;
+            ushort regResult = DeviceManagement.RegisterClass(ref wind_class);
+
+            if (regResult == 0)
+            {
+                uint error = DeviceManagement.GetLastError();
+
+                goto exi;
+            }
+            string wndClass = wind_class.lpszClassName;
+
+            //The next line did NOT work with me! When searching the web, the reason seems to be unclear! 
+            //It resulted in a zero hWnd, but GetLastError resulted in zero (i.e. no error) as well !!??)
+            //IntPtr hWnd = CreateWindowEx(0, wind_class.lpszClassName, "MyWnd", WS_OVERLAPPEDWINDOW | WS_VISIBLE, 0, 0, 30, 40, IntPtr.Zero, IntPtr.Zero, wind_class.hInstance, IntPtr.Zero);
+
+            //This version worked and resulted in a non-zero hWnd
+            IntPtr hWnd = DeviceManagement.CreateWindowEx(0,
+                "myClass",
+                "Hello Win32",
+                DeviceManagement.WS_OVERLAPPEDWINDOW,
+                unchecked((int)0x80000000), unchecked((int)0x80000000), unchecked((int)0x80000000), unchecked((int)0x80000000),
+                IntPtr.Zero,
+                IntPtr.Zero,
+                wind_class.hInstance,
+                IntPtr.Zero);
+
+            if (hWnd == ((IntPtr)0))
+            {
+                uint error = DeviceManagement.GetLastError();
+                goto exi;
+            }
+            WinFromHwnd = hWnd;
+            CreateWindowOperationCompleteFlag = true;
+            //DeviceManagement.ShowWindow(hWnd, 1);
+            //DeviceManagement.UpdateWindow(hWnd);
+            DeviceManagement.MSG msg;
+            while (true)
+            {
+                while (DeviceManagement.GetMessage(out msg, IntPtr.Zero, DeviceManagement.WM_DEVICECHANGE, DeviceManagement.WM_DEVICECHANGE)!=0)
+                {
+                    DeviceManagement.TranslateMessage(out msg);
+                    DeviceManagement.DispatchMessage(out msg);
+                }
+            }
+        exi:
+            CreateWindowOperationCompleteFlag = true;
+        }
+        internal bool Create()
+        {
+            if(WinFromHwnd!=IntPtr.Zero && CreateWindowOperationCompleteFlag==false)
+            {
+                return false;
+            }
+            WndProcThread = new Thread(MessagePool);
+            WndProcThread.IsBackground = true;
+            WndProcThread.Name = "Win32Window Message Pool Thread";
+            WndProcThread.Start();
+            while (CreateWindowOperationCompleteFlag == false) ;//don't worry,so fast!
+            return true;
+
+            //The explicit message pump is not necessary, messages are obviously dispatched by the framework.
+            //However, if the while loop is implemented, the functions are called... Windows mysteries...
+            //MSG msg;
+            //while (GetMessage(out msg, IntPtr.Zero, 0, 0) != 0)
+            //{
+            //    TranslateMessage(ref msg);
+            //    DispatchMessage(ref msg);
+            //}
+        }
+
+        private static IntPtr myWndProc(IntPtr hWnd, uint msg, IntPtr wParam, IntPtr lParam)
+        {
+            switch (msg)
+            {
+
+                case API.DeviceManagement.WM_DESTROY:
+                    DeviceManagement.DestroyWindow(hWnd);
+
+                    //If you want to shutdown the application, call the next function instead of DestroyWindow
+                    //PostQuitMessage(0);
+                    break;
+
+                default:
+                    break;
+            }
+            return DeviceManagement.DefWindowProc(hWnd, msg, wParam, lParam);
+        }
+    }
     /// <summary>
     /// API declarations relating to device management (SetupDixxx and
     /// RegisterDeviceNotification functions).
     /// </summary>
-
     internal static partial class DeviceManagement
     {
         // from dbt.h
@@ -36,6 +157,40 @@ namespace MadWizard.WinUSBNet.API
 
         private const Int32 DIGCF_PRESENT = 2;
         private const Int32 DIGCF_DEVICEINTERFACE = 0X10;
+
+
+        internal const UInt32 WS_OVERLAPPEDWINDOW = 0xcf0000;
+        internal const UInt32 WS_VISIBLE = 0x10000000;
+        internal const UInt32 CS_USEDEFAULT = 0x80000000;
+        internal const UInt32 CS_DBLCLKS = 8;
+        internal const UInt32 CS_VREDRAW = 1;
+        internal const UInt32 CS_HREDRAW = 2;
+        internal const UInt32 COLOR_WINDOW = 5;
+        internal const UInt32 COLOR_BACKGROUND = 1;
+        internal const UInt32 IDC_CROSS = 32515;
+        internal const UInt32 WM_DESTROY = 2;
+        internal const UInt32 WM_PAINT = 0x0f;
+        internal const UInt32 WM_LBUTTONUP = 0x0202;
+        internal const UInt32 WM_LBUTTONDBLCLK = 0x0203;
+        
+
+        [StructLayout(LayoutKind.Sequential, CharSet = CharSet.Auto)]
+        internal struct WNDCLASS
+        {
+            //[MarshalAs(UnmanagedType.U4)]
+            public uint style;
+            public IntPtr lpfnWndProc;
+            public int cbClsExtra;
+            public int cbWndExtra;
+            public IntPtr hInstance;
+            public IntPtr hIcon;
+            public IntPtr hCursor;
+            public IntPtr hbrBackground;
+            [MarshalAs(UnmanagedType.LPWStr)]
+            public string lpszMenuName;
+            [MarshalAs(UnmanagedType.LPWStr)]
+            public string lpszClassName;
+        }
 
         // Two declarations for the DEV_BROADCAST_DEVICEINTERFACE structure.
 
@@ -85,7 +240,22 @@ namespace MadWizard.WinUSBNet.API
             internal Int32 DevInst;
             internal IntPtr Reserved;
         }
-
+        [StructLayout(LayoutKind.Sequential)]
+        internal struct POINT
+        {
+            long x;
+            long y;
+        }
+        [StructLayout(LayoutKind.Sequential)]
+        internal struct MSG
+        {
+            IntPtr hwnd;
+            uint message;
+            UIntPtr wParam;
+            IntPtr lParam;
+            int time;
+            POINT pt;
+        }
         // from pinvoke.net
         private enum SPDRP : uint
         {
@@ -149,6 +319,63 @@ namespace MadWizard.WinUSBNet.API
 
         [DllImport("user32.dll", SetLastError = true)]
         private static extern bool UnregisterDeviceNotification(IntPtr Handle);
+
+
+        [DllImport("user32.dll", SetLastError = true, EntryPoint = "RegisterClass", CharSet = CharSet.Unicode)]
+        internal static extern System.UInt16 RegisterClass([In] ref WNDCLASS lpWndClass);
+
+        [DllImport("kernel32.dll")]
+        internal static extern uint GetLastError();
+
+        [DllImport("user32.dll")]
+        internal static extern IntPtr DefWindowProc(IntPtr hWnd, uint uMsg, IntPtr wParam, IntPtr lParam);
+
+        [DllImport("user32.dll")]
+        internal static extern void PostQuitMessage(int nExitCode);
+
+        [DllImport("user32.dll")]
+        internal static extern sbyte GetMessage(out MSG lpMsg, IntPtr hWnd, uint wMsgFilterMin,
+           uint wMsgFilterMax);
+
+        [DllImport("user32.dll")]
+        internal static extern sbyte TranslateMessage(out MSG lpMsg);
+
+        [DllImport("user32.dll")]
+        internal static extern IntPtr DispatchMessage(out MSG lpMsg);
+
+        [DllImport("user32.dll")]
+        internal static extern IntPtr LoadCursor(IntPtr hInstance, int lpCursorName);
+
+        [UnmanagedFunctionPointer(CallingConvention.Winapi, SetLastError = true)]
+        internal delegate IntPtr WndProc(IntPtr hWnd, uint msg, IntPtr wParam, IntPtr lParam);
+        [DllImport("user32.dll")]
+        internal static extern bool UpdateWindow(IntPtr hWnd);
+
+        [DllImport("user32.dll")]
+        [return: MarshalAs(UnmanagedType.Bool)]
+        internal static extern bool ShowWindow(IntPtr hWnd, int nCmdShow);
+
+        [System.Runtime.InteropServices.DllImport("user32.dll", SetLastError = true)]
+        internal static extern bool DestroyWindow(IntPtr hWnd);
+
+
+        [DllImport("user32.dll", SetLastError = true, EntryPoint = "CreateWindowEx", CharSet = CharSet.Unicode)]
+        internal static extern IntPtr CreateWindowEx(
+           int dwExStyle,
+          //UInt16 regResult,
+          [MarshalAs(UnmanagedType.LPWStr)]
+          string lpClassName,
+        [MarshalAs(UnmanagedType.LPWStr)]
+        string lpWindowName,
+           UInt32 dwStyle,
+           int x,
+           int y,
+           int nWidth,
+           int nHeight,
+           IntPtr hWndParent,
+           IntPtr hMenu,
+           IntPtr hInstance,
+           IntPtr lpParam);
 
         private const int ERROR_NO_MORE_ITEMS = 259;
         private const int ERROR_INSUFFICIENT_BUFFER = 122;

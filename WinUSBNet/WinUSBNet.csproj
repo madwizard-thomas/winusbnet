@@ -18,6 +18,7 @@
     <Company>Madwizard.org</Company>
     <Authors>Thomas Bleeker</Authors>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <Platforms>AnyCPU;x64</Platforms>
   </PropertyGroup>
 
 </Project>
